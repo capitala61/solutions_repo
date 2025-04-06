@@ -19,9 +19,9 @@ x(t) = v_0 \cdot \cos(\theta) \cdot t
 $$
 
 where:
-- \(x(t)\) is the horizontal position of the projectile at time \(t\),
-- \(v_0\) is the initial velocity,
-- \(\theta\) is the launch angle.
+- $x(t)$ is the horizontal position of the projectile at time $t$,
+- $v_0$ is the initial velocity,
+- $\theta$ is the launch angle.
 
 ---
 
