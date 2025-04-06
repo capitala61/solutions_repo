@@ -274,13 +274,12 @@ Where:
   
   If the wind velocity is represented by $v_w$, the horizontal velocity of the projectile becomes:
 
-  $$
-  v_x' = v_x + v_w
-  $$
+  $$v_x' = v_x + v_w$$
 
   Where:
   - $v_x$ is the horizontal velocity of the projectile,
   - $v_w$ is the wind velocity.
+
 
 - **Temperature and Air Density**:
   - The air density $\rho$ depends on environmental factors such as temperature and pressure.
