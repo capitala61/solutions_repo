@@ -177,26 +177,24 @@
 <h3 id="11-governing-equations-of-motion">1.1 Governing Equations of Motion</h3>
 <p>To analyze projectile motion, we start by applying the fundamental laws of motion under constant acceleration, particularly the law of gravity.</p>
 <p>The two-dimensional motion of a projectile is governed by the following equations:</p>
-<ul>
-<li><strong>Horizontal Motion</strong>
-: The acceleration in the horizontal direction is zero (assuming no air resistance), so the horizontal velocity remains constant.</li>
-</ul>
-<p>$$
-  x(t) = v_0 \cdot \cos(\theta) \cdot t
-  $$</p>
+<h3 id="horizontal-motion">Horizontal Motion</h3>
+<p>The acceleration in the horizontal direction is zero (assuming no air resistance), so the horizontal velocity remains constant.</p>
+<div class="arithmatex">\[
+x(t) = v_0 \cdot \cos(\theta) \cdot t
+\]</div>
 <p>where:
-  - <span class="arithmatex">\(x(t)\)</span> is the horizontal position of the projectile at time <span class="arithmatex">\(t\)</span>,
-  - <span class="arithmatex">\(v_0\)</span> is the initial velocity,
-  - <span class="arithmatex">\(\theta\)</span> is the launch angle.</p>
-<ul>
-<li><strong>Vertical Motion</strong>: The vertical motion is influenced by gravity. The velocity in the vertical direction is affected by gravitational acceleration (<span class="arithmatex">\(g\)</span>).</li>
-</ul>
-<p>$$
-  y(t) = v_0 \cdot \sin(\theta) \cdot t - \frac{1}{2} g t^2
-  $$</p>
+- <span class="arithmatex">\(x(t)\)</span> is the horizontal position of the projectile at time <span class="arithmatex">\(t\)</span>,
+- <span class="arithmatex">\(v_0\)</span> is the initial velocity,
+- <span class="arithmatex">\(\theta\)</span> is the launch angle.</p>
+<hr/>
+<h3 id="vertical-motion">Vertical Motion</h3>
+<p>The vertical motion is influenced by gravity. The velocity in the vertical direction is affected by gravitational acceleration (<span class="arithmatex">\(g\)</span>).</p>
+<div class="arithmatex">\[
+y(t) = v_0 \cdot \sin(\theta) \cdot t - \frac{1}{2} g t^2
+\]</div>
 <p>where:
-  - <span class="arithmatex">\(y(t)\)</span> is the vertical position of the projectile at time <span class="arithmatex">\(t\)</span>,
-  - <span class="arithmatex">\(g\)</span> is the acceleration due to gravity (approximately 9.81 m/s²).</p>
+- <span class="arithmatex">\(y(t)\)</span> is the vertical position of the projectile at time <span class="arithmatex">\(t\)</span>,
+- <span class="arithmatex">\(g\)</span> is the acceleration due to gravity (approximately 9.81 m/s²).</p>
 <h3 id="12-solving-the-basic-differential-equation">1.2 Solving the Basic Differential Equation</h3>
 <p>To find the time of flight, we focus on the vertical motion. The projectile hits the ground when <span class="arithmatex">\(y(t) = 0\)</span>. Therefore, we set the vertical displacement equation equal to zero:</p>
 <div class="arithmatex">\[
