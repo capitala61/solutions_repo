@@ -251,13 +251,9 @@ Where:
   
   The general form of the motion with drag can be described by the following second-order differential equations:
 
-  $$
-  \frac{d^2x}{dt^2} = -\frac{C_d \rho A}{2m} v \frac{dx}{dt}
-  $$
+  $$\frac{d^2x}{dt^2}=-\frac{C_d\rho A}{2m}v\frac{dx}{dt}$$
 
-  $$
-  \frac{d^2y}{dt^2} = -g - \frac{C_d \rho A}{2m} v \frac{dy}{dt}
-  $$
+  $$\frac{d^2y}{dt^2}=-g-\frac{C_d\rho A}{2m}v\frac{dy}{dt}$$
 
   Where:
   - $C_d$ is the drag coefficient,
