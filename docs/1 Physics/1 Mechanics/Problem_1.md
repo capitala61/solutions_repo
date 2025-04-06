@@ -1,3 +1,9 @@
+Investigating the Range as a Function of the Angle of Projection
+Physics | Gravity | KW1 Assignment
+Author: capitala61 
+
+Date: March 26, 2025
+---
 # Problem 1
 
 # Investigating the Range as a Function of the Angle of Projection
