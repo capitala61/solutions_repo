@@ -419,7 +419,10 @@ To explore how the range changes with different angles of projection, we will cr
 ### 2.1 Python Code Implementation
 
 Below is the Python code that simulates the projectile motion and visualizes the range as a function of the launch angle for a given initial velocity.
+---
+![alt text](image-2.png)
 
+---
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
