@@ -373,14 +373,10 @@ To simulate projectile motion and visualize the range as a function of the angle
 The equations of motion for projectile motion without air resistance are:
 
 - Horizontal motion: 
-  $$
-  x(t) = v_0 \cos(\theta) t
-  $$
+  $$x(t) = v_0 \cos(\theta) t$$
 
 - Vertical motion:
-  $$
-  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
-  $$
+  $$y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2$$
 
 Where:
 - $v_0$ is the initial velocity of the projectile,
@@ -388,17 +384,13 @@ Where:
 - $g$ is the gravitational acceleration,
 - $x(t)$ and $y(t)$ are the horizontal and vertical displacements, respectively.
 
-The range $R$ of the projectile (the distance it travels before hitting the ground) can be obtained when the projectile reaches $y = 0$. This condition gives the time of flight as:
+The range $R$ of the projectile (the distance it travels before hitting the ground) can be obtained when the projectile reaches $y=0$. This condition gives the time of flight as:
 
-$$
-t_f = \frac{2 v_0 \sin(\theta)}{g}
-$$
+$$t_f = \frac{2 v_0 \sin(\theta)}{g}$$
 
 Substituting this into the equation for horizontal motion, we get the range $R$:
 
-$$
-R = \frac{v_0^2 \sin(2\theta)}{g}
-$$
+$$R = \frac{v_0^2 \sin(2\theta)}{g}$$
 
 ### 1.2 Algorithm Design
 
