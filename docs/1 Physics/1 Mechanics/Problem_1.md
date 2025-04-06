@@ -419,10 +419,8 @@ $$
 
 To explore how the range changes with different angles of projection, we will create a plot of the range $R$ for a range of angles, keeping the initial velocity and gravitational acceleration constant.
 
-- **Range Equation**:s
-  $$ 
-  R(\theta) = \frac{v_0^2 \sin(2\theta)}{g}
-  $$
+- **Range Equation**:
+  $$R(\theta) = \frac{v_0^2 \sin(2\theta)}{g}$$
 
   This equation will be used to calculate the range for various values of $\theta$ (from 0° to 90°).
 
