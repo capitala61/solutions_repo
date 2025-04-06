@@ -232,16 +232,13 @@ While the basic projectile motion model provides valuable insights into how an o
 - In the ideal model, the projectile is launched from and lands on flat ground. However, in real-world scenarios, the launch or landing height might vary due to uneven terrain.
 - If the launch and landing points are at different heights, the range equation must be modified to account for the difference in elevation.
 
-The new range equation with an initial height \(h_0\) becomes:
+The new range equation with an initial height $h_0$ becomes:
 
-$$
-R(\theta) = \frac{v_0 \cos(\theta)}{g} \left( v_0 \sin(\theta) + \sqrt{(v_0 \sin(\theta))^2 + 2gh_0} \right)
-$$
+$$R(\theta) = \frac{v_0 \cos(\theta)}{g} \left( v_0 \sin(\theta) + \sqrt{(v_0 \sin(\theta))^2 + 2gh_0} \right)$$
 
 Where:
-- \(h_0\) is the initial height from which the projectile is launched.
+- $h_0$ is the initial height from which the projectile is launched.
 
----
 
 **Effect of Sloped Terrain**:
 - When the terrain is sloped, the trajectory and landing location change based on the angle of the slope.
