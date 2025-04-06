@@ -10,27 +10,27 @@ To analyze projectile motion, we start by applying the fundamental laws of motio
 
 The two-dimensional motion of a projectile is governed by the following equations:
 
-- **Horizontal Motion**: The acceleration in the horizontal direction is zero (assuming no air resistance), so the horizontal velocity remains constant.
+- **Horizontal Motion**
+: The acceleration in the horizontal direction is zero (assuming no air resistance), so the horizontal velocity remains constant.
   
   $$
   x(t) = v_0 \cdot \cos(\theta) \cdot t
   $$
   
   where:
-  - $x(t)$ is the horizontal position of the projectile at time $t$,
-  - $v_0$ is the initial velocity,
-  - $\theta$ is the launch angle.
+  - \(x(t)\) is the horizontal position of the projectile at time \(t\),
+  - \(v_0\) is the initial velocity,
+  - \(\theta\) is the launch angle.
 
-- **Vertical Motion**: The vertical motion is influenced by gravity. The velocity in the vertical direction is affected by gravitational acceleration ($g$).
+- **Vertical Motion**: The vertical motion is influenced by gravity. The velocity in the vertical direction is affected by gravitational acceleration (\(g\)).
   
   $$
   y(t) = v_0 \cdot \sin(\theta) \cdot t - \frac{1}{2} g t^2
   $$
 
   where:
-  - $y(t)$ is the vertical position of the projectile at time $t$,
-  - $g$ is the acceleration due to gravity (approximately 9.81 m/s²).
-
+  - \(y(t)\) is the vertical position of the projectile at time \(t\),
+  - \(g\) is the acceleration due to gravity (approximately 9.81 m/s²).
 ### 1.2 Solving the Basic Differential Equation
 
 To find the time of flight, we focus on the vertical motion. The projectile hits the ground when $y(t) = 0$. Therefore, we set the vertical displacement equation equal to zero:
@@ -240,11 +240,11 @@ While the basic projectile motion model provides valuable insights into how an o
   
   The general form of the motion with drag can be described by the following second-order differential equations:
 
-  $$ 
+  $$
   \frac{d^2x}{dt^2} = -\frac{C_d \rho A}{2m} v \frac{dx}{dt}
   $$
 
-  $$ 
+  $$
   \frac{d^2y}{dt^2} = -g - \frac{C_d \rho A}{2m} v \frac{dy}{dt}
   $$
 
@@ -289,7 +289,6 @@ While the basic projectile motion model provides valuable insights into how an o
 
 - **Space Exploration**:
   - For objects launched into space, air resistance is negligible at high altitudes, but gravitational variation (due to Earth's curvature) and velocity are still factors that affect trajectory calculations.
-
 ---
 
 ## 2. Python Code to Simulate Air Resistance and Uneven Terrain
