@@ -316,11 +316,9 @@ plt.show()</p>
 <ul>
 <li>At resonance:</li>
 <li>Undamped: Energy grows without bound.</li>
-<li>
-<p>Damped: Energy balances input and dissipation, yielding:</p>
-<div class="arithmatex">\[E_{\text{steady}}\approx(1/2)mL^2B^2\omega^2\]</div>
-</li>
+<li>Damped: Energy balances input and dissipation, yielding:</li>
 </ul>
+<p><span class="arithmatex">\(<span class="arithmatex">\(E_{\text{steady}}\approx(1/2)mL^2B^2\omega^2\)</span>\)</span></p>
 <h3 id="16-summary">1.6 Summary</h3>
 <ul>
 <li>The nonlinear ODE governs pendulum motion.</li>
@@ -335,19 +333,15 @@ plt.show()</p>
 <ul>
 <li><strong>Low <span class="arithmatex">\(b\)</span></strong>:</li>
 <li>Sustained oscillations.</li>
-<li>
-<p>Solution approximates undamped case:</p>
-<div class="arithmatex">\[\theta(t)\approx B\cos(\omega t-\delta)\]</div>
-</li>
-<li>
-<p><strong>High <span class="arithmatex">\(b\)</span></strong>:</p>
-</li>
-<li>Rapid decay to equilibrium.</li>
-<li>
-<p>Overdamped solution (<span class="arithmatex">\(b^2&gt;4(g/L)\)</span>):</p>
-<div class="arithmatex">\[\theta(t)=C_1e^{r_1t}+C_2e^{r_2t}\]</div>
-</li>
+<li>Solution approximates undamped case:</li>
 </ul>
+<p><span class="arithmatex">\(<span class="arithmatex">\(\theta(t)\approx B\cos(\omega t-\delta)\)</span>\)</span></p>
+<ul>
+<li><strong>High <span class="arithmatex">\(b\)</span></strong>:</li>
+<li>Rapid decay to equilibrium.</li>
+<li>Overdamped solution (<span class="arithmatex">\(b^2&gt;4(g/L)\)</span>):</li>
+</ul>
+<p><span class="arithmatex">\(<span class="arithmatex">\(\theta(t)=C_1e^{r_1t}+C_2e^{r_2t}\)</span>\)</span></p>
 <h3 id="22-driving-amplitude-a">2.2 Driving Amplitude (<span class="arithmatex">\(A\)</span>)</h3>
 <p>The amplitude <span class="arithmatex">\(A\)</span> scales the external force:</p>
 <ul>
@@ -355,12 +349,12 @@ plt.show()</p>
 <li>Oscillations decay unless near resonance.</li>
 <li>Amplitude scales linearly:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(B\propto A\)</span>\)</span></p>
+<div class="arithmatex">\[B\propto A\]</div>
 <ul>
 <li><strong>Large <span class="arithmatex">\(A\)</span></strong>:</li>
 <li>Increases steady-state amplitude:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}\)</span>\)</span></p>
+<div class="arithmatex">\[B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}\]</div>
 <h3 id="23-driving-frequency-omega">2.3 Driving Frequency (<span class="arithmatex">\(\omega\)</span>)</h3>
 <p>Frequency determines forcing efficiency:</p>
 <ul>
@@ -374,20 +368,20 @@ plt.show()</p>
 </li>
 <li>Reduced amplitude:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(B\approx A/|(g/L)-\omega^2|\)</span>\)</span></p>
+<div class="arithmatex">\[B\approx A/|(g/L)-\omega^2|\]</div>
 <h3 id="24-chaos-and-nonlinearity">2.4 Chaos and Nonlinearity</h3>
 <p>For large <span class="arithmatex">\(A\)</span> or specific <span class="arithmatex">\(\omega\)</span>, the nonlinear <span class="arithmatex">\(\sin\theta\)</span> term induces chaos:</p>
 <ul>
 <li><strong>Periodic Motion</strong>:</li>
 <li>Stable at low <span class="arithmatex">\(A\)</span>, described by:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(\theta(t)\approx B\cos(\omega t-\delta)\)</span>\)</span></p>
+<div class="arithmatex">\[\theta(t)\approx B\cos(\omega t-\delta)\]</div>
 <ul>
 <li><strong>Chaotic Motion</strong>:</li>
 <li>Sensitive to initial conditions.</li>
 <li>Characterized by positive Lyapunov exponent:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(\lambda&gt;0\)</span>\)</span></p>
+<div class="arithmatex">\[\lambda&gt;0\]</div>
 <h3 id="25-visualization-tools">2.5 Visualization Tools</h3>
 <ul>
 <li><strong>Phase Portrait</strong>:</li>
@@ -451,19 +445,19 @@ plt.show()</p>
 <li>Driving force: Ambient vibrations.</li>
 <li>Power output:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(P=(1/2)mL^2(d\theta/dt)^2\)</span>\)</span></p>
+<div class="arithmatex">\[P=(1/2)mL^2(d\theta/dt)^2\]</div>
 <ul>
 <li><strong>Optimization</strong>:</li>
 <li>Maximize at resonance:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(\omega=\omega_0\)</span>\)</span></p>
+<div class="arithmatex">\[\omega=\omega_0\]</div>
 <h3 id="32-structural-engineering">3.2 Structural Engineering</h3>
 <p>Bridges oscillate under external loads:</p>
 <ul>
 <li><strong>Equation</strong>:</li>
 <li>Similar to pendulum:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=F_{\text{ext}}(t)\)</span>\)</span></p>
+<div class="arithmatex">\[d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=F_{\text{ext}}(t)\]</div>
 <ul>
 <li><strong>Design</strong>:</li>
 <li>Increase <span class="arithmatex">\(b\)</span> to avoid resonance.</li>
@@ -474,12 +468,12 @@ plt.show()</p>
 <li><strong>Equation</strong>:</li>
 <li>Charge dynamics:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(Ld^2q/dt^2+R\,dq/dt+(1/C)q=V_{\text{ext}}(t)\)</span>\)</span></p>
+<div class="arithmatex">\[Ld^2q/dt^2+R\,dq/dt+(1/C)q=V_{\text{ext}}(t)\]</div>
 <ul>
 <li><strong>Resonance</strong>:</li>
 <li>Maximizes current at:</li>
 </ul>
-<p><span class="arithmatex">\(<span class="arithmatex">\(\omega=1/\sqrt{LC}\)</span>\)</span></p>
+<div class="arithmatex">\[\omega=1/\sqrt{LC}\]</div>
 <h3 id="34-summary">3.4 Summary</h3>
 <ul>
 <li>Energy harvesting optimizes power at resonance.</li>
