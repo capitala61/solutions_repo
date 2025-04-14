@@ -45,28 +45,28 @@ The solution combines homogeneous and particular components:
 
   The homogeneous solution is:
 
-  $$\theta_h(t)=C_1e^{r_1t}+C_2e^{r_2t}$$
+$$\theta_h(t)=C_1e^{r_1t}+C_2e^{r_2t}$$
 
   - For underdamped systems ($b^2<4(g/L)$):
 
-    $$\theta_h(t)=e^{-(b/2)t}(C_1\cos(\omega_dt)+C_2\sin(\omega_dt))$$
+$$\theta_h(t)=e^{-(b/2)t}(C_1\cos(\omega_dt)+C_2\sin(\omega_dt))$$
 
     Where damped frequency is:
 
-    $$\omega_d=\sqrt{(g/L)-(b^2/4)}$$
+$$\omega_d=\sqrt{(g/L)-(b^2/4)}$$
 
 - **Particular Solution**:
   Assume a steady-state form:
 
-  $$\theta_p(t)=B\cos(\omega t-\delta)$$
+$$\theta_p(t)=B\cos(\omega t-\delta)$$
 
   The amplitude $B$ is:
 
-  $$B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}$$
+$$B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}$$
 
   The phase shift $\delta$ is:
 
-  $$\tan\delta=(b\omega)/((g/L)-\omega^2)$$
+$$\tan\delta=(b\omega)/((g/L)-\omega^2)$$
 
   #### 1.3.1 Pendulum Motion Visualization
 
@@ -127,16 +127,16 @@ $$\omega_0=\sqrt{g/L}$$
 
 - **Undamped Case** ($b=0$):
 
-  $$B\to\infty\text{ as }\omega\to\omega_0$$
+$$B\to\infty\text{ as }\omega\to\omega_0$$
 
 - **Damped Case**:
   Maximum amplitude occurs at:
 
-  $$\omega_{\text{res}}=\sqrt{\omega_0^2-(b^2/2)}$$
+$$\omega_{\text{res}}=\sqrt{\omega_0^2-(b^2/2)}$$
 
   With maximum amplitude:
 
-  $$B_{\text{max}}=A/(b\sqrt{\omega_0^2-(b^2/4)})$$
+$$B_{\text{max}}=A/(b\sqrt{\omega_0^2-(b^2/4)})$$
 
   #### 1.4.1 Resonance Curve Visualization
 
@@ -222,12 +222,12 @@ The amplitude $A$ scales the external force:
   - Oscillations decay unless near resonance.
   - Amplitude scales linearly:
 
-    $$B\propto A$$
+  $$B\propto A$$
 
 - **Large $A$**:
   - Increases steady-state amplitude:
 
-    $$B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}$$
+  $$B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}$$
 
 ### 2.3 Driving Frequency ($\omega$)
 
@@ -240,7 +240,7 @@ Frequency determines forcing efficiency:
 - **Far from $\omega_0$**:
   - Reduced amplitude:
 
-    $$B\approx A/|(g/L)-\omega^2|$$
+  $$B\approx A/|(g/L)-\omega^2|$$
 
 ### 2.4 Chaos and Nonlinearity
 
@@ -249,13 +249,13 @@ For large $A$ or specific $\omega$, the nonlinear $\sin\theta$ term induces chao
 - **Periodic Motion**:
   - Stable at low $A$, described by:
 
-    $$\theta(t)\approx B\cos(\omega t-\delta)$$
+  $$\theta(t)\approx B\cos(\omega t-\delta)$$
 
 - **Chaotic Motion**:
   - Sensitive to initial conditions.
   - Characterized by positive Lyapunov exponent:
 
-    $$\lambda>0$$
+  $$\lambda>0$$
 
 ### 2.5 Visualization Tools
 
@@ -334,12 +334,12 @@ Vibrational harvesters convert motion to energy:
   - Driving force: Ambient vibrations.
   - Power output:
 
-    $$P=(1/2)mL^2(d\theta/dt)^2$$
+  $$P=(1/2)mL^2(d\theta/dt)^2$$
 
 - **Optimization**:
   - Maximize at resonance:
 
-    $$\omega=\omega_0$$
+  $$\omega=\omega_0$$
 
 ### 3.2 Structural Engineering
 
@@ -348,7 +348,7 @@ Bridges oscillate under external loads:
 - **Equation**:
   - Similar to pendulum:
 
-    $$d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=F_{\text{ext}}(t)$$
+  $$d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=F_{\text{ext}}(t)$$
 
 - **Design**:
   - Increase $b$ to avoid resonance.
@@ -360,12 +360,12 @@ RLC circuits mirror pendulum dynamics:
 - **Equation**:
   - Charge dynamics:
 
-    $$Ld^2q/dt^2+R\,dq/dt+(1/C)q=V_{\text{ext}}(t)$$
+  $$Ld^2q/dt^2+R\,dq/dt+(1/C)q=V_{\text{ext}}(t)$$
 
 - **Resonance**:
   - Maximizes current at:
 
-    $$\omega=1/\sqrt{LC}$$
+  $$\omega=1/\sqrt{LC}$$
 
 ### 3.4 Summary
 
