@@ -81,6 +81,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
+![alt text](image-3.png)
+---
+
 # Parameters
 g = 9.81  # m/s^2
 L = 1.0   # m
@@ -141,6 +144,9 @@ The resonance curve plots the steady-state amplitude $B$ against driving frequen
 $$B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}$$
 
 The following Python code computes $B$ for $\omega$ from 0.1 to 5 rad/s, with $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, and $A=0.5$ s$^{-2}$.
+
+![alt text](image-4.png)
+---
 
 ```python
 import numpy as np
