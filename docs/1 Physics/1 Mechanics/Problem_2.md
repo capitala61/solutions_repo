@@ -262,6 +262,9 @@ For large $A$ or specific $\omega$, the nonlinear $\sin\theta$ term induces chao
   - Plots $\theta$ vs. $d\theta/dt$.
   - Periodic motion: Closed loops.
   - Chaotic motion: Irregular patterns.
+  ---
+  ![alt text](image-5.png)
+
 
   The following Python code generates a phase portrait for the pendulum with $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, $A=0.5$ s$^{-2}$, and $\omega=0.8\sqrt{g/L}$, showing a closed loop indicative of periodic motion.
 
