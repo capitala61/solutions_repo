@@ -68,6 +68,53 @@ The solution combines homogeneous and particular components:
 
   $$\tan\delta=(b\omega)/((g/L)-\omega^2)$$
 
+  #### 1.3.1 Pendulum Motion Visualization
+
+The time evolution of $\theta(t)$ illustrates the combined effects of damping and external forcing, as described by the nonlinear ODE:
+
+$$d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=A\cos(\omega t)$$
+
+The following Python code solves this ODE numerically using parameters $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, $A=0.5$ s$^{-2}$, and $\omega=0.8\sqrt{g/L}$, plotting $\theta(t)$ over time.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Parameters
+g = 9.81  # m/s^2
+L = 1.0   # m
+b = 0.2   # s^-1
+A = 0.5   # s^-2
+omega = 0.8 * np.sqrt(g/L)
+
+# ODE system: dtheta/dt = omega, domega/dt = -b*omega - (g/L)*sin(theta) + A*cos(omega*t)
+def pendulum(state, t, b, g, L, A, omega):
+    theta, omega = state
+    dtheta_dt = omega
+    domega_dt = -b*omega - (g/L)*np.sin(theta) + A*np.cos(omega*t)
+    return [dtheta_dt, domega_dt]
+
+# Time array
+t = np.linspace(0, 20, 1000)
+
+# Initial conditions: theta(0) = 0.1 rad, dtheta/dt(0) = 0
+state0 = [0.1, 0.0]
+
+# Solve ODE
+solution = odeint(pendulum, state0, t, args=(b, g, L, A, omega))
+theta = solution[:, 0]
+
+# Plot
+plt.figure(figsize=(8, 5))
+plt.plot(t, theta, label=r'$\theta(t)$')
+plt.xlabel('Time (s)')
+plt.ylabel('Angular Displacement (rad)')
+plt.title('Forced Damped Pendulum Motion')
+plt.grid(True)
+plt.legend()
+plt.show()
+
 ### 1.4 Resonance
 
 Resonance occurs when $\omega$ approaches the natural frequency:
@@ -86,6 +133,40 @@ $$\omega_0=\sqrt{g/L}$$
   With maximum amplitude:
 
   $$B_{\text{max}}=A/(b\sqrt{\omega_0^2-(b^2/4)})$$
+
+  #### 1.4.1 Resonance Curve Visualization
+
+The resonance curve plots the steady-state amplitude $B$ against driving frequency $\omega$, as given by:
+
+$$B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}$$
+
+The following Python code computes $B$ for $\omega$ from 0.1 to 5 rad/s, with $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, and $A=0.5$ s$^{-2}$.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+g = 9.81
+L = 1.0
+b = 0.2
+A = 0.5
+
+# Frequency range
+omega = np.linspace(0.1, 5, 500)
+
+# Amplitude B
+B = A / np.sqrt(((g/L) - omega**2)**2 + (b*omega)**2)
+
+# Plot
+plt.figure(figsize=(8, 5))
+plt.plot(omega, B, label=r'Amplitude $B$')
+plt.xlabel(r'Driving Frequency $\omega$ (rad/s)')
+plt.ylabel(r'Amplitude $B$ (rad)')
+plt.title('Resonance Curve of Forced Damped Pendulum')
+plt.grid(True)
+plt.legend()
+plt.show()
 
 ### 1.5 Energy Dynamics
 
@@ -175,6 +256,48 @@ For large $A$ or specific $\omega$, the nonlinear $\sin\theta$ term induces chao
   - Plots $\theta$ vs. $d\theta/dt$.
   - Periodic motion: Closed loops.
   - Chaotic motion: Irregular patterns.
+
+  The following Python code generates a phase portrait for the pendulum with $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, $A=0.5$ s$^{-2}$, and $\omega=0.8\sqrt{g/L}$, showing a closed loop indicative of periodic motion.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Parameters
+g = 9.81
+L = 1.0
+b = 0.2
+A = 0.5
+omega = 0.8 * np.sqrt(g/L)
+
+# ODE system
+def pendulum(state, t, b, g, L, A, omega):
+    theta, omega = state
+    dtheta_dt = omega
+    domega_dt = -b*omega - (g/L)*np.sin(theta) + A*np.cos(omega*t)
+    return [dtheta_dt, domega_dt]
+
+# Time array
+t = np.linspace(0, 20, 1000)
+
+# Initial conditions
+state0 = [0.1, 0.0]
+
+# Solve ODE
+solution = odeint(pendulum, state0, t, args=(b, g, L, A, omega))
+theta = solution[:, 0]
+dtheta_dt = solution[:, 1]
+
+# Plot
+plt.figure(figsize=(8, 5))
+plt.plot(theta, dtheta_dt, label='Phase Trajectory')
+plt.xlabel(r'$\theta$ (rad)')
+plt.ylabel(r'$d\theta/dt$ (rad/s)')
+plt.title('Phase Portrait of Forced Damped Pendulum')
+plt.grid(True)
+plt.legend()
+plt.show()
 
 - **Poincaré Section**:
   - Samples at $t=2\pi n/\omega$.
