@@ -68,7 +68,7 @@ $$B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}$$
 
 $$\tan\delta=(b\omega)/((g/L)-\omega^2)$$
 
-  #### 1.3.1 Pendulum Motion Visualization
+#### 1.3.1 Pendulum Motion Visualization
 
 The time evolution of $\theta(t)$ illustrates the combined effects of damping and external forcing, as described by the nonlinear ODE:
 
