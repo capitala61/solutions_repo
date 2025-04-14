@@ -185,7 +185,7 @@ $$E(t)=(1/2)mL^2(d\theta/dt)^2+mgL(1-\cos\theta)$$
   - Undamped: Energy grows without bound.
   - Damped: Energy balances input and dissipation, yielding:
 
-  $$E_{\text{steady}}\approx(1/2)mL^2B^2\omega^2$$
+$$E_{\text{steady}}\approx(1/2)mL^2B^2\omega^2$$
 
 ### 1.6 Summary
 
@@ -206,13 +206,13 @@ Damping influences oscillation decay:
   - Sustained oscillations.
   - Solution approximates undamped case:
 
-  $$\theta(t)\approx B\cos(\omega t-\delta)$$
+$$\theta(t)\approx B\cos(\omega t-\delta)$$
 
 - **High $b$**:
   - Rapid decay to equilibrium.
   - Overdamped solution ($b^2>4(g/L)$):
 
-  $$\theta(t)=C_1e^{r_1t}+C_2e^{r_2t}$$
+$$\theta(t)=C_1e^{r_1t}+C_2e^{r_2t}$$
 
 ### 2.2 Driving Amplitude ($A$)
 
