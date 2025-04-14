@@ -408,8 +408,8 @@ plt.show()</p>
 </ul>
 <p>The following Python code generates a phase portrait for the pendulum with <span class="arithmatex">\(g=9.81\)</span> m/s<span class="arithmatex">\(^2\)</span>, <span class="arithmatex">\(L=1\)</span> m, <span class="arithmatex">\(b=0.2\)</span> s<span class="arithmatex">\(^{-1}\)</span>, <span class="arithmatex">\(A=0.5\)</span> s<span class="arithmatex">\(^{-2}\)</span>, and <span class="arithmatex">\(\omega=0.8\sqrt{g/L}\)</span>, showing a closed loop indicative of periodic motion.</p>
 <hr/>
-<p><img alt="alt text" src="../image-5.png"/>
-```python
+<p><img alt="alt text" src="../image-5.png"/></p>
+<p>```python
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint</p>
@@ -435,19 +435,17 @@ theta = solution[:, 0]
 dtheta_dt = solution[:, 1]</p>
 <h1 id="plot_2">Plot</h1>
 <p>plt.figure(figsize=(8, 5))
-plt.plot(theta, dtheta_dt, label='Phase Trajectory')
-plt.xlabel(r'<span class="arithmatex">\(\theta\)</span> (rad)')
-plt.ylabel(r'<span class="arithmatex">\(d\theta/dt\)</span> (rad/s)')
-plt.title('Phase Portrait of Forced Damped Pendulum')
+plt.plot(theta, dtheta_dt, label=r"<span class="arithmatex">\(\text{Phase Trajectory}\)</span>")
+plt.xlabel(r"<span class="arithmatex">\(\theta\)</span> (rad)")
+plt.ylabel(r"<span class="arithmatex">\(\frac{d\theta}{dt}\)</span> (rad/s)")
+plt.title(r"<span class="arithmatex">\(\text{Phase Portrait of Forced Damped Pendulum}\)</span>")
 plt.grid(True)
 plt.legend()
 plt.show()</p>
-<ul>
-<li><strong>Poincaré Section</strong>:</li>
-<li>Samples at <span class="arithmatex">\(t=2\pi n/\omega\)</span>.</li>
-<li>Periodic: Discrete points.</li>
-<li>Chaotic: Scattered points.</li>
-</ul>
+<h1 id="poincare-section-description">Poincaré Section Description:</h1>
+<h1 id="samples-at-t2pi-nomega">Samples at <span class="arithmatex">\(t=2\pi n/\omega\)</span>.</h1>
+<h1 id="periodic-discrete-points">Periodic: Discrete points.</h1>
+<h1 id="chaotic-scattered-points">Chaotic: Scattered points.</h1>
 <h3 id="26-summary">2.6 Summary</h3>
 <ul>
 <li>Damping controls oscillation decay.</li>
