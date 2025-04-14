@@ -1,6 +1,6 @@
 # Problem 2
 
-# Forced Damped Pendulum: Dynamics and Analysis
+## Forced Damped Pendulum: Dynamics and Analysis
 
 ## 1. Theoretical Framework
 
