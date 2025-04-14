@@ -1,9 +1,10 @@
 Investigating the Range as a Function of the Angle of Projection
 Physics | Gravity | KW1 Assignment
-Author: capitala61 
+Author: capitala61
 
 Date: March 26, 2025
 ---
+
 # Problem 1
 
 # Investigating the Range as a Function of the Angle of Projection
@@ -25,6 +26,7 @@ x(t) = v_0 \cdot \cos(\theta) \cdot t
 $$
 
 where:
+
 - $x(t)$ is the horizontal position of the projectile at time $t$,
 - $v_0$ is the initial velocity,
 - $\theta$ is the launch angle.
@@ -40,6 +42,7 @@ y(t) = v_0 \cdot \sin(\theta) \cdot t - \frac{1}{2} g t^2
 $$
 
 where:
+
 - \(y(t)\) is the vertical position of the projectile at time \(t\),
 - \(g\) is the acceleration due to gravity (approximately 9.81 m/s²).
 
@@ -58,6 +61,7 @@ t \left( v_0 \cdot \sin(\theta) - \frac{1}{2} g t \right) = 0
 $$
 
 The solutions to this equation are:
+
 1. $t = 0$ (at the moment of launch),
 2. $t = \frac{2 v_0 \cdot \sin(\theta)}{g}$ (the time at which the projectile hits the ground).
 
@@ -98,6 +102,7 @@ $$
 ### 1.4 Family of Solutions
 
 The general form of the range equation shows that the range depends on several parameters:
+
 - **Initial velocity $v_0$**: The range increases with the square of the initial velocity.
 - **Launch angle $\theta$**: The range is maximized when $\theta = 45^\circ$, as $\sin(2\theta)$ reaches its maximum value of 1 at this angle.
 - **Gravitational acceleration $g$**: The range decreases with an increase in gravitational acceleration.
@@ -106,7 +111,8 @@ Thus, the relationship between the angle and the range can be explored by varyin
 
 ---
 
-### Key Points:
+### Key Points
+
 - The projectile follows a parabolic trajectory.
 - The launch angle $\theta$ has a significant impact on the horizontal range.
 - For a given initial velocity, the optimal launch angle for maximum range is $\theta = 45^\circ$.
@@ -126,6 +132,7 @@ R(\theta) = \frac{v_0^2 \cdot \sin(2\theta)}{g}
 $$
 
 Where:
+
 - $v_0$ is the initial velocity,
 - $\theta$ is the launch angle,
 - $g$ is the gravitational acceleration.
@@ -175,15 +182,18 @@ $$
 ## 3. Summary of Effects on Range
 
 ### 3.1 Dependence on Launch Angle
+
 - **Range increases** as the launch angle increases from $0^\circ$ to $45^\circ$.
 - The **maximum range** occurs at $\theta = 45^\circ$.
 - The relationship is symmetric around $45^\circ$.
 
 ### 3.2 Dependence on Initial Velocity
+
 - The range **increases quadratically** with the initial velocity $v_0$.
 - Doubling the initial velocity results in a **fourfold increase** in range.
 
 ### 3.3 Dependence on Gravitational Acceleration
+
 - The range **decreases** as the gravitational acceleration $g$ increases.
 - The effect is **inversely proportional** to $g$.
 
@@ -191,9 +201,9 @@ $$
 
 ## 4. Python Code for Visualizing the Range
 
-
 ![alt text](image.png)
 ---
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -219,7 +229,9 @@ plt.grid(True)
 plt.legend()
 plt.show()
 ```
+
 ---
+
 # Practical Applications of Projectile Motion
 
 ## 1. Reflection on Real-World Situations
@@ -229,6 +241,7 @@ While the basic projectile motion model provides valuable insights into how an o
 ### 1.1 Uneven Terrain
 
 **Effect of Uneven Terrain**:
+
 - In the ideal model, the projectile is launched from and lands on flat ground. However, in real-world scenarios, the launch or landing height might vary due to uneven terrain.
 - If the launch and landing points are at different heights, the range equation must be modified to account for the difference in elevation.
 
@@ -237,10 +250,11 @@ The new range equation with an initial height $h_0$ becomes:
 $$R(\theta) = \frac{v_0 \cos(\theta)}{g} \left( v_0 \sin(\theta) + \sqrt{(v_0 \sin(\theta))^2 + 2gh_0} \right)$$
 
 Where:
+
 - $h_0$ is the initial height from which the projectile is launched.
 
-
 **Effect of Sloped Terrain**:
+
 - When the terrain is sloped, the trajectory and landing location change based on the angle of the slope.
 - The equation for the range becomes more complex and involves solving for the intersection of the projectile's path with the slope of the ground.
 
@@ -280,7 +294,6 @@ Where:
   - $v_x$ is the horizontal velocity of the projectile,
   - $v_w$ is the wind velocity.
 
-
 - **Temperature and Air Density**:
   - The air density $\rho$ depends on environmental factors such as temperature and pressure.
   - In warmer conditions, the air density decreases, which reduces air resistance and can increase the range of the projectile.
@@ -295,16 +308,18 @@ Where:
 
 - **Space Exploration**:
   - For objects launched into space, air resistance is negligible at high altitudes, but gravitational variation (due to Earth's curvature) and velocity are still factors that affect trajectory calculations.
+
 ---
 
 ## 2. Python Code to Simulate Air Resistance and Uneven Terrain
 
-Below is a Python code to simulate projectile motion considering air resistance and varying terrain height.
+Below is a Python code to simulate projectile motion considering air resistance and varying terrain height
 ---
+
 ![alt text](image-1.png)
 
-
 ---
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -356,7 +371,9 @@ plt.ylabel('Height (m)')
 plt.grid(True)
 plt.show()
 ```
+
 ---
+
 # Implementation of Projectile Motion Simulation
 
 ## 1. Developing a Computational Tool
@@ -367,13 +384,14 @@ To simulate projectile motion and visualize the range as a function of the angle
 
 The equations of motion for projectile motion without air resistance are:
 
-- Horizontal motion: 
+- Horizontal motion:
   $$x(t) = v_0 \cos(\theta) t$$
 
 - Vertical motion:
   $$y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2$$
 
 Where:
+
 - $v_0$ is the initial velocity of the projectile,
 - $\theta$ is the launch angle,
 - $g$ is the gravitational acceleration,
@@ -413,11 +431,13 @@ To explore how the range changes with different angles of projection, we will cr
 
 ### 2.1 Python Code Implementation
 
-Below is the Python code that simulates the projectile motion and visualizes the range as a function of the launch angle for a given initial velocity.
+Below is the Python code that simulates the projectile motion and visualizes the range as a function of the launch angle for a given initial velocity
 ---
+
 ![alt text](image-2.png)
 
 ---
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -449,6 +469,5 @@ plt.ylabel('Range (meters)')
 plt.grid(True)
 plt.show()
 ```
+
 ---
-
-
