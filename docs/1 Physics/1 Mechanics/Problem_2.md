@@ -76,13 +76,14 @@ $$d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=A\cos(\omega t)$$
 
 The following Python code solves this ODE numerically using parameters $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, $A=0.5$ s$^{-2}$, and $\omega=0.8\sqrt{g/L}$, plotting $\theta(t)$ over time.
 
+![alt text](image-3.png)
+---
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
-![alt text](image-3.png)
----
 
 # Parameters
 g = 9.81  # m/s^2
@@ -262,12 +263,10 @@ For large $A$ or specific $\omega$, the nonlinear $\sin\theta$ term induces chao
   - Plots $\theta$ vs. $d\theta/dt$.
   - Periodic motion: Closed loops.
   - Chaotic motion: Irregular patterns.
-  ---
-  ![alt text](image-5.png)
-
-
+ 
   The following Python code generates a phase portrait for the pendulum with $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, $A=0.5$ s$^{-2}$, and $\omega=0.8\sqrt{g/L}$, showing a closed loop indicative of periodic motion.
-
+   ---
+  ![alt text](image-5.png)
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
