@@ -267,6 +267,7 @@ For large $A$ or specific $\omega$, the nonlinear $\sin\theta$ term induces chao
   The following Python code generates a phase portrait for the pendulum with $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, $A=0.5$ s$^{-2}$, and $\omega=0.8\sqrt{g/L}$, showing a closed loop indicative of periodic motion.
    ---
   ![alt text](image-5.png)
+  
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -299,18 +300,19 @@ dtheta_dt = solution[:, 1]
 
 # Plot
 plt.figure(figsize=(8, 5))
-plt.plot(theta, dtheta_dt, label='Phase Trajectory')
-plt.xlabel(r'$\theta$ (rad)')
-plt.ylabel(r'$d\theta/dt$ (rad/s)')
-plt.title('Phase Portrait of Forced Damped Pendulum')
+plt.plot(theta, dtheta_dt, label=r"$\text{Phase Trajectory}$")
+plt.xlabel(r"$\theta$ (rad)")
+plt.ylabel(r"$\frac{d\theta}{dt}$ (rad/s)")
+plt.title(r"$\text{Phase Portrait of Forced Damped Pendulum}$")
 plt.grid(True)
 plt.legend()
 plt.show()
 
-- **Poincaré Section**:
-  - Samples at $t=2\pi n/\omega$.
-  - Periodic: Discrete points.
-  - Chaotic: Scattered points.
+# Poincaré Section Description:
+# Samples at $t=2\pi n/\omega$.
+# Periodic: Discrete points.
+# Chaotic: Scattered points.
+
 
 ### 2.6 Summary
 
