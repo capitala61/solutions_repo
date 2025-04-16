@@ -323,7 +323,7 @@ R(\theta) = \frac{v_0^2 \cdot \sin(2\theta)}{g}
 </ul>
 <hr/>
 <h2 id="4-python-code-for-visualizing-the-range">4. Python Code for Visualizing the Range</h2>
-<h2 id="_1"><img alt="alt text" src="../image.png"/></h2>
+<h2 id="_1"><img alt="alt text" src="../image-6.png"/></h2>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -331,17 +331,26 @@ import matplotlib.pyplot as plt
 v_0 = 20  # Initial velocity in m/s
 g = 9.81  # Gravitational acceleration in m/s^2
 
-# Function to calculate range as a function of angle
+# Function to calculate the range for different launch angles
 def calculate_range(v_0, g, theta):
-    return (v_0**2 * np.sin(2 * np.radians(theta))) / g
+    theta_rad = np.radians(theta)
+    R = (v_0**2 * np.sin(2 * theta_rad)) / g
+    return R
 
-# Angles from 0 to 90 degrees
-angles = np.linspace(0, 90, 500)
-ranges = calculate_range(v_0, g, angles)
+# Launch angles from 0 to 90 degrees in 5-degree increments
+angles = np.arange(0, 91, 5)
 
-# Plotting the range as a function of launch angle
-plt.plot(angles, ranges, label=r'$R(\theta) = \frac{v_0^2 \sin(2\theta)}{g}$')
-plt.title('Range vs. Launch Angle')
+# Calculate the range for each angle
+ranges = [calculate_range(v_0, g, angle) for angle in angles]
+
+# Calculate and print the range at 45 degrees
+range_45 = calculate_range(v_0, g, 45)
+print(f"Maximum range at 45 degrees: {range_45:.2f} meters")
+
+# Plotting the range vs. launch angle
+plt.plot(angles, ranges, marker='o', label='Range vs Angle')
+plt.scatter(45, range_45, color='red', zorder=5, label=f'Max Range @ 45° ({range_45:.2f} m)')
+plt.title('Projectile Range vs Launch Angle')
 plt.xlabel('Launch Angle (degrees)')
 plt.ylabel('Range (meters)')
 plt.grid(True)
