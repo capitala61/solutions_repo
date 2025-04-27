@@ -93,7 +93,8 @@ This captures the pure periodic motion expected from an ideal pendulum.
 ![alt text](image-9.png)
 ---
 
----
+
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
@@ -132,7 +133,7 @@ axs[1].set_ylabel('Angular Velocity (rad/s)')
 
 plt.tight_layout()
 plt.show()
-
+```
 
 ### 1.4 Resonance
 
