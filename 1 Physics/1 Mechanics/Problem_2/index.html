@@ -63,6 +63,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_1"></a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#14-resonance">1.4 Resonance</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#_2"></a>
 </li>
 </ul>
 </li>
@@ -239,38 +245,10 @@
 <div class="arithmatex">\[d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=A\cos(\omega t)\]</div>
 <p>The following Python code solves this ODE numerically using parameters <span class="arithmatex">\(g=9.81\)</span> m/s<span class="arithmatex">\(^2\)</span>, <span class="arithmatex">\(L=1\)</span> m, <span class="arithmatex">\(b=0.2\)</span> s<span class="arithmatex">\(^{-1}\)</span>, <span class="arithmatex">\(A=0.5\)</span> s<span class="arithmatex">\(^{-2}\)</span>, and <span class="arithmatex">\(\omega=0.8\sqrt{g/L}\)</span>, plotting <span class="arithmatex">\(\theta(t)\)</span> over time.</p>
 <h2 id="_1"><img alt="alt text" src="../image-3.png"/></h2>
-<p>```python
-import numpy as np
+<pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import odeint</p>
-<h1 id="parameters">Parameters</h1>
-<p>g = 9.81  # m/s^2
-L = 1.0   # m
-b = 0.2   # s^-1
-A = 0.5   # s^-2
-omega = 0.8 * np.sqrt(g/L)</p>
-<h1 id="ode-system-dthetadt-omega-domegadt-bomega-glsintheta-acosomegat">ODE system: dtheta/dt = omega, domega/dt = -b<em>omega - (g/L)</em>sin(theta) + A<em>cos(omega</em>t)</h1>
-<p>def pendulum(state, t, b, g, L, A, omega):
-    theta, omega = state
-    dtheta_dt = omega
-    domega_dt = -b<em>omega - (g/L)</em>np.sin(theta) + A<em>np.cos(omega</em>t)
-    return [dtheta_dt, domega_dt]</p>
-<h1 id="time-array">Time array</h1>
-<p>t = np.linspace(0, 20, 1000)</p>
-<h1 id="initial-conditions-theta0-01-rad-dthetadt0-0">Initial conditions: theta(0) = 0.1 rad, dtheta/dt(0) = 0</h1>
-<p>state0 = [0.1, 0.0]</p>
-<h1 id="solve-ode">Solve ODE</h1>
-<p>solution = odeint(pendulum, state0, t, args=(b, g, L, A, omega))
-theta = solution[:, 0]</p>
-<h1 id="plot">Plot</h1>
-<p>plt.figure(figsize=(8, 5))
-plt.plot(t, theta, label=r'<span class="arithmatex">\(\theta(t)\)</span>')
-plt.xlabel('Time (s)')
-plt.ylabel('Angular Displacement (rad)')
-plt.title('Forced Damped Pendulum Motion')
-plt.grid(True)
-plt.legend()
-plt.show()</p>
+from scipy.integrate import odeint
+</code></pre>
 <h3 id="14-resonance">1.4 Resonance</h3>
 <p>Resonance occurs when <span class="arithmatex">\(\omega\)</span> approaches the natural frequency:</p>
 <div class="arithmatex">\[\omega_0=\sqrt{g/L}\]</div>
@@ -293,7 +271,7 @@ plt.show()</p>
 <p>```python
 import numpy as np
 import matplotlib.pyplot as plt</p>
-<h1 id="parameters_1">Parameters</h1>
+<h1 id="parameters">Parameters</h1>
 <p>g = 9.81
 L = 1.0
 b = 0.2
@@ -302,7 +280,7 @@ A = 0.5</p>
 <p>omega = np.linspace(0.1, 5, 500)</p>
 <h1 id="amplitude-b">Amplitude B</h1>
 <p>B = A / np.sqrt(((g/L) - omega<strong>2)</strong>2 + (b<em>omega)</em>*2)</p>
-<h1 id="plot_1">Plot</h1>
+<h1 id="plot">Plot</h1>
 <p>plt.figure(figsize=(8, 5))
 plt.plot(omega, B, label=r'Amplitude <span class="arithmatex">\(B\)</span>')
 plt.xlabel(r'Driving Frequency <span class="arithmatex">\(\omega\)</span> (rad/s)')
@@ -397,7 +375,7 @@ plt.show()</p>
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint</p>
-<h1 id="parameters_2">Parameters</h1>
+<h1 id="parameters_1">Parameters</h1>
 <p>g = 9.81
 L = 1.0
 b = 0.2
@@ -409,15 +387,15 @@ omega = 0.8 * np.sqrt(g/L)</p>
     dtheta_dt = omega
     domega_dt = -b<em>omega - (g/L)</em>np.sin(theta) + A<em>np.cos(omega</em>t)
     return [dtheta_dt, domega_dt]</p>
-<h1 id="time-array_1">Time array</h1>
+<h1 id="time-array">Time array</h1>
 <p>t = np.linspace(0, 20, 1000)</p>
 <h1 id="initial-conditions">Initial conditions</h1>
 <p>state0 = [0.1, 0.0]</p>
-<h1 id="solve-ode_1">Solve ODE</h1>
+<h1 id="solve-ode">Solve ODE</h1>
 <p>solution = odeint(pendulum, state0, t, args=(b, g, L, A, omega))
 theta = solution[:, 0]
 dtheta_dt = solution[:, 1]</p>
-<h1 id="plot_2">Plot</h1>
+<h1 id="plot_1">Plot</h1>
 <p>plt.figure(figsize=(8, 5))
 plt.plot(theta, dtheta_dt, label=r"<span class="arithmatex">\(\text{Phase Trajectory}\)</span>")
 plt.xlabel(r"<span class="arithmatex">\(\theta\)</span> (rad)")
