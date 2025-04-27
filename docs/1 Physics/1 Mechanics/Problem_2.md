@@ -154,7 +154,7 @@ $$\omega_{\text{res}}=\sqrt{\omega_0^2-(b^2/2)}$$
 
 $$B_{\text{max}}=A/(b\sqrt{\omega_0^2-(b^2/4)})$$
 
-  #### 1.4.1 Resonance Curve Visualization
+#### 1.4.1 Resonance Curve Visualization
 
 The resonance curve plots the steady-state amplitude $B$ against driving frequency $\omega$, as given by:
 
