@@ -432,61 +432,6 @@ plt.savefig('projectile_motion.png')
 <li>For objects launched into space, air resistance is negligible at high altitudes, but gravitational variation (due to Earth's curvature) and velocity are still factors that affect trajectory calculations.</li>
 </ul>
 <hr/>
-<h2 id="2-python-code-to-simulate-air-resistance-and-uneven-terrain">2. Python Code to Simulate Air Resistance and Uneven Terrain</h2>
-<h2 id="below-is-a-python-code-to-simulate-projectile-motion-considering-air-resistance-and-varying-terrain-height">Below is a Python code to simulate projectile motion considering air resistance and varying terrain height</h2>
-<p><img alt="alt text" src="../image-1.png"/></p>
-<hr/>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import odeint
-
-# Constants
-v_0 = 20  # Initial velocity in m/s
-theta = 45  # Launch angle in degrees
-g = 9.81  # Gravitational acceleration in m/s^2
-C_d = 0.47  # Drag coefficient (for a sphere)
-rho = 1.225  # Air density in kg/m^3
-A = 0.05  # Cross-sectional area in m^2 (for a small ball)
-m = 0.1  # Mass of the projectile in kg
-
-# Function to compute the drag force
-def drag_force(v):
-    return 0.5 * C_d * rho * A * v**2
-
-# Equations of motion with air resistance
-def projectile_motion(y, t, g, C_d, rho, A, m):
-    x, y_pos, vx, vy = y
-    v = np.sqrt(vx**2 + vy**2)
-    ax = -drag_force(v) * vx / (m * v)
-    ay = -g - (drag_force(v) * vy / (m * v))
-    return [vx, vy, ax, ay]
-
-# Initial conditions
-angle_rad = np.radians(theta)
-vx0 = v_0 * np.cos(angle_rad)
-vy0 = v_0 * np.sin(angle_rad)
-y0 = [0, 0, vx0, vy0]  # Initial position (x=0, y=0) and velocity components
-
-# Time array
-t_max = 5  # Total time of flight in seconds
-t = np.linspace(0, t_max, 500)
-
-# Solving the system of equations using odeint
-solution = odeint(projectile_motion, y0, t, args=(g, C_d, rho, A, m))
-
-# Extract the results
-x = solution[:, 0]
-y = solution[:, 1]
-
-# Plotting the trajectory
-plt.plot(x, y)
-plt.title('Projectile Motion with Air Resistance')
-plt.xlabel('Distance (m)')
-plt.ylabel('Height (m)')
-plt.grid(True)
-plt.show()
-</code></pre>
-<hr/>
 <h1 id="implementation-of-projectile-motion-simulation">Implementation of Projectile Motion Simulation</h1>
 <h2 id="1-developing-a-computational-tool">1. Developing a Computational Tool</h2>
 <p>To simulate projectile motion and visualize the range as a function of the angle of projection, we need to use a computational approach that considers the basic equations of motion. The key to building this simulation involves solving the projectile's motion under the influence of gravity and accounting for various parameters such as <strong>initial velocity</strong>, <strong>launch angle</strong>, and <strong>gravitational acceleration</strong>.</p>
@@ -539,9 +484,10 @@ plt.show()
 <p>This equation will be used to calculate the range for various values of <span class="arithmatex">\(\theta\)</span> (from 0° to 90°).</p>
 <h3 id="21-python-code-implementation">2.1 Python Code Implementation</h3>
 <h2 id="below-is-the-python-code-that-simulates-the-projectile-motion-and-visualizes-the-range-as-a-function-of-the-launch-angle-for-a-given-initial-velocity">Below is the Python code that simulates the projectile motion and visualizes the range as a function of the launch angle for a given initial velocity</h2>
-<p><img alt="alt text" src="../image-2.png"/></p>
-<hr/>
-<pre><code class="language-python">import numpy as np
+<p><img alt="alt text" src="../image-8.png"/></p>
+<pre><code>```python
+
+import numpy as np
 import matplotlib.pyplot as plt
 
 # Constants
