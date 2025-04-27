@@ -71,6 +71,40 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_2"></a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#15-energy-dynamics">1.5 Energy Dynamics</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#16-summary">1.6 Summary</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-parametric-effects">2. Parametric Effects</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#21-damping-coefficient-b">2.1 Damping Coefficient (\(b\))</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#22-driving-amplitude-a">2.2 Driving Amplitude (\(A\))</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#23-driving-frequency-omega">2.3 Driving Frequency (\(\omega\))</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#24-chaos-and-nonlinearity">2.4 Chaos and Nonlinearity</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#25-visualization-tools">2.5 Visualization Tools</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#26-summary">2.6 Summary</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-applications">3. Applications</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#31-energy-harvesting">3.1 Energy Harvesting</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#32-structural-engineering">3.2 Structural Engineering</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#33-electrical-circuits">3.3 Electrical Circuits</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#34-summary">3.4 Summary</a>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -313,28 +347,36 @@ plt.show()
 <p>The resonance curve plots the steady-state amplitude <span class="arithmatex">\(B\)</span> against driving frequency <span class="arithmatex">\(\omega\)</span>, as given by:</p>
 <div class="arithmatex">\[B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}\]</div>
 <p>The following Python code computes <span class="arithmatex">\(B\)</span> for <span class="arithmatex">\(\omega\)</span> from 0.1 to 5 rad/s, with <span class="arithmatex">\(g=9.81\)</span> m/s<span class="arithmatex">\(^2\)</span>, <span class="arithmatex">\(L=1\)</span> m, <span class="arithmatex">\(b=0.2\)</span> s<span class="arithmatex">\(^{-1}\)</span>, and <span class="arithmatex">\(A=0.5\)</span> s<span class="arithmatex">\(^{-2}\)</span>.</p>
-<h2 id="_2"><img alt="alt text" src="../image-4.png"/></h2>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="parameters">Parameters</h1>
-<p>g = 9.81
+<p><img alt="alt text" src="../image-4.png"/></p>
+<h4 id="additional-visualization-resonance-behavior-in-the-undamped-pendulum">Additional Visualization: Resonance Behavior in the Undamped Pendulum</h4>
+<p>Below we show the amplitude response <span class="arithmatex">\(B\)</span> versus driving frequency <span class="arithmatex">\(\omega\)</span> for an undamped pendulum (<span class="arithmatex">\(b=0\)</span>).<br/>
+As expected, the amplitude diverges sharply near the natural frequency <span class="arithmatex">\(\omega_0=\sqrt{g/L}\)</span>, showing the classical resonance peak.</p>
+<h2 id="_2"><img alt="alt text" src="../image-10.png"/></h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+g = 9.81
 L = 1.0
 b = 0.2
-A = 0.5</p>
-<h1 id="frequency-range">Frequency range</h1>
-<p>omega = np.linspace(0.1, 5, 500)</p>
-<h1 id="amplitude-b">Amplitude B</h1>
-<p>B = A / np.sqrt(((g/L) - omega<strong>2)</strong>2 + (b<em>omega)</em>*2)</p>
-<h1 id="plot">Plot</h1>
-<p>plt.figure(figsize=(8, 5))
-plt.plot(omega, B, label=r'Amplitude <span class="arithmatex">\(B\)</span>')
-plt.xlabel(r'Driving Frequency <span class="arithmatex">\(\omega\)</span> (rad/s)')
-plt.ylabel(r'Amplitude <span class="arithmatex">\(B\)</span> (rad)')
+A = 0.5
+
+# Frequency range
+omega = np.linspace(0.1, 5, 500)
+
+# Amplitude B
+B = A / np.sqrt(((g/L) - omega**2)**2 + (b*omega)**2)
+
+# Plot
+plt.figure(figsize=(8, 5))
+plt.plot(omega, B, label=r'Amplitude $B$')
+plt.xlabel(r'Driving Frequency $\omega$ (rad/s)')
+plt.ylabel(r'Amplitude $B$ (rad)')
 plt.title('Resonance Curve of Forced Damped Pendulum')
 plt.grid(True)
 plt.legend()
-plt.show()</p>
+plt.show()
+</code></pre>
 <h3 id="15-energy-dynamics">1.5 Energy Dynamics</h3>
 <p>Total mechanical energy is:</p>
 <div class="arithmatex">\[E(t)=(1/2)mL^2(d\theta/dt)^2+mgL(1-\cos\theta)\]</div>
@@ -344,6 +386,38 @@ plt.show()</p>
 <li>Damped: Energy balances input and dissipation, yielding:</li>
 </ul>
 <div class="arithmatex">\[E_{\text{steady}}\approx(1/2)mL^2B^2\omega^2\]</div>
+<h4 id="energy-evolution-over-time">Energy Evolution Over Time</h4>
+<p>The plot below shows the total mechanical energy <span class="arithmatex">\(E(t)\)</span> of the pendulum over time for both damped and undamped cases.<br/>
+In the undamped case, energy remains constant (or grows under forcing); in the damped case, energy stabilizes after transient behavior.</p>
+<p><img alt="alt text" src="../image-11.png"/></p>
+<pre><code class="language-python"># Forced pendulum parameters
+b = 0.0  # no damping
+A = 1.2  # forcing amplitude
+omega_f = 2.0/3.0  # forcing frequency
+
+def forced_pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -(g/L)*np.sin(theta) + A*np.cos(omega_f*t)]
+    return dydt
+
+# Solve
+sol = solve_ivp(forced_pendulum, t_span, y0, t_eval=t_eval)
+
+# Plot
+fig, axs = plt.subplots(1,2, figsize=(12,5))
+axs[0].plot(sol.t, sol.y[0], 'c')
+axs[0].set_title('Forced Pendulum - Time Series')
+axs[0].set_xlabel('Time (s)')
+axs[0].set_ylabel('Angle (rad)')
+
+axs[1].plot(sol.y[0], sol.y[1], 'c')
+axs[1].set_title('Forced Pendulum - Phase Portrait')
+axs[1].set_xlabel('Angle (rad)')
+axs[1].set_ylabel('Angular Velocity (rad/s)')
+
+plt.tight_layout()
+plt.show()
+</code></pre>
 <h3 id="16-summary">1.6 Summary</h3>
 <ul>
 <li>The nonlinear ODE governs pendulum motion.</li>
@@ -417,43 +491,50 @@ plt.show()</p>
 <p>The following Python code generates a phase portrait for the pendulum with <span class="arithmatex">\(g=9.81\)</span> m/s<span class="arithmatex">\(^2\)</span>, <span class="arithmatex">\(L=1\)</span> m, <span class="arithmatex">\(b=0.2\)</span> s<span class="arithmatex">\(^{-1}\)</span>, <span class="arithmatex">\(A=0.5\)</span> s<span class="arithmatex">\(^{-2}\)</span>, and <span class="arithmatex">\(\omega=0.8\sqrt{g/L}\)</span>, showing a closed loop indicative of periodic motion.</p>
 <hr/>
 <p><img alt="alt text" src="../image-5.png"/></p>
-<p>```python
-import numpy as np
+<pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import odeint</p>
-<h1 id="parameters_1">Parameters</h1>
-<p>g = 9.81
+from scipy.integrate import odeint
+
+# Parameters
+g = 9.81
 L = 1.0
 b = 0.2
 A = 0.5
-omega = 0.8 * np.sqrt(g/L)</p>
-<h1 id="ode-system">ODE system</h1>
-<p>def pendulum(state, t, b, g, L, A, omega):
+omega = 0.8 * np.sqrt(g/L)
+
+# ODE system
+def pendulum(state, t, b, g, L, A, omega):
     theta, omega = state
     dtheta_dt = omega
-    domega_dt = -b<em>omega - (g/L)</em>np.sin(theta) + A<em>np.cos(omega</em>t)
-    return [dtheta_dt, domega_dt]</p>
-<h1 id="time-array">Time array</h1>
-<p>t = np.linspace(0, 20, 1000)</p>
-<h1 id="initial-conditions">Initial conditions</h1>
-<p>state0 = [0.1, 0.0]</p>
-<h1 id="solve-ode">Solve ODE</h1>
-<p>solution = odeint(pendulum, state0, t, args=(b, g, L, A, omega))
+    domega_dt = -b*omega - (g/L)*np.sin(theta) + A*np.cos(omega*t)
+    return [dtheta_dt, domega_dt]
+
+# Time array
+t = np.linspace(0, 20, 1000)
+
+# Initial conditions
+state0 = [0.1, 0.0]
+
+# Solve ODE
+solution = odeint(pendulum, state0, t, args=(b, g, L, A, omega))
 theta = solution[:, 0]
-dtheta_dt = solution[:, 1]</p>
-<h1 id="plot_1">Plot</h1>
-<p>plt.figure(figsize=(8, 5))
-plt.plot(theta, dtheta_dt, label=r"<span class="arithmatex">\(\text{Phase Trajectory}\)</span>")
-plt.xlabel(r"<span class="arithmatex">\(\theta\)</span> (rad)")
-plt.ylabel(r"<span class="arithmatex">\(\frac{d\theta}{dt}\)</span> (rad/s)")
-plt.title(r"<span class="arithmatex">\(\text{Phase Portrait of Forced Damped Pendulum}\)</span>")
+dtheta_dt = solution[:, 1]
+
+# Plot
+plt.figure(figsize=(8, 5))
+plt.plot(theta, dtheta_dt, label=r"$\text{Phase Trajectory}$")
+plt.xlabel(r"$\theta$ (rad)")
+plt.ylabel(r"$\frac{d\theta}{dt}$ (rad/s)")
+plt.title(r"$\text{Phase Portrait of Forced Damped Pendulum}$")
 plt.grid(True)
 plt.legend()
-plt.show()</p>
-<h1 id="poincare-section-description">Poincaré Section Description:</h1>
-<h1 id="samples-at-t2pi-nomega">Samples at <span class="arithmatex">\(t=2\pi n/\omega\)</span>.</h1>
-<h1 id="periodic-discrete-points">Periodic: Discrete points.</h1>
-<h1 id="chaotic-scattered-points">Chaotic: Scattered points.</h1>
+plt.show()
+
+# Poincaré Section Description:
+# Samples at $t=2\pi n/\omega$.
+# Periodic: Discrete points.
+# Chaotic: Scattered points.
+</code></pre>
 <h3 id="26-summary">2.6 Summary</h3>
 <ul>
 <li>Damping controls oscillation decay.</li>
@@ -505,6 +586,73 @@ plt.show()</p>
 <li>Structures require damping to prevent failure.</li>
 <li>Circuits control resonance for stability.</li>
 </ul>
+<h4 id="additional-visualization-phase-portraits-under-different-conditions">Additional Visualization: Phase Portraits Under Different Conditions</h4>
+<p>The following phase diagram shows the behavior of the pendulum for different scenarios:
+- (i) No damping and no external force (pure closed loops),
+- (ii) With damping (spiraling into equilibrium),
+- (iii) With external driving (limit cycles or chaotic behavior).</p>
+<p><img alt="alt text" src="../image-12.png"/></p>
+<pre><code class="language-python"># Forced damped pendulum parameters (resonance-like)
+b = 0.05   # light damping
+A = 1.2    # forcing amplitude
+omega_f = 2.0/3.0  # forcing frequency
+
+def forced_damped_pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -(b)*omega - (g/L)*np.sin(theta) + A*np.cos(omega_f*t)]
+    return dydt
+
+# Solve
+sol = solve_ivp(forced_damped_pendulum, t_span, y0, t_eval=t_eval)
+
+# Plot
+fig, axs = plt.subplots(1,2, figsize=(12,5))
+axs[0].plot(sol.t, sol.y[0], 'm')
+axs[0].set_title('Forced Damped Pendulum - Time Series (Resonance-like)')
+axs[0].set_xlabel('Time (s)')
+axs[0].set_ylabel('Angle (rad)')
+
+axs[1].plot(sol.y[0], sol.y[1], 'm')
+axs[1].set_title('Forced Damped Pendulum - Phase Portrait (Resonance-like)')
+axs[1].set_xlabel('Angle (rad)')
+axs[1].set_ylabel('Angular Velocity (rad/s)')
+
+plt.tight_layout()
+plt.show()
+</code></pre>
+<h4 id="poincare-section-visualization-of-periodicity-and-chaos">Poincaré Section: Visualization of Periodicity and Chaos</h4>
+<p>Below we plot the Poincaré section, sampling the pendulum's phase space at regular intervals (<span class="arithmatex">\(t=2\pi n/\omega\)</span>):
+- For periodic motion: discrete isolated points appear.
+- For chaotic motion: scattered clouds of points emerge.</p>
+<p><img alt="alt text" src="../image-13.png"/></p>
+<pre><code class="language-python"># Forced damped pendulum parameters (chaotic)
+b = 0.2    # stronger damping
+A = 1.5    # larger forcing
+omega_f = 2.0/3.0  # forcing frequency
+
+def chaotic_forced_damped_pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -(b)*omega - (g/L)*np.sin(theta) + A*np.cos(omega_f*t)]
+    return dydt
+
+# Solve
+sol = solve_ivp(chaotic_forced_damped_pendulum, t_span, y0, t_eval=t_eval)
+
+# Plot
+fig, axs = plt.subplots(1,2, figsize=(12,5))
+axs[0].plot(sol.t, sol.y[0], 'g')
+axs[0].set_title('Forced Damped Pendulum - Time Series (Chaotic)')
+axs[0].set_xlabel('Time (s)')
+axs[0].set_ylabel('Angle (rad)')
+
+axs[1].plot(sol.y[0], sol.y[1], 'g')
+axs[1].set_title('Forced Damped Pendulum - Phase Portrait (Chaotic)')
+axs[1].set_xlabel('Angle (rad)')
+axs[1].set_ylabel('Angular Velocity (rad/s)')
+
+plt.tight_layout()
+plt.show()
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
