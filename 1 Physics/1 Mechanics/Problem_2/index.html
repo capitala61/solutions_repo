@@ -60,15 +60,11 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#13-solution-to-linearized-equation">1.3 Solution to Linearized Equation</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-visualization-simple-pendulum-motion-undamped-no-forcing">Additional Visualization: Simple Pendulum Motion (Undamped, No Forcing)</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_1"></a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#14-resonance">1.4 Resonance</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#_2"></a>
 </li>
 </ul>
 </li>
@@ -244,11 +240,48 @@
 <p>The time evolution of <span class="arithmatex">\(\theta(t)\)</span> illustrates the combined effects of damping and external forcing, as described by the nonlinear ODE:</p>
 <div class="arithmatex">\[d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=A\cos(\omega t)\]</div>
 <p>The following Python code solves this ODE numerically using parameters <span class="arithmatex">\(g=9.81\)</span> m/s<span class="arithmatex">\(^2\)</span>, <span class="arithmatex">\(L=1\)</span> m, <span class="arithmatex">\(b=0.2\)</span> s<span class="arithmatex">\(^{-1}\)</span>, <span class="arithmatex">\(A=0.5\)</span> s<span class="arithmatex">\(^{-2}\)</span>, and <span class="arithmatex">\(\omega=0.8\sqrt{g/L}\)</span>, plotting <span class="arithmatex">\(\theta(t)\)</span> over time.</p>
-<h2 id="_1"><img alt="alt text" src="../image-3.png"/></h2>
+<p><img alt="alt text" src="../image-3.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
+
 </code></pre>
+<h3 id="additional-visualization-simple-pendulum-motion-undamped-no-forcing">Additional Visualization: Simple Pendulum Motion (Undamped, No Forcing)</h3>
+<p>To further illustrate the basic pendulum dynamics without damping (<span class="arithmatex">\(b=0\)</span>) and without external forcing (<span class="arithmatex">\(A=0\)</span>), we plot <span class="arithmatex">\(\theta(t)\)</span> over time for small initial displacement.<br/>
+This captures the pure periodic motion expected from an ideal pendulum.</p>
+<h2 id="_1"><img alt="alt text" src="../image-9.png"/></h2>
+<hr/>
+<p>import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp</p>
+<h1 id="simple-pendulum-parameters">Simple pendulum parameters</h1>
+<p>b = 0.0  # damping
+A = 0.0  # forcing
+omega_f = 0.0
+g = 9.81
+L = 1.0</p>
+<p>def simple_pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -(g/L)*np.sin(theta)]
+    return dydt</p>
+<h1 id="time-points">Time points</h1>
+<p>t_span = (0, 20)
+t_eval = np.linspace(*t_span, 1000)
+y0 = [0.2, 0.0]  # initial conditions: [angle, angular velocity]</p>
+<h1 id="solve">Solve</h1>
+<p>sol = solve_ivp(simple_pendulum, t_span, y0, t_eval=t_eval)</p>
+<h1 id="plot">Plot</h1>
+<p>fig, axs = plt.subplots(1,2, figsize=(12,5))
+axs[0].plot(sol.t, sol.y[0], 'r')
+axs[0].set_title('Simple Pendulum - Time Series')
+axs[0].set_xlabel('Time (s)')
+axs[0].set_ylabel('Angle (rad)')</p>
+<p>axs[1].plot(sol.y[0], sol.y[1], 'r')
+axs[1].set_title('Simple Pendulum - Phase Portrait')
+axs[1].set_xlabel('Angle (rad)')
+axs[1].set_ylabel('Angular Velocity (rad/s)')</p>
+<p>plt.tight_layout()
+plt.show()</p>
 <h3 id="14-resonance">1.4 Resonance</h3>
 <p>Resonance occurs when <span class="arithmatex">\(\omega\)</span> approaches the natural frequency:</p>
 <div class="arithmatex">\[\omega_0=\sqrt{g/L}\]</div>
@@ -280,7 +313,7 @@ A = 0.5</p>
 <p>omega = np.linspace(0.1, 5, 500)</p>
 <h1 id="amplitude-b">Amplitude B</h1>
 <p>B = A / np.sqrt(((g/L) - omega<strong>2)</strong>2 + (b<em>omega)</em>*2)</p>
-<h1 id="plot">Plot</h1>
+<h1 id="plot_1">Plot</h1>
 <p>plt.figure(figsize=(8, 5))
 plt.plot(omega, B, label=r'Amplitude <span class="arithmatex">\(B\)</span>')
 plt.xlabel(r'Driving Frequency <span class="arithmatex">\(\omega\)</span> (rad/s)')
@@ -395,7 +428,7 @@ omega = 0.8 * np.sqrt(g/L)</p>
 <p>solution = odeint(pendulum, state0, t, args=(b, g, L, A, omega))
 theta = solution[:, 0]
 dtheta_dt = solution[:, 1]</p>
-<h1 id="plot_1">Plot</h1>
+<h1 id="plot_2">Plot</h1>
 <p>plt.figure(figsize=(8, 5))
 plt.plot(theta, dtheta_dt, label=r"<span class="arithmatex">\(\text{Phase Trajectory}\)</span>")
 plt.xlabel(r"<span class="arithmatex">\(\theta\)</span> (rad)")
