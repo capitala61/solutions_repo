@@ -163,6 +163,13 @@ $$B=A/\sqrt{((g/L)-\omega^2)^2+(b\omega)^2}$$
 The following Python code computes $B$ for $\omega$ from 0.1 to 5 rad/s, with $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, and $A=0.5$ s$^{-2}$.
 
 ![alt text](image-4.png)
+
+#### Additional Visualization: Resonance Behavior in the Undamped Pendulum
+
+Below we show the amplitude response $B$ versus driving frequency $\omega$ for an undamped pendulum ($b=0$).  
+As expected, the amplitude diverges sharply near the natural frequency $\omega_0=\sqrt{g/L}$, showing the classical resonance peak.
+
+![alt text](image-10.png)
 ---
 
 ```python
@@ -190,6 +197,7 @@ plt.title('Resonance Curve of Forced Damped Pendulum')
 plt.grid(True)
 plt.legend()
 plt.show()
+```
 
 ### 1.5 Energy Dynamics
 
@@ -203,6 +211,41 @@ $$E(t)=(1/2)mL^2(d\theta/dt)^2+mgL(1-\cos\theta)$$
 
 $$E_{\text{steady}}\approx(1/2)mL^2B^2\omega^2$$
 
+#### Energy Evolution Over Time
+
+The plot below shows the total mechanical energy $E(t)$ of the pendulum over time for both damped and undamped cases.  
+In the undamped case, energy remains constant (or grows under forcing); in the damped case, energy stabilizes after transient behavior.
+
+![alt text](image-11.png)
+```python
+# Forced pendulum parameters
+b = 0.0  # no damping
+A = 1.2  # forcing amplitude
+omega_f = 2.0/3.0  # forcing frequency
+
+def forced_pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -(g/L)*np.sin(theta) + A*np.cos(omega_f*t)]
+    return dydt
+
+# Solve
+sol = solve_ivp(forced_pendulum, t_span, y0, t_eval=t_eval)
+
+# Plot
+fig, axs = plt.subplots(1,2, figsize=(12,5))
+axs[0].plot(sol.t, sol.y[0], 'c')
+axs[0].set_title('Forced Pendulum - Time Series')
+axs[0].set_xlabel('Time (s)')
+axs[0].set_ylabel('Angle (rad)')
+
+axs[1].plot(sol.y[0], sol.y[1], 'c')
+axs[1].set_title('Forced Pendulum - Phase Portrait')
+axs[1].set_xlabel('Angle (rad)')
+axs[1].set_ylabel('Angular Velocity (rad/s)')
+
+plt.tight_layout()
+plt.show()
+```
 ### 1.6 Summary
 
 - The nonlinear ODE governs pendulum motion.
@@ -324,13 +367,11 @@ plt.grid(True)
 plt.legend()
 plt.show()
 
-
 # Poincaré Section Description:
 # Samples at $t=2\pi n/\omega$.
 # Periodic: Discrete points.
 # Chaotic: Scattered points.
-
-
+```
 ### 2.6 Summary
 
 - Damping controls oscillation decay.
@@ -388,3 +429,79 @@ $$\omega=1/\sqrt{LC}$$
 - Energy harvesting optimizes power at resonance.
 - Structures require damping to prevent failure.
 - Circuits control resonance for stability.
+
+#### Additional Visualization: Phase Portraits Under Different Conditions
+
+The following phase diagram shows the behavior of the pendulum for different scenarios:
+- (i) No damping and no external force (pure closed loops),
+- (ii) With damping (spiraling into equilibrium),
+- (iii) With external driving (limit cycles or chaotic behavior).
+
+![alt text](image-12.png)
+
+```python
+# Forced damped pendulum parameters (resonance-like)
+b = 0.05   # light damping
+A = 1.2    # forcing amplitude
+omega_f = 2.0/3.0  # forcing frequency
+
+def forced_damped_pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -(b)*omega - (g/L)*np.sin(theta) + A*np.cos(omega_f*t)]
+    return dydt
+
+# Solve
+sol = solve_ivp(forced_damped_pendulum, t_span, y0, t_eval=t_eval)
+
+# Plot
+fig, axs = plt.subplots(1,2, figsize=(12,5))
+axs[0].plot(sol.t, sol.y[0], 'm')
+axs[0].set_title('Forced Damped Pendulum - Time Series (Resonance-like)')
+axs[0].set_xlabel('Time (s)')
+axs[0].set_ylabel('Angle (rad)')
+
+axs[1].plot(sol.y[0], sol.y[1], 'm')
+axs[1].set_title('Forced Damped Pendulum - Phase Portrait (Resonance-like)')
+axs[1].set_xlabel('Angle (rad)')
+axs[1].set_ylabel('Angular Velocity (rad/s)')
+
+plt.tight_layout()
+plt.show()
+```
+#### Poincaré Section: Visualization of Periodicity and Chaos
+
+Below we plot the Poincaré section, sampling the pendulum's phase space at regular intervals ($t=2\pi n/\omega$):
+- For periodic motion: discrete isolated points appear.
+- For chaotic motion: scattered clouds of points emerge.
+
+![alt text](image-13.png)
+
+```python
+# Forced damped pendulum parameters (chaotic)
+b = 0.2    # stronger damping
+A = 1.5    # larger forcing
+omega_f = 2.0/3.0  # forcing frequency
+
+def chaotic_forced_damped_pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -(b)*omega - (g/L)*np.sin(theta) + A*np.cos(omega_f*t)]
+    return dydt
+
+# Solve
+sol = solve_ivp(chaotic_forced_damped_pendulum, t_span, y0, t_eval=t_eval)
+
+# Plot
+fig, axs = plt.subplots(1,2, figsize=(12,5))
+axs[0].plot(sol.t, sol.y[0], 'g')
+axs[0].set_title('Forced Damped Pendulum - Time Series (Chaotic)')
+axs[0].set_xlabel('Time (s)')
+axs[0].set_ylabel('Angle (rad)')
+
+axs[1].plot(sol.y[0], sol.y[1], 'g')
+axs[1].set_title('Forced Damped Pendulum - Phase Portrait (Chaotic)')
+axs[1].set_xlabel('Angle (rad)')
+axs[1].set_ylabel('Angular Velocity (rad/s)')
+
+plt.tight_layout()
+plt.show()
+```
