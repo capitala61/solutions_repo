@@ -319,69 +319,6 @@ Where:
 
 ---
 
-## 2. Python Code to Simulate Air Resistance and Uneven Terrain
-
-Below is a Python code to simulate projectile motion considering air resistance and varying terrain height
----
-
-![alt text](image-1.png)
-
----
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import odeint
-
-# Constants
-v_0 = 20  # Initial velocity in m/s
-theta = 45  # Launch angle in degrees
-g = 9.81  # Gravitational acceleration in m/s^2
-C_d = 0.47  # Drag coefficient (for a sphere)
-rho = 1.225  # Air density in kg/m^3
-A = 0.05  # Cross-sectional area in m^2 (for a small ball)
-m = 0.1  # Mass of the projectile in kg
-
-# Function to compute the drag force
-def drag_force(v):
-    return 0.5 * C_d * rho * A * v**2
-
-# Equations of motion with air resistance
-def projectile_motion(y, t, g, C_d, rho, A, m):
-    x, y_pos, vx, vy = y
-    v = np.sqrt(vx**2 + vy**2)
-    ax = -drag_force(v) * vx / (m * v)
-    ay = -g - (drag_force(v) * vy / (m * v))
-    return [vx, vy, ax, ay]
-
-# Initial conditions
-angle_rad = np.radians(theta)
-vx0 = v_0 * np.cos(angle_rad)
-vy0 = v_0 * np.sin(angle_rad)
-y0 = [0, 0, vx0, vy0]  # Initial position (x=0, y=0) and velocity components
-
-# Time array
-t_max = 5  # Total time of flight in seconds
-t = np.linspace(0, t_max, 500)
-
-# Solving the system of equations using odeint
-solution = odeint(projectile_motion, y0, t, args=(g, C_d, rho, A, m))
-
-# Extract the results
-x = solution[:, 0]
-y = solution[:, 1]
-
-# Plotting the trajectory
-plt.plot(x, y)
-plt.title('Projectile Motion with Air Resistance')
-plt.xlabel('Distance (m)')
-plt.ylabel('Height (m)')
-plt.grid(True)
-plt.show()
-```
-
----
-
 # Implementation of Projectile Motion Simulation
 
 ## 1. Developing a Computational Tool
@@ -442,11 +379,11 @@ To explore how the range changes with different angles of projection, we will cr
 Below is the Python code that simulates the projectile motion and visualizes the range as a function of the launch angle for a given initial velocity
 ---
 
-![alt text](image-2.png)
+![alt text](image-8.png)
 
----
-
+```
 ```python
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -477,5 +414,4 @@ plt.ylabel('Range (meters)')
 plt.grid(True)
 plt.show()
 ```
-
 ---
