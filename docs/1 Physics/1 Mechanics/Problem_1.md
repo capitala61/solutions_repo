@@ -237,7 +237,8 @@ plt.axvline(0, color='black', linewidth=0.5)
 
 # Save the plot
 plt.savefig('projectile_motion.png')
----
+
+```
 
 # Practical Applications of Projectile Motion
 
