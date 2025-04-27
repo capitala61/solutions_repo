@@ -686,6 +686,78 @@ plt.legend()
 plt.grid(True)
 plt.show()
 </code></pre>
+<h1 id="deliverables-gravity-project">📚 Deliverables: Gravity Project</h1>
+<p>This report provides a complete overview of the theoretical derivations, Python code implementations, simulation results, graphical visualizations, and discussions for understanding and applying <strong>Kepler’s Third Law</strong>.</p>
+<hr/>
+<h2 id="1-theoretical-derivation-and-explanation">1. 🧠 Theoretical Derivation and Explanation</h2>
+<h3 id="11-starting-point">1.1. Starting Point</h3>
+<ul>
+<li>According to <strong>Newton’s Law of Gravitation</strong>, the force between two masses is:</li>
+</ul>
+<div class="arithmatex">\[F_g=\frac{GMm}{r^2}\]</div>
+<ul>
+<li>For circular motion, the necessary <strong>centripetal force</strong> is:</li>
+</ul>
+<div class="arithmatex">\[F_c=\frac{mv^2}{r}\]</div>
+<ul>
+<li>Equating gravitational force and centripetal force:</li>
+</ul>
+<div class="arithmatex">\[\frac{GMm}{r^2}=\frac{mv^2}{r}\]</div>
+<ul>
+<li>Simplifying:</li>
+</ul>
+<div class="arithmatex">\[v^2=\frac{GM}{r}\]</div>
+<ul>
+<li>The <strong>orbital period</strong> <span class="arithmatex">\(T\)</span> is related to orbital speed <span class="arithmatex">\(v\)</span> and radius <span class="arithmatex">\(r\)</span> by:</li>
+</ul>
+<div class="arithmatex">\[T=\frac{2\pi r}{v}\]</div>
+<p>Substituting <span class="arithmatex">\(v\)</span> from above:</p>
+<div class="arithmatex">\[T=2\pi\sqrt{\frac{r^3}{GM}}\]</div>
+<p>Thus, squaring both sides:</p>
+<div class="arithmatex">\[T^2=\frac{4\pi^2r^3}{GM}\]</div>
+<p>✅ <strong>Conclusion</strong>: The square of the orbital period <span class="arithmatex">\(T^2\)</span> is proportional to the cube of the orbital radius <span class="arithmatex">\(r^3\)</span>.</p>
+<hr/>
+<h2 id="2-code-and-simulation-results">2. 🧑‍💻 Code and Simulation Results</h2>
+<h3 id="21-python-code-for-verification">2.1. Python Code for Verification</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+
+# Celestial bodies data
+celestial_bodies = {
+    "Earth": {"M": 5.972e24, "r": 1.496e11},
+    "Jupiter": {"M": 1.898e27, "r": 7.785e11},
+    "Mars": {"M": 6.417e23, "r": 2.279e11},
+    "Saturn": {"M": 5.683e26, "r": 1.429e12},
+}
+
+def calculate_orbital_period(M, r):
+    return 2 * np.pi * np.sqrt(r**3 / (G * M))
+
+# Store values
+r_values = []
+T_squared = []
+r_cubed = []
+
+for body, data in celestial_bodies.items():
+    T = calculate_orbital_period(data["M"], data["r"])
+    r_values.append(data["r"])
+    T_squared.append(T**2)
+    r_cubed.append(data["r"]**3)
+
+# Plotting T^2 vs r^3
+plt.figure(figsize=(8,6))
+plt.scatter(r_cubed, T_squared, color='blue', label="Data Points")
+plt.plot(r_cubed, np.poly1d(np.polyfit(r_cubed, T_squared, 1))(r_cubed), color='red', label="Best Fit Line")
+plt.title("Kepler's Third Law: $T^2$ vs $r^3$")
+plt.xlabel("$r^3$ (m^3)")
+plt.ylabel("$T^2$ (s^2)")
+plt.legend()
+plt.grid(True)
+plt.show()
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
