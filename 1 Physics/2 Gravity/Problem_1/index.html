@@ -219,26 +219,29 @@
 <h2 id="python-verification">🧪 Python Verification</h2>
 <h2 id="lets-simulate-this-law-using-python">Let's simulate this law using Python.</h2>
 <p><img alt="alt text" src="../image.png"/></p>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants">Constants</h1>
-<p>G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
-M = 5.972e24     # Mass of the Earth (kg)</p>
-<h1 id="generate-orbital-radii-in-meters">Generate orbital radii (in meters)</h1>
-<p>radii = np.linspace(7e6, 4.2e7, 100)  # from ~7000 km to ~42000 km</p>
-<h1 id="calculate-orbital-periods">Calculate orbital periods</h1>
-<p>T_squared = (4 * np.pi<strong>2 * radii</strong>3) / (G * M)</p>
-<h1 id="plotting">Plotting</h1>
-<p>plt.figure(figsize=(8, 5))
-plt.plot(radii, T_squared, label=r'<span class="arithmatex">\(T^2 \propto r^3\)</span>', color='teal')
-plt.title("Kepler’s Third Law: <span class="arithmatex">\(T^2\)</span> vs <span class="arithmatex">\(r^3\)</span>")
-plt.xlabel("Orbital Radius <span class="arithmatex">\(r\)</span> (m)")
-plt.ylabel("Orbital Period Squared <span class="arithmatex">\(T^2\)</span> (s²)")
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+M = 5.972e24     # Mass of the Earth (kg)
+
+# Generate orbital radii (in meters)
+radii = np.linspace(7e6, 4.2e7, 100)  # from ~7000 km to ~42000 km
+# Calculate orbital periods
+T_squared = (4 * np.pi**2 * radii**3) / (G * M)
+
+# Plotting
+plt.figure(figsize=(8, 5))
+plt.plot(radii, T_squared, label=r'$T^2 \propto r^3$', color='teal')
+plt.title("Kepler’s Third Law: $T^2$ vs $r^3$")
+plt.xlabel("Orbital Radius $r$ (m)")
+plt.ylabel("Orbital Period Squared $T^2$ (s²)")
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
-plt.show()</p>
+plt.show()
+</code></pre>
 <h1 id="physical-meaning-of-keplers-third-law">🌠 Physical Meaning of Kepler’s Third Law</h1>
 <p>We previously derived Kepler's Third Law for circular orbits:</p>
 <div class="arithmatex">\[T^2=\frac{4\pi^2}{GM}\cdot r^3\]</div>
@@ -291,26 +294,29 @@ plt.show()</p>
 <hr/>
 <h2 id="python-demonstration-constant-ratio-t2r3">🧮 Python Demonstration: Constant Ratio <span class="arithmatex">\(T^2/r^3\)</span></h2>
 <p>Let’s confirm that this ratio is constant for Earth-centered orbits.</p>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants_1">Constants</h1>
-<p>G = 6.67430e-11  # m^3 kg^-1 s^-2
-M = 5.972e24     # kg (mass of Earth)</p>
-<h1 id="orbital-radii-meters">Orbital radii (meters)</h1>
-<p>radii = np.linspace(7e6, 4.2e7, 100)
-T_squared = (4 * np.pi<strong>2 * radii</strong>3) / (G * M)
-ratio = T_squared / radii**3</p>
-<h1 id="plot">Plot</h1>
-<p>plt.figure(figsize=(8, 5))
-plt.plot(radii, ratio, label=r'<span class="arithmatex">\(\frac{T^2}{r^3}\)</span>', color='purple')
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # m^3 kg^-1 s^-2
+M = 5.972e24     # kg (mass of Earth)
+
+# Orbital radii (meters)
+radii = np.linspace(7e6, 4.2e7, 100)
+T_squared = (4 * np.pi**2 * radii**3) / (G * M)
+ratio = T_squared / radii**3
+
+# Plot
+plt.figure(figsize=(8, 5))
+plt.plot(radii, ratio, label=r'$\frac{T^2}{r^3}$', color='purple')
 plt.title("Constant Ratio in Kepler’s Third Law")
-plt.xlabel("Orbital Radius <span class="arithmatex">\(r\)</span> (m)")
-plt.ylabel("Ratio <span class="arithmatex">\(T^2 / r^3\)</span> (s²/m³)")
+plt.xlabel("Orbital Radius $r$ (m)")
+plt.ylabel("Ratio $T^2 / r^3$ (s²/m³)")
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
-plt.show()</p>
+plt.show()
+</code></pre>
 <h1 id="astronomical-implications-of-keplers-third-law">🌌 Astronomical Implications of Kepler’s Third Law</h1>
 <p>Kepler’s Third Law is more than a mathematical curiosity — it's a <strong>powerful tool in astronomy</strong>. The relationship:</p>
 <div class="arithmatex">\[T^2=\frac{4\pi^2}{GM}r^3\]</div>
@@ -337,15 +343,17 @@ plt.show()</p>
 <li>Satellite orbit radius: <span class="arithmatex">\(r=7.0\times10^6\)</span> m</li>
 <li>Orbital period: <span class="arithmatex">\(T=5800\)</span> s</li>
 </ul>
-<p>```python
-import numpy as np</p>
-<h1 id="given-values">Given values</h1>
-<p>r = 7.0e6       # meters
+<pre><code class="language-python">import numpy as np
+
+# Given values
+r = 7.0e6       # meters
 T = 5800        # seconds
-G = 6.67430e-11 # m^3 kg^-1 s^-2</p>
-<h1 id="mass-of-earth-calculation">Mass of Earth calculation</h1>
-<p>M = (4 * np.pi<strong>2 * r</strong>3) / (G * T**2)
-print(f"Estimated mass of Earth: {M:.2e} kg")</p>
+G = 6.67430e-11 # m^3 kg^-1 s^-2
+
+# Mass of Earth calculation
+M = (4 * np.pi**2 * r**3) / (G * T**2)
+print(f"Estimated mass of Earth: {M:.2e} kg")
+</code></pre>
 <h1 id="extending-keplers-third-law-to-elliptical-orbits-and-non-planetary-bodies">🌠 Extending Kepler’s Third Law to Elliptical Orbits and Non-Planetary Bodies</h1>
 <p>Kepler's Third Law for <strong>circular orbits</strong> provides an elegant relationship between orbital period <span class="arithmatex">\(T\)</span> and orbital radius <span class="arithmatex">\(r\)</span>:</p>
 <div class="arithmatex">\[T^2=\frac{4\pi^2}{GM}r^3\]</div>
@@ -413,10 +421,11 @@ print(f"Estimated mass of Earth: {M:.2e} kg")</p>
 <hr/>
 <h2 id="4-python-code-for-orbital-period-of-an-elliptical-orbit">4. 🧮 Python Code for Orbital Period of an Elliptical Orbit</h2>
 <p>Let’s calculate the orbital period <span class="arithmatex">\(T\)</span> for a comet with a highly elliptical orbit. Given the <strong>semi-major axis <span class="arithmatex">\(a\)</span></strong> and <strong>central mass <span class="arithmatex">\(M\)</span></strong> of the Sun:</p>
-<p>```python
-import numpy as np</p>
-<h1 id="constants_2">Constants</h1>
-<p>G = 6.67430e-11 # m^3 kg</p>
+<pre><code class="language-python">import numpy as np
+
+# Constants
+G = 6.67430e-11 # m^3 kg
+</code></pre>
 <h1 id="real-world-applications-of-keplers-third-law">🌍 Real-World Applications of Kepler's Third Law</h1>
 <p>Kepler’s Third Law allows us to predict orbital periods and distances for a variety of celestial bodies. By analyzing real-world examples such as the <strong>Moon’s orbit around Earth</strong>, <strong>planetary orbits</strong> (like Earth’s orbit around the Sun), and <strong>Jupiter’s moons</strong>, we can see the practical utility of this fundamental law.</p>
 <hr/>
@@ -433,16 +442,18 @@ import numpy as np</p>
 <p>We can calculate the orbital period of the Moon by rearranging the above equation to solve for <span class="arithmatex">\(T\)</span>:</p>
 <div class="arithmatex">\[T = 2\pi \sqrt{\frac{r^3}{GM_{\text{Earth}}}}\]</div>
 <p>Let’s calculate this in Python:</p>
-<p>```python
-import numpy as np</p>
-<h1 id="constants_3">Constants</h1>
-<p>G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)
+<pre><code class="language-python">import numpy as np
+
+# Constants
+G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)
 M_earth = 5.972e24  # kg (mass of Earth)
-r_moon = 3.84e8  # meters (average distance from Earth to Moon)</p>
-<h1 id="orbital-period-calculation-in-seconds">Orbital period calculation (in seconds)</h1>
-<p>T_moon = 2 * np.pi * np.sqrt(r_moon**3 / (G * M_earth))
+r_moon = 3.84e8  # meters (average distance from Earth to Moon)
+
+# Orbital period calculation (in seconds)
+T_moon = 2 * np.pi * np.sqrt(r_moon**3 / (G * M_earth))
 T_moon_days = T_moon / (60 * 60 * 24)  # Convert from seconds to days
-print(f"Orbital period of the Moon: {T_moon_days:.2f} days")</p>
+print(f"Orbital period of the Moon: {T_moon_days:.2f} days")
+</code></pre>
 <h1 id="computational-task-simulating-circular-orbits">🛰️ Computational Task: Simulating Circular Orbits</h1>
 <p>In this section, we will build a Python script or Jupyter Notebook to simulate circular orbits based on Kepler's Third Law. The primary focus will be on simulating a <strong>circular orbit</strong> of a satellite (or any celestial object) around a central body (e.g., a planet or star).</p>
 <h3 id="objectives">Objectives:</h3>
@@ -483,23 +494,26 @@ print(f"Orbital period of the Moon: {T_moon_days:.2f} days")</p>
 <h2 id="2-python-script-to-simulate-circular-orbits">2. 🖥️ Python Script to Simulate Circular Orbits</h2>
 <p>We can use the derived formulas to simulate the motion of a satellite in a circular orbit. Below is a Python script that simulates and visualizes the orbit of a satellite around a central body.</p>
 <h3 id="21-python-code-implementation">2.1. <strong>Python Code Implementation</strong></h3>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants_4">Constants</h1>
-<p>G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)
 M = 5.972e24  # kg (mass of Earth, you can adjust for different central bodies)
 r = 7.5e6  # meters (orbital radius, adjust as needed)
 T = 2 * np.pi * np.sqrt(r**3 / (G * M))  # Orbital period
-v = np.sqrt(G * M / r)  # Orbital velocity</p>
-<h1 id="time-settings">Time settings</h1>
-<p>t = np.linspace(0, T, 1000)  # Time array for one complete orbit
-theta = 2 * np.pi * t / T  # Angle in radians</p>
-<h1 id="position-of-the-satellite-in-polar-coordinates">Position of the satellite in polar coordinates</h1>
-<p>x = r * np.cos(theta)
-y = r * np.sin(theta)</p>
-<h1 id="plotting-the-orbit">Plotting the orbit</h1>
-<p>plt.figure(figsize=(6,6))
+v = np.sqrt(G * M / r)  # Orbital velocity
+
+# Time settings
+t = np.linspace(0, T, 1000)  # Time array for one complete orbit
+theta = 2 * np.pi * t / T  # Angle in radians
+
+# Position of the satellite in polar coordinates
+x = r * np.cos(theta)
+y = r * np.sin(theta)
+
+# Plotting the orbit
+plt.figure(figsize=(6,6))
 plt.plot(x, y, label="Satellite Orbit")
 plt.scatter(0, 0, color='red', label="Central Body (Earth)", s=100)  # Earth at origin
 plt.title(f"Circular Orbit: Orbital Period = {T/86400:.2f} days")
@@ -508,11 +522,13 @@ plt.ylabel("Y Position (m)")
 plt.gca().set_aspect('equal', adjustable='box')
 plt.legend()
 plt.grid(True)
-plt.show()</p>
-<h1 id="output-the-orbital-period-and-velocity">Output the orbital period and velocity</h1>
-<p>print(f"Orbital Period: {T/86400:.2f} days")
-print(f"Orbital Velocity: {v/1000:.2f} km/s")</p>
-<h1 id="verifying-keplers-third-law-numerically">🪐 Verifying Kepler’s Third Law Numerically</h1>
+plt.show()
+
+# Output the orbital period and velocity
+print(f"Orbital Period: {T/86400:.2f} days")
+print(f"Orbital Velocity: {v/1000:.2f} km/s")
+# 🪐 Verifying Kepler’s Third Law Numerically
+</code></pre>
 <p>In this section, we will verify <strong>Kepler's Third Law</strong> numerically by calculating the orbital period of a planet or moon and comparing it to the values predicted by the law.</p>
 <p>Kepler's Third Law states that the square of the orbital period (<span class="arithmatex">\(T^2\)</span>) is directly proportional to the cube of the orbital radius (<span class="arithmatex">\(r^3\)</span>). Mathematically, this relationship can be written as:</p>
 <div class="arithmatex">\[T^2 \propto r^3\]</div>
@@ -540,43 +556,50 @@ print(f"Orbital Velocity: {v/1000:.2f} km/s")</p>
 <p>Let’s now calculate the orbital period for different celestial bodies, such as <strong>Earth</strong> and <strong>Jupiter</strong>, using Kepler’s Third Law.</p>
 <h3 id="21-python-code-implementation_1">2.1. Python Code Implementation</h3>
 <p>The following code will calculate the orbital period for different celestial bodies by using their <strong>orbital radii</strong> and <strong>masses</strong>. We will also visualize the relationship between the square of the orbital period (<span class="arithmatex">\(T^2\)</span>) and the cube of the orbital radius (<span class="arithmatex">\(r^3\)</span>).</p>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants_5">Constants</h1>
-<p>G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)</p>
-<h1 id="celestial-bodies-data-mass-in-kg-orbital-radius-in-meters">Celestial bodies data (mass in kg, orbital radius in meters)</h1>
-<p>celestial_bodies = {
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)
+
+# Celestial bodies data (mass in kg, orbital radius in meters)
+celestial_bodies = {
     "Earth": {"M": 5.972e24, "r": 1.496e11},  # Earth: 1 AU
     "Jupiter": {"M": 1.898e27, "r": 7.785e11},  # Jupiter: 5.2 AU
     "Saturn": {"M": 5.683e26, "r": 1.429e12},  # Saturn: 9.5 AU
     "Mars": {"M": 6.417e23, "r": 2.279e11},  # Mars: 1.5 AU
-}</p>
-<h1 id="calculating-orbital-period-using-keplers-third-law">Calculating orbital period using Kepler's Third Law</h1>
-<p>def calculate_orbital_period(M, r):
+}
+
+# Calculating orbital period using Kepler's Third Law
+def calculate_orbital_period(M, r):
     T = 2 * np.pi * np.sqrt(r**3 / (G * M))  # Orbital period in seconds
-    return T</p>
-<h1 id="store-calculated-periods">Store calculated periods</h1>
-<p>periods = {}
+    return T
+
+# Store calculated periods
+periods = {}
 for body, data in celestial_bodies.items():
     T = calculate_orbital_period(data["M"], data["r"])
-    periods[body] = T</p>
-<h1 id="display-the-orbital-periods-in-days">Display the orbital periods in days</h1>
-<p>for body, period in periods.items():
-    print(f"Orbital Period of {body}: {period / 86400:.2f} days")</p>
-<h1 id="plotting-t2-vs-r3">Plotting T^2 vs. r^3</h1>
-<p>r_values = [data["r"] for data in celestial_bodies.values()]
-T_squared = [calculate_orbital_period(data["M"], data["r"])<strong>2 for data in celestial_bodies.values()]
-r_cubed = [r</strong>3 for r in r_values]</p>
-<p>plt.figure(figsize=(8,6))
+    periods[body] = T
+
+# Display the orbital periods in days
+for body, period in periods.items():
+    print(f"Orbital Period of {body}: {period / 86400:.2f} days")
+
+# Plotting T^2 vs. r^3
+r_values = [data["r"] for data in celestial_bodies.values()]
+T_squared = [calculate_orbital_period(data["M"], data["r"])**2 for data in celestial_bodies.values()]
+r_cubed = [r**3 for r in r_values]
+
+plt.figure(figsize=(8,6))
 plt.scatter(r_cubed, T_squared, color='blue', label="Data Points")
 plt.plot(r_cubed, np.poly1d(np.polyfit(r_cubed, T_squared, 1))(r_cubed), color='red', label="Best Fit Line")
-plt.title("Kepler's Third Law: <span class="arithmatex">\(T^2\)</span> vs <span class="arithmatex">\(r^3\)</span>")
-plt.xlabel("<span class="arithmatex">\(r^3\)</span> (m^3)")
-plt.ylabel("<span class="arithmatex">\(T^2\)</span> (s^2)")
+plt.title("Kepler's Third Law: $T^2$ vs $r^3$")
+plt.xlabel("$r^3$ (m^3)")
+plt.ylabel("$T^2$ (s^2)")
 plt.legend()
 plt.grid(True)
-plt.show()</p>
+plt.show()
+</code></pre>
 <h1 id="plotting-orbital-data">🪐 Plotting Orbital Data</h1>
 <p>In this section, we will create plots that represent the relationships between orbital radius and the square of the orbital period (<span class="arithmatex">\(T^2\)</span>), as well as plot the trajectories of orbits.</p>
 <hr/>
@@ -597,52 +620,62 @@ plt.show()</p>
 <div class="arithmatex">\[T^2 = \frac{4\pi^2 r^3}{GM}\]</div>
 <h3 id="22-python-code-for-plotting">2.2. Python Code for Plotting</h3>
 <p>We will calculate the orbital period for different celestial bodies and plot <span class="arithmatex">\(T^2\)</span> vs. <span class="arithmatex">\(r^3\)</span>. This will help verify the relationship visually.</p>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants_6">Constants</h1>
-<p>G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)</p>
-<h1 id="celestial-bodies-data-mass-in-kg-orbital-radius-in-meters_1">Celestial bodies data (mass in kg, orbital radius in meters)</h1>
-<p>celestial_bodies = {
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)
+
+# Celestial bodies data (mass in kg, orbital radius in meters)
+celestial_bodies = {
     "Earth": {"M": 5.972e24, "r": 1.496e11},  # Earth: 1 AU
     "Jupiter": {"M": 1.898e27, "r": 7.785e11},  # Jupiter: 5.2 AU
     "Saturn": {"M": 5.683e26, "r": 1.429e12},  # Saturn: 9.5 AU
     "Mars": {"M": 6.417e23, "r": 2.279e11},  # Mars: 1.5 AU
-}</p>
-<h1 id="calculating-orbital-period-using-keplers-third-law_1">Calculating orbital period using Kepler's Third Law</h1>
-<p>def calculate_orbital_period(M, r):
+}
+
+# Calculating orbital period using Kepler's Third Law
+def calculate_orbital_period(M, r):
     T = 2 * np.pi * np.sqrt(r**3 / (G * M))  # Orbital period in seconds
-    return T</p>
-<h1 id="store-calculated-periods_1">Store calculated periods</h1>
-<p>periods = {}
+    return T
+
+# Store calculated periods
+periods = {}
 for body, data in celestial_bodies.items():
     T = calculate_orbital_period(data["M"], data["r"])
-    periods[body] = T</p>
-<h1 id="plotting-t2-vs-r3_1">Plotting T^2 vs. r^3</h1>
-<p>r_values = [data["r"] for data in celestial_bodies.values()]
-T_squared = [calculate_orbital_period(data["M"], data["r"])<strong>2 for data in celestial_bodies.values()]
-r_cubed = [r</strong>3 for r in r_values]</p>
-<p>plt.figure(figsize=(8,6))
+    periods[body] = T
+
+# Plotting T^2 vs. r^3
+r_values = [data["r"] for data in celestial_bodies.values()]
+T_squared = [calculate_orbital_period(data["M"], data["r"])**2 for data in celestial_bodies.values()]
+r_cubed = [r**3 for r in r_values]
+
+plt.figure(figsize=(8,6))
 plt.scatter(r_cubed, T_squared, color='blue', label="Data Points")
 plt.plot(r_cubed, np.poly1d(np.polyfit(r_cubed, T_squared, 1))(r_cubed), color='red', label="Best Fit Line")
-plt.title("Kepler's Third Law: <span class="arithmatex">\(T^2\)</span> vs <span class="arithmatex">\(r^3\)</span>")
-plt.xlabel("<span class="arithmatex">\(r^3\)</span> (m^3)")
-plt.ylabel("<span class="arithmatex">\(T^2\)</span> (s^2)")
+plt.title("Kepler's Third Law: $T^2$ vs $r^3$")
+plt.xlabel("$r^3$ (m^3)")
+plt.ylabel("$T^2$ (s^2)")
 plt.legend()
 plt.grid(True)
-plt.show()</p>
-<h1 id="orbital-parameters-eg-earth">Orbital parameters (e.g., Earth)</h1>
-<p>r = 1.496e11  # Orbital radius (1 AU)
-T = calculate_orbital_period(5.972e24, r)  # Orbital period for Earth</p>
-<h1 id="time-array-in-seconds">Time array (in seconds)</h1>
-<p>t = np.linspace(0, T, 1000)</p>
-<h1 id="angular-velocity-omega">Angular velocity (omega)</h1>
-<p>omega = 2 * np.pi / T</p>
-<h1 id="calculating-orbital-positions-x-and-y-coordinates">Calculating orbital positions (x and y coordinates)</h1>
-<p>x = r * np.cos(omega * t)
-y = r * np.sin(omega * t)</p>
-<h1 id="plotting-the-orbital-trajectory">Plotting the orbital trajectory</h1>
-<p>plt.figure(figsize=(8,6))
+plt.show()
+
+# Orbital parameters (e.g., Earth)
+r = 1.496e11  # Orbital radius (1 AU)
+T = calculate_orbital_period(5.972e24, r)  # Orbital period for Earth
+
+# Time array (in seconds)
+t = np.linspace(0, T, 1000)
+
+# Angular velocity (omega)
+omega = 2 * np.pi / T
+
+# Calculating orbital positions (x and y coordinates)
+x = r * np.cos(omega * t)
+y = r * np.sin(omega * t)
+
+# Plotting the orbital trajectory
+plt.figure(figsize=(8,6))
 plt.plot(x, y, label="Orbital Path")
 plt.scatter([0], [0], color='red', label="Central Body (Sun)")
 plt.title("Orbital Trajectory of Earth (2D)")
@@ -651,7 +684,8 @@ plt.ylabel("y (m)")
 plt.gca().set_aspect('equal', adjustable='box')
 plt.legend()
 plt.grid(True)
-plt.show()</p>
+plt.show()
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
