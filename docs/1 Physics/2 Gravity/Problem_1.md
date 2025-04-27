@@ -661,3 +661,89 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```
+# 📚 Deliverables: Gravity Project
+
+This report provides a complete overview of the theoretical derivations, Python code implementations, simulation results, graphical visualizations, and discussions for understanding and applying **Kepler’s Third Law**.
+
+---
+
+## 1. 🧠 Theoretical Derivation and Explanation
+
+### 1.1. Starting Point
+
+- According to **Newton’s Law of Gravitation**, the force between two masses is:
+
+$$F_g=\frac{GMm}{r^2}$$
+
+- For circular motion, the necessary **centripetal force** is:
+
+$$F_c=\frac{mv^2}{r}$$
+
+- Equating gravitational force and centripetal force:
+
+$$\frac{GMm}{r^2}=\frac{mv^2}{r}$$
+
+- Simplifying:
+
+$$v^2=\frac{GM}{r}$$
+
+- The **orbital period** $T$ is related to orbital speed $v$ and radius $r$ by:
+
+$$T=\frac{2\pi r}{v}$$
+
+Substituting $v$ from above:
+
+$$T=2\pi\sqrt{\frac{r^3}{GM}}$$
+
+Thus, squaring both sides:
+
+$$T^2=\frac{4\pi^2r^3}{GM}$$
+
+✅ **Conclusion**: The square of the orbital period $T^2$ is proportional to the cube of the orbital radius $r^3$.
+
+---
+
+## 2. 🧑‍💻 Code and Simulation Results
+
+### 2.1. Python Code for Verification
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+
+# Celestial bodies data
+celestial_bodies = {
+    "Earth": {"M": 5.972e24, "r": 1.496e11},
+    "Jupiter": {"M": 1.898e27, "r": 7.785e11},
+    "Mars": {"M": 6.417e23, "r": 2.279e11},
+    "Saturn": {"M": 5.683e26, "r": 1.429e12},
+}
+
+def calculate_orbital_period(M, r):
+    return 2 * np.pi * np.sqrt(r**3 / (G * M))
+
+# Store values
+r_values = []
+T_squared = []
+r_cubed = []
+
+for body, data in celestial_bodies.items():
+    T = calculate_orbital_period(data["M"], data["r"])
+    r_values.append(data["r"])
+    T_squared.append(T**2)
+    r_cubed.append(data["r"]**3)
+
+# Plotting T^2 vs r^3
+plt.figure(figsize=(8,6))
+plt.scatter(r_cubed, T_squared, color='blue', label="Data Points")
+plt.plot(r_cubed, np.poly1d(np.polyfit(r_cubed, T_squared, 1))(r_cubed), color='red', label="Best Fit Line")
+plt.title("Kepler's Third Law: $T^2$ vs $r^3$")
+plt.xlabel("$r^3$ (m^3)")
+plt.ylabel("$T^2$ (s^2)")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
