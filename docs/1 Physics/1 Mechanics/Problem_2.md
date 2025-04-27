@@ -83,41 +83,7 @@ The following Python code solves this ODE numerically using parameters $g=9.81$ 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
-
-
-# Parameters
-g = 9.81  # m/s^2
-L = 1.0   # m
-b = 0.2   # s^-1
-A = 0.5   # s^-2
-omega = 0.8 * np.sqrt(g/L)
-
-# ODE system: dtheta/dt = omega, domega/dt = -b*omega - (g/L)*sin(theta) + A*cos(omega*t)
-def pendulum(state, t, b, g, L, A, omega):
-    theta, omega = state
-    dtheta_dt = omega
-    domega_dt = -b*omega - (g/L)*np.sin(theta) + A*np.cos(omega*t)
-    return [dtheta_dt, domega_dt]
-
-# Time array
-t = np.linspace(0, 20, 1000)
-
-# Initial conditions: theta(0) = 0.1 rad, dtheta/dt(0) = 0
-state0 = [0.1, 0.0]
-
-# Solve ODE
-solution = odeint(pendulum, state0, t, args=(b, g, L, A, omega))
-theta = solution[:, 0]
-
-# Plot
-plt.figure(figsize=(8, 5))
-plt.plot(t, theta, label=r'$\theta(t)$')
-plt.xlabel('Time (s)')
-plt.ylabel('Angular Displacement (rad)')
-plt.title('Forced Damped Pendulum Motion')
-plt.grid(True)
-plt.legend()
-plt.show()
+```
 
 ### 1.4 Resonance
 
