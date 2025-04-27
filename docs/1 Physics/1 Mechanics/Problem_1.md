@@ -2,7 +2,7 @@ Investigating the Range as a Function of the Angle of Projection
 Physics | Gravity | KW1 Assignment
 Author: capitala61
 
-Date: March 26, 2025
+Date: March 30, 2025
 ---
 
 # Problem 1
@@ -201,44 +201,42 @@ $$
 
 ## 4. Python Code for Visualizing the Range
 
-![alt text](image-6.png)
----
+![alt text](image-7.png)
 
+---
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Constants
-v_0 = 20  # Initial velocity in m/s
-g = 9.81  # Gravitational acceleration in m/s^2
+v0 = 50
+g = 9.81
+angles_deg = [15, 45, 75]
+angles_rad = np.radians(angles_deg)
 
-# Function to calculate the range for different launch angles
-def calculate_range(v_0, g, theta):
-    theta_rad = np.radians(theta)
-    R = (v_0**2 * np.sin(2 * theta_rad)) / g
-    return R
+# Plot setup
+plt.figure(figsize=(10, 6))
+colors = ['b', 'g', 'r']
 
-# Launch angles from 0 to 90 degrees in 5-degree increments
-angles = np.arange(0, 91, 5)
+# Plot trajectory for each angle
+for angle_rad, angle_deg, color in zip(angles_rad, angles_deg, colors):
+    t_flight = 2 * v0 * np.sin(angle_rad) / g
+    t = np.linspace(0, t_flight, 1000)
+    x = v0 * np.cos(angle_rad) * t
+    y = v0 * np.sin(angle_rad) * t - 0.5 * g * t**2
+    plt.plot(x, y, color=color, label=f'Angle = {angle_deg}°')
 
-# Calculate the range for each angle
-ranges = [calculate_range(v_0, g, angle) for angle in angles]
-
-# Calculate and print the range at 45 degrees
-range_45 = calculate_range(v_0, g, 45)
-print(f"Maximum range at 45 degrees: {range_45:.2f} meters")
-
-# Plotting the range vs. launch angle
-plt.plot(angles, ranges, marker='o', label='Range vs Angle')
-plt.scatter(45, range_45, color='red', zorder=5, label=f'Max Range @ 45° ({range_45:.2f} m)')
-plt.title('Projectile Range vs Launch Angle')
-plt.xlabel('Launch Angle (degrees)')
-plt.ylabel('Range (meters)')
+# Plot customization
+plt.xlabel('Horizontal Distance (m)')
+plt.ylabel('Height (m)')
+plt.title('Projectile Motion Trajectories')
 plt.grid(True)
 plt.legend()
-plt.show()
-```
+plt.axhline(0, color='black', linewidth=0.5)
+plt.axvline(0, color='black', linewidth=0.5)
 
+# Save the plot
+plt.savefig('projectile_motion.png')
 ---
 
 # Practical Applications of Projectile Motion
