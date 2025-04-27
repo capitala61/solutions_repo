@@ -77,13 +77,62 @@ $$d^2\theta/dt^2+b\,d\theta/dt+(g/L)\sin\theta=A\cos(\omega t)$$
 The following Python code solves this ODE numerically using parameters $g=9.81$ m/s$^2$, $L=1$ m, $b=0.2$ s$^{-1}$, $A=0.5$ s$^{-2}$, and $\omega=0.8\sqrt{g/L}$, plotting $\theta(t)$ over time.
 
 ![alt text](image-3.png)
----
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
+
 ```
+
+### Additional Visualization: Simple Pendulum Motion (Undamped, No Forcing)
+
+To further illustrate the basic pendulum dynamics without damping ($b=0$) and without external forcing ($A=0$), we plot $\theta(t)$ over time for small initial displacement.  
+This captures the pure periodic motion expected from an ideal pendulum.
+
+![alt text](image-9.png)
+---
+
+---
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Simple pendulum parameters
+b = 0.0  # damping
+A = 0.0  # forcing
+omega_f = 0.0
+g = 9.81
+L = 1.0
+
+def simple_pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -(g/L)*np.sin(theta)]
+    return dydt
+
+# Time points
+t_span = (0, 20)
+t_eval = np.linspace(*t_span, 1000)
+y0 = [0.2, 0.0]  # initial conditions: [angle, angular velocity]
+
+# Solve
+sol = solve_ivp(simple_pendulum, t_span, y0, t_eval=t_eval)
+
+# Plot
+fig, axs = plt.subplots(1,2, figsize=(12,5))
+axs[0].plot(sol.t, sol.y[0], 'r')
+axs[0].set_title('Simple Pendulum - Time Series')
+axs[0].set_xlabel('Time (s)')
+axs[0].set_ylabel('Angle (rad)')
+
+axs[1].plot(sol.y[0], sol.y[1], 'r')
+axs[1].set_title('Simple Pendulum - Phase Portrait')
+axs[1].set_xlabel('Angle (rad)')
+axs[1].set_ylabel('Angular Velocity (rad/s)')
+
+plt.tight_layout()
+plt.show()
+
 
 ### 1.4 Resonance
 
