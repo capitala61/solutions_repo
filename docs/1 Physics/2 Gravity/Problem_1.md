@@ -104,6 +104,7 @@ plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.show()
+```
 
 # 🌠 Physical Meaning of Kepler’s Third Law
 
@@ -192,7 +193,7 @@ plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.show()
-
+```
 # 🌌 Astronomical Implications of Kepler’s Third Law
 
 Kepler’s Third Law is more than a mathematical curiosity — it's a **powerful tool in astronomy**. The relationship:
@@ -237,7 +238,7 @@ G = 6.67430e-11 # m^3 kg^-1 s^-2
 # Mass of Earth calculation
 M = (4 * np.pi**2 * r**3) / (G * T**2)
 print(f"Estimated mass of Earth: {M:.2e} kg")
-
+```
 # 🌠 Extending Kepler’s Third Law to Elliptical Orbits and Non-Planetary Bodies
 
 Kepler's Third Law for **circular orbits** provides an elegant relationship between orbital period $T$ and orbital radius $r$:
@@ -326,7 +327,7 @@ import numpy as np
 
 # Constants
 G = 6.67430e-11 # m^3 kg
-
+```
 # 🌍 Real-World Applications of Kepler's Third Law
 
 Kepler’s Third Law allows us to predict orbital periods and distances for a variety of celestial bodies. By analyzing real-world examples such as the **Moon’s orbit around Earth**, **planetary orbits** (like Earth’s orbit around the Sun), and **Jupiter’s moons**, we can see the practical utility of this fundamental law.
@@ -365,7 +366,7 @@ r_moon = 3.84e8  # meters (average distance from Earth to Moon)
 T_moon = 2 * np.pi * np.sqrt(r_moon**3 / (G * M_earth))
 T_moon_days = T_moon / (60 * 60 * 24)  # Convert from seconds to days
 print(f"Orbital period of the Moon: {T_moon_days:.2f} days")
-
+```
 # 🛰️ Computational Task: Simulating Circular Orbits
 
 In this section, we will build a Python script or Jupyter Notebook to simulate circular orbits based on Kepler's Third Law. The primary focus will be on simulating a **circular orbit** of a satellite (or any celestial object) around a central body (e.g., a planet or star).
@@ -467,7 +468,7 @@ plt.show()
 print(f"Orbital Period: {T/86400:.2f} days")
 print(f"Orbital Velocity: {v/1000:.2f} km/s")
 # 🪐 Verifying Kepler’s Third Law Numerically
-
+```
 In this section, we will verify **Kepler's Third Law** numerically by calculating the orbital period of a planet or moon and comparing it to the values predicted by the law.
 
 Kepler's Third Law states that the square of the orbital period ($T^2$) is directly proportional to the cube of the orbital radius ($r^3$). Mathematically, this relationship can be written as:
@@ -556,6 +557,7 @@ plt.ylabel("$T^2$ (s^2)")
 plt.legend()
 plt.grid(True)
 plt.show()
+```
 # 🪐 Plotting Orbital Data
 
 In this section, we will create plots that represent the relationships between orbital radius and the square of the orbital period ($T^2$), as well as plot the trajectories of orbits.
@@ -658,3 +660,4 @@ plt.gca().set_aspect('equal', adjustable='box')
 plt.legend()
 plt.grid(True)
 plt.show()
+```
