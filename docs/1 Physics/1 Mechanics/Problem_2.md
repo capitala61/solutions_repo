@@ -47,11 +47,11 @@ The solution combines homogeneous and particular components:
 
 $$\theta_h(t)=C_1e^{r_1t}+C_2e^{r_2t}$$
 
-- For underdamped systems ($b^2<4(g/L)$):
+  - For underdamped systems ($b^2<4(g/L)$):
 
 $$\theta_h(t)=e^{-(b/2)t}(C_1\cos(\omega_dt)+C_2\sin(\omega_dt))$$
 
-    Where damped frequency is:
+  - Where damped frequency is:
 
 $$\omega_d=\sqrt{(g/L)-(b^2/4)}$$
 
