@@ -80,6 +80,7 @@ $$T^2 = \frac{4\pi^2}{GM} \cdot r^3$$
 Let's simulate this law using Python.
 ---
 ![alt text](image-1.png)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -104,6 +105,7 @@ plt.legend()
 plt.tight_layout()
 plt.savefig('kepler_verification_plot.png')  # Save the plot as per guidelines
 ```
+
 # 🌠 Physical Meaning of Kepler’s Third Law
 
 We previously derived Kepler's Third Law for circular orbits:
@@ -169,6 +171,7 @@ This relationship elegantly connects **time** (orbital period) with **space** (o
 Let’s confirm that this ratio is constant for Earth-centered orbits.
 
 ![alt text](image-4.png)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -193,6 +196,7 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 ```
+
 # 🌌 Astronomical Implications of Kepler’s Third Law
 
 Kepler’s Third Law is more than a mathematical curiosity — it's a **powerful tool in astronomy**. The relationship:
@@ -238,6 +242,7 @@ G = 6.67430e-11 # m^3 kg^-1 s^-2
 M = (4 * np.pi**2 * r**3) / (G * T**2)
 print(f"Estimated mass of Earth: {M:.2e} kg")
 ```
+
 # 🌠 Extending Kepler’s Third Law to Elliptical Orbits and Non-Planetary Bodies
 
 Kepler's Third Law for **circular orbits** provides an elegant relationship between orbital period $T$ and orbital radius $r$:
@@ -327,6 +332,7 @@ import numpy as np
 # Constants
 G = 6.67430e-11 # m^3 kg
 ```
+
 # 🌍 Real-World Applications of Kepler's Third Law
 
 Kepler’s Third Law allows us to predict orbital periods and distances for a variety of celestial bodies. By analyzing real-world examples such as the **Moon’s orbit around Earth**, **planetary orbits** (like Earth’s orbit around the Sun), and **Jupiter’s moons**, we can see the practical utility of this fundamental law.
@@ -366,6 +372,7 @@ T_moon = 2 * np.pi * np.sqrt(r_moon**3 / (G * M_earth))
 T_moon_days = T_moon / (60 * 60 * 24)  # Convert from seconds to days
 print(f"Orbital period of the Moon: {T_moon_days:.2f} days")
 ```
+
 # 🛰️ Computational Task: Simulating Circular Orbits
 
 In this section, we will build a Python script or Jupyter Notebook to simulate circular orbits based on Kepler's Third Law. The primary focus will be on simulating a **circular orbit** of a satellite (or any celestial object) around a central body (e.g., a planet or star).
@@ -433,6 +440,7 @@ We can use the derived formulas to simulate the motion of a satellite in a circu
 ### 2.1. **Python Code Implementation**
 
 ![alt text](image-6.png)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -468,6 +476,7 @@ plt.show()
 print(f"Orbital Period: {T/86400:.2f} days")
 print(f"Orbital Velocity: {v/1000:.2f} km/s")
 ```
+
 # 🪐 Verifying Kepler’s Third Law Numerically
 
 In this section, we will verify **Kepler's Third Law** numerically by calculating the orbital period of a planet or moon and comparing it to the values predicted by the law.
@@ -515,6 +524,7 @@ Let’s now calculate the orbital period for different celestial bodies, such as
 The following code will calculate the orbital period for different celestial bodies by using their **orbital radii** and **masses**. We will also visualize the relationship between the square of the orbital period ($T^2$) and the cube of the orbital radius ($r^3$).
 
 ![alt text](image-5.png)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -549,6 +559,7 @@ plt.legend()
 plt.grid(True)
 plt.savefig('kepler_third_law_plot.png')  # Save the plot as per guidelines
 ```
+
 # 🪐 Plotting Orbital Data
 
 In this section, we will create plots that represent the relationships between orbital radius and the square of the orbital period ($T^2$), as well as plot the trajectories of orbits.
@@ -586,6 +597,7 @@ $$T^2 = \frac{4\pi^2 r^3}{GM}$$
 We will calculate the orbital period for different celestial bodies and plot $T^2$ vs. $r^3$. This will help verify the relationship visually.
 
 ![alt text](image-2.png)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -653,6 +665,7 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```
+
 # 📚 Deliverables: Gravity Project
 
 This report provides a complete overview of the theoretical derivations, Python code implementations, simulation results, graphical visualizations, and discussions for understanding and applying **Kepler’s Third Law**.
@@ -700,6 +713,7 @@ $$T^2=\frac{4\pi^2r^3}{GM}$$
 ### 2.1. Python Code for Verification
 
 ![alt text](image-7.png)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
