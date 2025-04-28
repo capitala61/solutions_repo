@@ -79,33 +79,31 @@ $$T^2 = \frac{4\pi^2}{GM} \cdot r^3$$
 
 Let's simulate this law using Python.
 ---
-![alt text](image.png)
-
+![alt text](image-1.png)
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Constants
 G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
-M = 5.972e24     # Mass of the Earth (kg)
+M_sun = 1.989e30  # Mass of the Sun (kg)
 
 # Generate orbital radii (in meters)
 radii = np.linspace(7e6, 4.2e7, 100)  # from ~7000 km to ~42000 km
-# Calculate orbital periods
-T_squared = (4 * np.pi**2 * radii**3) / (G * M)
+r_cubed = radii**3  # Compute r^3
+T_squared = (4 * np.pi**2 * radii**3) / (G * M_sun)  # Compute T^2
 
-# Plotting
+# Plotting T^2 vs r^3
 plt.figure(figsize=(8, 5))
-plt.plot(radii, T_squared, label=r'$T^2 \propto r^3$', color='teal')
+plt.plot(r_cubed, T_squared, label=r'$T^2 \propto r^3$', color='teal')
 plt.title("Kepler’s Third Law: $T^2$ vs $r^3$")
-plt.xlabel("Orbital Radius $r$ (m)")
+plt.xlabel("Orbital Radius Cubed $r^3$ (m³)")
 plt.ylabel("Orbital Period Squared $T^2$ (s²)")
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
-plt.show()
+plt.savefig('kepler_verification_plot.png')  # Save the plot as per guidelines
 ```
-
 # 🌠 Physical Meaning of Kepler’s Third Law
 
 We previously derived Kepler's Third Law for circular orbits:
