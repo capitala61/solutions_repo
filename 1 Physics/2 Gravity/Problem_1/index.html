@@ -294,6 +294,7 @@ plt.savefig('kepler_verification_plot.png')  # Save the plot as per guidelines
 <hr/>
 <h2 id="python-demonstration-constant-ratio-t2r3">🧮 Python Demonstration: Constant Ratio <span class="arithmatex">\(T^2/r^3\)</span></h2>
 <p>Let’s confirm that this ratio is constant for Earth-centered orbits.</p>
+<p><img alt="alt text" src="../image-4.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -494,6 +495,7 @@ print(f"Orbital period of the Moon: {T_moon_days:.2f} days")
 <h2 id="2-python-script-to-simulate-circular-orbits">2. 🖥️ Python Script to Simulate Circular Orbits</h2>
 <p>We can use the derived formulas to simulate the motion of a satellite in a circular orbit. Below is a Python script that simulates and visualizes the orbit of a satellite around a central body.</p>
 <h3 id="21-python-code-implementation">2.1. <strong>Python Code Implementation</strong></h3>
+<p><img alt="alt text" src="../image-6.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -527,8 +529,8 @@ plt.show()
 # Output the orbital period and velocity
 print(f"Orbital Period: {T/86400:.2f} days")
 print(f"Orbital Velocity: {v/1000:.2f} km/s")
-# 🪐 Verifying Kepler’s Third Law Numerically
 </code></pre>
+<h1 id="verifying-keplers-third-law-numerically">🪐 Verifying Kepler’s Third Law Numerically</h1>
 <p>In this section, we will verify <strong>Kepler's Third Law</strong> numerically by calculating the orbital period of a planet or moon and comparing it to the values predicted by the law.</p>
 <p>Kepler's Third Law states that the square of the orbital period (<span class="arithmatex">\(T^2\)</span>) is directly proportional to the cube of the orbital radius (<span class="arithmatex">\(r^3\)</span>). Mathematically, this relationship can be written as:</p>
 <div class="arithmatex">\[T^2 \propto r^3\]</div>
@@ -556,49 +558,39 @@ print(f"Orbital Velocity: {v/1000:.2f} km/s")
 <p>Let’s now calculate the orbital period for different celestial bodies, such as <strong>Earth</strong> and <strong>Jupiter</strong>, using Kepler’s Third Law.</p>
 <h3 id="21-python-code-implementation_1">2.1. Python Code Implementation</h3>
 <p>The following code will calculate the orbital period for different celestial bodies by using their <strong>orbital radii</strong> and <strong>masses</strong>. We will also visualize the relationship between the square of the orbital period (<span class="arithmatex">\(T^2\)</span>) and the cube of the orbital radius (<span class="arithmatex">\(r^3\)</span>).</p>
+<p><img alt="alt text" src="../image-5.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
-# Constants
-G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)
+# Conversion factors
+AU_to_m = 1.496e11  # Meters per AU
+year_to_s = 3.156e7  # Seconds per year
 
-# Celestial bodies data (mass in kg, orbital radius in meters)
-celestial_bodies = {
-    "Earth": {"M": 5.972e24, "r": 1.496e11},  # Earth: 1 AU
-    "Jupiter": {"M": 1.898e27, "r": 7.785e11},  # Jupiter: 5.2 AU
-    "Saturn": {"M": 5.683e26, "r": 1.429e12},  # Saturn: 9.5 AU
-    "Mars": {"M": 6.417e23, "r": 2.279e11},  # Mars: 1.5 AU
+# Data for Mercury, Venus, Earth, Mars (semi-major axis in AU, period in years)
+planets = {
+    "Mercury": {"r": 0.387 * AU_to_m, "T": 0.241 * year_to_s},
+    "Venus": {"r": 0.723 * AU_to_m, "T": 0.615 * year_to_s},
+    "Earth": {"r": 1.000 * AU_to_m, "T": 1.000 * year_to_s},
+    "Mars": {"r": 1.524 * AU_to_m, "T": 1.881 * year_to_s},
 }
 
-# Calculating orbital period using Kepler's Third Law
-def calculate_orbital_period(M, r):
-    T = 2 * np.pi * np.sqrt(r**3 / (G * M))  # Orbital period in seconds
-    return T
+# Compute r^3 and T^2
+r_cubed = [data["r"]**3 for data in planets.values()]
+T_squared = [data["T"]**2 for data in planets.values()]
+planet_names = list(planets.keys())
 
-# Store calculated periods
-periods = {}
-for body, data in celestial_bodies.items():
-    T = calculate_orbital_period(data["M"], data["r"])
-    periods[body] = T
-
-# Display the orbital periods in days
-for body, period in periods.items():
-    print(f"Orbital Period of {body}: {period / 86400:.2f} days")
-
-# Plotting T^2 vs. r^3
-r_values = [data["r"] for data in celestial_bodies.values()]
-T_squared = [calculate_orbital_period(data["M"], data["r"])**2 for data in celestial_bodies.values()]
-r_cubed = [r**3 for r in r_values]
-
-plt.figure(figsize=(8,6))
-plt.scatter(r_cubed, T_squared, color='blue', label="Data Points")
-plt.plot(r_cubed, np.poly1d(np.polyfit(r_cubed, T_squared, 1))(r_cubed), color='red', label="Best Fit Line")
-plt.title("Kepler's Third Law: $T^2$ vs $r^3$")
-plt.xlabel("$r^3$ (m^3)")
-plt.ylabel("$T^2$ (s^2)")
+# Plot T^2 vs r^3 (should be a straight line)
+plt.figure(figsize=(8, 6))
+plt.scatter(r_cubed, T_squared, color='blue', label="Planets")
+for i, name in enumerate(planet_names):
+    plt.annotate(name, (r_cubed[i], T_squared[i]), fontsize=9, ha='right')
+plt.plot(r_cubed, np.poly1d(np.polyfit(r_cubed, T_squared, 1))(r_cubed), color='red', linestyle='--', label="Best Fit Line")
+plt.title("Kepler's Third Law: $T^2$ vs $r^3$ for Planets")
+plt.xlabel("$r^3$ (m³)")
+plt.ylabel("$T^2$ (s²)")
 plt.legend()
 plt.grid(True)
-plt.show()
+plt.savefig('kepler_third_law_plot.png')  # Save the plot as per guidelines
 </code></pre>
 <h1 id="plotting-orbital-data">🪐 Plotting Orbital Data</h1>
 <p>In this section, we will create plots that represent the relationships between orbital radius and the square of the orbital period (<span class="arithmatex">\(T^2\)</span>), as well as plot the trajectories of orbits.</p>
@@ -620,6 +612,7 @@ plt.show()
 <div class="arithmatex">\[T^2 = \frac{4\pi^2 r^3}{GM}\]</div>
 <h3 id="22-python-code-for-plotting">2.2. Python Code for Plotting</h3>
 <p>We will calculate the orbital period for different celestial bodies and plot <span class="arithmatex">\(T^2\)</span> vs. <span class="arithmatex">\(r^3\)</span>. This will help verify the relationship visually.</p>
+<p><img alt="alt text" src="../image-2.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -719,6 +712,7 @@ plt.show()
 <hr/>
 <h2 id="2-code-and-simulation-results">2. 🧑‍💻 Code and Simulation Results</h2>
 <h3 id="21-python-code-for-verification">2.1. Python Code for Verification</h3>
+<p><img alt="alt text" src="../image-7.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
