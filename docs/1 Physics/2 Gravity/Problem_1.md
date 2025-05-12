@@ -139,7 +139,7 @@ This relationship elegantly connects **time** (orbital period) with **space** (o
 
 Let’s confirm that this ratio is constant for Earth-centered orbits.
 
-![alt text](image-4.png)
+![alt text](image-13.png)
 
 ```python
 import numpy as np
@@ -212,7 +212,7 @@ We can use the derived formulas to simulate the motion of a satellite in a circu
 
 ### 2.1. **Python Code Implementation**
 
-![alt text](image-8.png)
+![alt text](image-12.png)
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -256,8 +256,8 @@ def update(frame):
     return satellite,
 
 # Create animation
-ani = FuncAnimation(fig, update, frames=len(t), interval=30, blit=True)
 
+ani = FuncAnimation(fig, update, frames=len(t), interval=50, blit=True)
 plt.show()
 
 # Output the orbital period and velocity
@@ -341,7 +341,7 @@ Let’s now calculate the orbital period for different celestial bodies, such as
 
 The following code will calculate the orbital period for different celestial bodies by using their **orbital radii** and **masses**. We will also visualize the relationship between the square of the orbital period ($T^2$) and the cube of the orbital radius ($r^3$).
 
-![alt text](image-5.png)
+![alt text](image-11.png)
 
 ```python
 import numpy as np
@@ -382,8 +382,7 @@ plt.savefig('kepler_third_law_plot.png')  # Save the plot as per guidelines
 
 ### 2.1. Python Code for Verification
 
-![alt text](image-7.png)
-
+![alt text](image-10.png)
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
