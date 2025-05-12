@@ -323,35 +323,51 @@ print(f"Orbital period of the Moon: {T_moon_days:.2f} days")
 <h2 id="2-python-script-to-simulate-circular-orbits">2. 🖥️ Python Script to Simulate Circular Orbits</h2>
 <p>We can use the derived formulas to simulate the motion of a satellite in a circular orbit. Below is a Python script that simulates and visualizes the orbit of a satellite around a central body.</p>
 <h3 id="21-python-code-implementation">2.1. <strong>Python Code Implementation</strong></h3>
-<p><img alt="alt text" src="../image-6.png"/></p>
+<p><img alt="alt text" src="../image-8.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 # Constants
 G = 6.67430e-11  # m^3 kg^-1 s^-2 (gravitational constant)
-M = 5.972e24  # kg (mass of Earth, you can adjust for different central bodies)
-r = 7.5e6  # meters (orbital radius, adjust as needed)
+M = 5.972e24  # kg (mass of Earth)
+r = 7.5e6  # meters (orbital radius)
 T = 2 * np.pi * np.sqrt(r**3 / (G * M))  # Orbital period
 v = np.sqrt(G * M / r)  # Orbital velocity
 
-# Time settings
-t = np.linspace(0, T, 1000)  # Time array for one complete orbit
-theta = 2 * np.pi * t / T  # Angle in radians
+# Time settings for animation
+omega = 2 * np.pi / T  # Angular velocity (rad/s)
+t = np.linspace(0, T, 360)  # Time array for one orbit
+x = r * np.cos(omega * t)  # X positions over time
+y = r * np.sin(omega * t)  # Y positions over time
 
-# Position of the satellite in polar coordinates
-x = r * np.cos(theta)
-y = r * np.sin(theta)
+# Set up the figure and axis
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.set_aspect('equal')
+ax.set_xlim(-r*1.5, r*1.5)
+ax.set_ylim(-r*1.5, r*1.5)
+ax.set_title("Satellite Orbit Animation", color='darkgreen')
+ax.set_xlabel("X (m)", color='darkgreen')
+ax.set_ylabel("Y (m)", color='darkgreen')
 
-# Plotting the orbit
-plt.figure(figsize=(6,6))
-plt.plot(x, y, label="Satellite Orbit")
-plt.scatter(0, 0, color='red', label="Central Body (Earth)", s=100)  # Earth at origin
-plt.title(f"Circular Orbit: Orbital Period = {T/86400:.2f} days")
-plt.xlabel("X Position (m)")
-plt.ylabel("Y Position (m)")
-plt.gca().set_aspect('equal', adjustable='box')
-plt.legend()
-plt.grid(True)
+# Draw the central body and initialize the satellite
+central_body = plt.Circle((0, 0), r*0.05, color='red', label='Earth')
+satellite, = plt.plot([], [], 'o', color='cyan', label='Satellite')
+orbit, = plt.plot(x, y, linestyle='--', color='gray', alpha=0.5)
+
+# Add the central body to the plot
+ax.add_artist(central_body)
+ax.legend(loc="upper right")
+ax.grid(True, linestyle='--', alpha=0.7)
+
+# Animation update function
+def update(frame):
+    satellite.set_data([x[frame]], [y[frame]])
+    return satellite,
+
+# Create animation
+ani = FuncAnimation(fig, update, frames=len(t), interval=30, blit=True)
+
 plt.show()
 
 # Output the orbital period and velocity
@@ -370,6 +386,34 @@ print(f"Orbital Velocity: {v/1000:.2f} km/s")
 - <span class="arithmatex">\(G\)</span> is the <strong>gravitational constant</strong> (<span class="arithmatex">\(6.67430 \times 10^{-11} \, \text{m}^3 \, \text{kg}^{-1} \, \text{s}^{-2}\)</span>).
 - <span class="arithmatex">\(M\)</span> is the <strong>mass of the central body</strong> (e.g., the Sun for planetary orbits).</p>
 <p>We will now use this formula to verify Kepler’s Third Law numerically for a set of planets and moons.</p>
+<h1 id="calculating-masses-of-earth-and-sun">🧮 Calculating Masses of Earth and Sun</h1>
+<pre><code class="language-python">import numpy as np
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+AU_to_m = 1.496e11  # Meters per AU
+year_to_s = 3.156e7  # Seconds per year
+day_to_s = 86400  # Seconds per day
+
+# Data for Earth's orbit around the Sun (to calculate Sun's mass)
+r_sun = 1.000 * AU_to_m  # Earth's semi-major axis (m)
+T_sun = 1.000 * year_to_s  # Earth's orbital period (s)
+
+# Data for Moon's orbit around Earth (to calculate Earth's mass)
+r_moon = 3.84e8  # Average distance from Earth to Moon (m)
+T_moon = 27.3 * day_to_s  # Moon's orbital period (s)
+
+# Calculate Sun's mass
+r_sun_cubed = r_sun ** 3
+T_sun_squared = T_sun ** 2
+M_sun = (4 * np.pi**2 * r_sun_cubed) / (G * T_sun_squared)
+print(f"Mass of the Sun: {M_sun:.3e} kg")
+
+# Calculate Earth's mass
+r_moon_cubed = r_moon ** 3
+T_moon_squared = T_moon ** 2
+M_earth = (4 * np.pi**2 * r_moon_cubed) / (G * T_moon_squared)
+print(f"Mass of the Earth: {M_earth:.3e} kg")
+</code></pre>
 <hr/>
 <h2 id="1-keplers-third-law-formula">1. 🧮 Kepler’s Third Law Formula</h2>
 <p>From Kepler's Third Law, the orbital period for a circular orbit is:</p>
@@ -429,31 +473,27 @@ import matplotlib.pyplot as plt
 # Constants
 G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
 
-# Celestial bodies data
+# Conversion factors
+AU_to_m = 1.496e11  # Meters per AU
+year_to_s = 3.156e7  # Seconds per year
+
 celestial_bodies = {
-    "Earth": {"M": 5.972e24, "r": 1.496e11},
-    "Jupiter": {"M": 1.898e27, "r": 7.785e11},
-    "Mars": {"M": 6.417e23, "r": 2.279e11},
-    "Saturn": {"M": 5.683e26, "r": 1.429e12},
+    "Mercury": {"r": 0.387 * AU_to_m, "T": 0.241 * year_to_s},
+    "Venus": {"r": 0.723 * AU_to_m, "T": 0.615 * year_to_s},
+    "Earth": {"r": 1.000 * AU_to_m, "T": 1.000 * year_to_s},
+    "Mars": {"r": 1.524 * AU_to_m, "T": 1.881 * year_to_s},
 }
 
-def calculate_orbital_period(M, r):
-    return 2 * np.pi * np.sqrt(r**3 / (G * M))
-
-# Store values
-r_values = []
-T_squared = []
-r_cubed = []
-
-for body, data in celestial_bodies.items():
-    T = calculate_orbital_period(data["M"], data["r"])
-    r_values.append(data["r"])
-    T_squared.append(T**2)
-    r_cubed.append(data["r"]**3)
+# Compute r^3 and T^2
+r_cubed = [data["r"]**3 for data in celestial_bodies.values()]
+T_squared = [data["T"]**2 for data in celestial_bodies.values()]
+planet_names = list(celestial_bodies.keys())
 
 # Plotting T^2 vs r^3
 plt.figure(figsize=(8,6))
-plt.scatter(r_cubed, T_squared, color='blue', label="Data Points")
+plt.scatter(r_cubed, T_squared, color='blue', label="Planets")
+for i, name in enumerate(planet_names):
+    plt.annotate(name, (r_cubed[i], T_squared[i]), fontsize=9, ha='right')
 plt.plot(r_cubed, np.poly1d(np.polyfit(r_cubed, T_squared, 1))(r_cubed), color='red', label="Best Fit Line")
 plt.title("Kepler's Third Law: $T^2$ vs $r^3$")
 plt.xlabel("$r^3$ (m^3)")
