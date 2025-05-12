@@ -131,7 +131,7 @@ Combination of Earth's escape velocity and Solar system escape requirements.
    $$v_{\text{Sun esc}}\approx42.1\text{km/s}$$
 
 3. Optimal escape condition:
-   $$v_3\approx\sqrt{v_{\text{Earth}}^2+(\sqrt{2}-1)^2v_{\text{Sun esc}}^2$$
+  $$v_3\approx\sqrt{v_{\text{Earth}}^2+(\sqrt{2}-1)^2v_{\text{Sun esc}}^2}$$
 
 **Practical Value**:
 - Approximately 16.6 km/s from Earth's surface
