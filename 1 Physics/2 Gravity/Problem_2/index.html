@@ -172,6 +172,159 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="cosmic-velocities-definitions-and-physical-meaning">Cosmic Velocities: Definitions and Physical Meaning</h1>
+<h2 id="1-first-cosmic-velocity-orbital-velocity">1. First Cosmic Velocity (Orbital Velocity)</h2>
+<p><strong>Definition</strong>:<br/>
+The minimum velocity required for an object to maintain a stable circular orbit around a celestial body (e.g., Earth) without propulsion.  </p>
+<p><strong>Purpose</strong>:<br/>
+- Enables satellites to orbit without falling back to the surface.<br/>
+- Balances centripetal force and gravitational pull.  </p>
+<p><strong>Mathematical Formulation</strong>:<br/>
+The first cosmic velocity <span class="arithmatex">\(v_1\)</span> is derived from the equilibrium of forces:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(F_{\text{centripetal}} = F_{\text{gravitational}}\)</span>\)</span><br/>
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{m v_1^2}{r} = \frac{G M m}{r^2}\)</span>\)</span><br/>
+<span class="arithmatex">\(<span class="arithmatex">\(v_1 = \sqrt{\frac{G M}{r}}\)</span>\)</span><br/>
+where:<br/>
+- <span class="arithmatex">\(G\)</span> = Gravitational constant (<span class="arithmatex">\(6.674 \times 10^{-11} \text{m}^3 \text{kg}^{-1} \text{s}^{-2}\)</span>)<br/>
+- <span class="arithmatex">\(M\)</span> = Mass of the celestial body (kg)<br/>
+- <span class="arithmatex">\(r\)</span> = Distance from the center of the body (m)  </p>
+<hr/>
+<h2 id="2-second-cosmic-velocity-escape-velocity">2. Second Cosmic Velocity (Escape Velocity)</h2>
+<p><strong>Definition</strong>:<br/>
+The minimum velocity needed for an object to break free from a celestial body’s gravitational influence (i.e., reach infinity with zero residual speed).  </p>
+<p><strong>Significance</strong>:<br/>
+- Critical for missions leaving Earth (e.g., Moon landings, Mars missions).<br/>
+- Determines the energy required for unbound trajectories.  </p>
+<p><strong>Mathematical Formulation</strong>:<br/>
+Escape velocity <span class="arithmatex">\(v_2\)</span> is found by equating kinetic energy to gravitational potential energy:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{1}{2} m v_2^2 = \frac{G M m}{r}\)</span>\)</span><br/>
+<span class="arithmatex">\(<span class="arithmatex">\(v_2 = \sqrt{\frac{2 G M}{r}} = \sqrt{2} \cdot v_1\)</span>\)</span> </p>
+<hr/>
+<h2 id="3-third-cosmic-velocity-solar-system-escape-velocity">3. Third Cosmic Velocity (Solar System Escape Velocity)</h2>
+<p><strong>Definition</strong>:<br/>
+The velocity required for an object to escape the Sun’s gravitational pull <em>after already leaving Earth</em>.  </p>
+<p><strong>Application</strong>:<br/>
+- Necessary for interstellar probes (e.g., Voyager 1, 2).<br/>
+- Depends on Earth’s orbital velocity around the Sun (~29.8 km/s).  </p>
+<p><strong>Mathematical Formulation</strong>:<br/>
+Approximated by:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(v_3 \approx \sqrt{v_{\text{Earth orbit}}^2 + \left(\sqrt{2} - 1\right)^2 v_{\text{Sun escape}}^2\)</span>\)</span><br/>
+where:<br/>
+- <span class="arithmatex">\(v_{\text{Earth orbit}}\)</span> = Earth’s orbital speed around the Sun.<br/>
+- <span class="arithmatex">\(v_{\text{Sun escape}}\)</span> = Escape velocity from the Sun at Earth’s orbit (~42.1 km/s).  </p>
+<hr/>
+<h2 id="python-code-calculating-cosmic-velocities">Python Code: Calculating Cosmic Velocities</h2>
+<pre><code class="language-python">import numpy as np
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+
+def cosmic_velocities(M, r):
+    """Calculate first (v1) and second (v2) cosmic velocities."""
+    v1 = np.sqrt(G * M / r)          # First cosmic velocity (m/s)
+    v2 = np.sqrt(2 * G * M / r)      # Second cosmic velocity (m/s)
+    return v1, v2
+
+# Example: Earth
+M_Earth = 5.972e24     # Mass (kg)
+r_Earth = 6.371e6      # Radius (m)
+v1, v2 = cosmic_velocities(M_Earth, r_Earth)
+print(f"Earth: v1 = {v1/1000:.2f} km/s, v2 = {v2/1000:.2f} km/s")
+</code></pre>
+<h1 id="mathematical-derivations-and-parameters-of-cosmic-velocities">Mathematical Derivations and Parameters of Cosmic Velocities</h1>
+<h2 id="1-derivation-of-first-cosmic-velocity-circular-orbital-velocity">1. Derivation of First Cosmic Velocity (Circular Orbital Velocity)</h2>
+<p><strong>Physical Principle</strong>:<br/>
+Balance between centripetal force and gravitational attraction.</p>
+<p><strong>Step-by-Step Derivation</strong>:
+1. Equate centripetal force to gravitational force:
+   <span class="arithmatex">\(<span class="arithmatex">\(F_c=F_g\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{mv_1^2}{r}=\frac{GMm}{r^2}\)</span>\)</span></p>
+<ol>
+<li>
+<p>Cancel common terms (<span class="arithmatex">\(m\)</span> and one <span class="arithmatex">\(r\)</span>):
+   <span class="arithmatex">\(<span class="arithmatex">\(v_1^2=\frac{GM}{r}\)</span>\)</span></p>
+</li>
+<li>
+<p>Final expression:
+   <span class="arithmatex">\(<span class="arithmatex">\(v_1=\sqrt{\frac{GM}{r}}\)</span>\)</span></p>
+</li>
+</ol>
+<p><strong>Key Parameters</strong>:
+- <span class="arithmatex">\(G\)</span>: Gravitational constant (<span class="arithmatex">\(6.674\times10^{-11}\text{m}^3\text{kg}^{-1}\text{s}^{-2}\)</span>)
+- <span class="arithmatex">\(M\)</span>: Mass of celestial body (kg)
+- <span class="arithmatex">\(r\)</span>: Orbital radius from center (m)</p>
+<hr/>
+<h2 id="2-derivation-of-second-cosmic-velocity-escape-velocity">2. Derivation of Second Cosmic Velocity (Escape Velocity)</h2>
+<p><strong>Physical Principle</strong>:<br/>
+Energy conservation - kinetic energy equals gravitational potential energy.</p>
+<p><strong>Step-by-Step Derivation</strong>:
+1. Set kinetic energy equal to work needed against gravity:
+   <span class="arithmatex">\(<span class="arithmatex">\(\frac{1}{2}mv_2^2=\int_r^\infty\frac{GMm}{r'^2}dr'\)</span>\)</span></p>
+<ol>
+<li>
+<p>Solve the integral:
+   <span class="arithmatex">\(<span class="arithmatex">\(\frac{1}{2}mv_2^2=\frac{GMm}{r}\)</span>\)</span></p>
+</li>
+<li>
+<p>Final expression:
+   <span class="arithmatex">\(<span class="arithmatex">\(v_2=\sqrt{\frac{2GM}{r}}\)</span>\)</span></p>
+</li>
+</ol>
+<p><strong>Relation to First Cosmic Velocity</strong>:
+<span class="arithmatex">\(<span class="arithmatex">\(v_2=\sqrt{2}\cdot v_1\)</span>\)</span></p>
+<hr/>
+<h2 id="3-concept-of-third-cosmic-velocity-solar-system-escape">3. Concept of Third Cosmic Velocity (Solar System Escape)</h2>
+<p><strong>Physical Principle</strong>:<br/>
+Combination of Earth's escape velocity and Solar system escape requirements.</p>
+<p><strong>Key Components</strong>:
+1. Earth's orbital velocity around Sun:
+   <span class="arithmatex">\(<span class="arithmatex">\(v_{\text{Earth}}\approx29.8\text{km/s}\)</span>\)</span></p>
+<ol>
+<li>
+<p>Solar escape velocity at Earth's orbit:
+   <span class="arithmatex">\(<span class="arithmatex">\(v_{\text{Sun esc}}\approx42.1\text{km/s}\)</span>\)</span></p>
+</li>
+<li>
+<p>Optimal escape condition:
+   <span class="arithmatex">\(<span class="arithmatex">\(v_3\approx\sqrt{v_{\text{Earth}}^2+(\sqrt{2}-1)^2v_{\text{Sun esc}}^2\)</span>\)</span></p>
+</li>
+</ol>
+<p><strong>Practical Value</strong>:
+- Approximately 16.6 km/s from Earth's surface
+- Accounts for Earth's gravity and Solar system escape</p>
+<hr/>
+<h2 id="key-parameters-affecting-cosmic-velocities">Key Parameters Affecting Cosmic Velocities</h2>
+<p><strong>Primary Parameters</strong>:
+- <span class="arithmatex">\(M\)</span>: Mass of primary body
+  - Directly proportional to <span class="arithmatex">\(v_1\)</span> and <span class="arithmatex">\(v_2\)</span>
+  - Example: Jupiter's large mass → high escape velocity
+- <span class="arithmatex">\(r\)</span>: Distance from center
+  - Inversely proportional to velocities
+  - Higher orbits require lower velocities</p>
+<p><strong>Secondary Factors</strong>:
+- Body's rotation (affects effective <span class="arithmatex">\(r\)</span>)
+- Atmospheric drag (for surface launches)
+- Relativistic effects (for extreme gravity)</p>
+<hr/>
+<h2 id="python-implementation">Python Implementation</h2>
+<p>```python
+import numpy as np</p>
+<h1 id="universal-constants">Universal constants</h1>
+<p>G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)</p>
+<p>def calculate_velocities(M, r):
+    """Calculate all three cosmic velocities"""
+    v1 = np.sqrt(G * M / r)               # First cosmic
+    v2 = np.sqrt(2 * G * M / r)           # Second cosmic
+    v3 = np.sqrt(29.8e3<strong>2 + (np.sqrt(2)-1)</strong>2 * 42.1e3**2)  # Third cosmic approx
+    return v1, v2, v3</p>
+<h1 id="example-earth-values">Example: Earth values</h1>
+<p>M_earth = 5.972e24  # kg
+r_earth = 6.371e6   # m
+v1, v2, v3 = calculate_velocities(M_earth, r_earth)</p>
+<p>print(f"Earth's cosmic velocities:")
+print(f"v1 = {v1/1000:.2f} km/s (orbital)")
+print(f"v2 = {v2/1000:.2f} km/s (escape)")
+print(f"v3 ≈ {v3/1000:.2f} km/s (solar escape)")</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
