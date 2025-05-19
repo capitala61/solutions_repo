@@ -206,19 +206,19 @@ Energy conservation (kinetic + potential = 0 at infinity):
 **Derivation**:  
 
 1. Escape Sun's gravity at planet's orbital distance:  
-$
+$$
 v_{\text{esc,Sun}}=\sqrt{\frac{2GM_{\text{Sun}}}{R_{\text{orbit}}}}
-$
+$$
 
 2. Planet's orbital velocity around Sun:  
-$
+$$
 v_{\text{orbit}}=\sqrt{\frac{GM_{\text{Sun}}}{R_{\text{orbit}}}}
-$
+$$
 
 3. Total velocity from planet's surface:  
-$
+$$
 v_3=\sqrt{v_2^2+(v_{\text{esc,Sun}}-v_{\text{orbit}})^2}
-$
+$$
 
 
 ## 3. Cosmic Velocities for Earth  
