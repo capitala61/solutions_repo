@@ -522,19 +522,74 @@ for spine in ax.spines.values():
 plt.tight_layout()
 plt.show()
 </code></pre>
-<p><strong>Parameters</strong>:<br/>
-| Body    | Mass (kg)          | Radius (m)       | Orbital Radius (m)     |<br/>
-|---------|--------------------|------------------|------------------------|<br/>
-| Moon    | <span class="arithmatex">\(7.342 \times 10^{22}\)</span>  | <span class="arithmatex">\(1.737 \times 10^6\)</span>  | <span class="arithmatex">\(1.496 \times 10^{11}\)</span> (Earth's)|<br/>
-| Mars    | <span class="arithmatex">\(6.417 \times 10^{23}\)</span>  | <span class="arithmatex">\(3.390 \times 10^6\)</span>  | <span class="arithmatex">\(2.279 \times 10^{11}\)</span> |<br/>
-| Jupiter | <span class="arithmatex">\(1.899 \times 10^{27}\)</span>  | <span class="arithmatex">\(6.991 \times 10^7\)</span>  | <span class="arithmatex">\(7.785 \times 10^{11}\)</span> |  </p>
-<p><strong>Calculated Velocities (km/s)</strong>:<br/>
-| Body    | <span class="arithmatex">\(v_1\)</span> | <span class="arithmatex">\(v_2\)</span> | <span class="arithmatex">\(v_3\)</span>  |<br/>
-|---------|--------|--------|---------|<br/>
-| Earth   | 7.91   | 11.19  | 16.64   |<br/>
-| Moon    | 1.68   | 2.38   | 16.51   |<br/>
-| Mars    | 3.55   | 5.03   | 13.09   |<br/>
-| Jupiter | 42.14  | 59.57  | 9.67    |  </p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Body</th>
+<th>Mass (kg)</th>
+<th>Radius (m)</th>
+<th>Orbital Radius (m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moon</td>
+<td><span class="arithmatex">\(7.342 \times 10^{22}\)</span></td>
+<td><span class="arithmatex">\(1.737 \times 10^6\)</span></td>
+<td><span class="arithmatex">\(1.496 \times 10^{11}\)</span> (Earth's)</td>
+</tr>
+<tr>
+<td>Mars</td>
+<td><span class="arithmatex">\(6.417 \times 10^{23}\)</span></td>
+<td><span class="arithmatex">\(3.390 \times 10^6\)</span></td>
+<td><span class="arithmatex">\(2.279 \times 10^{11}\)</span></td>
+</tr>
+<tr>
+<td>Jupiter</td>
+<td><span class="arithmatex">\(1.899 \times 10^{27}\)</span></td>
+<td><span class="arithmatex">\(6.991 \times 10^7\)</span></td>
+<td><span class="arithmatex">\(7.785 \times 10^{11}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calculated Velocities (km/s)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Body</th>
+<th><span class="arithmatex">\(v_1\)</span></th>
+<th><span class="arithmatex">\(v_2\)</span></th>
+<th><span class="arithmatex">\(v_3\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Earth</td>
+<td>7.91</td>
+<td>11.19</td>
+<td>16.64</td>
+</tr>
+<tr>
+<td>Moon</td>
+<td>1.68</td>
+<td>2.38</td>
+<td>16.51</td>
+</tr>
+<tr>
+<td>Mars</td>
+<td>3.55</td>
+<td>5.03</td>
+<td>13.09</td>
+</tr>
+<tr>
+<td>Jupiter</td>
+<td>42.14</td>
+<td>59.57</td>
+<td>9.67</td>
+</tr>
+</tbody>
+</table>
 <h2 id="5-visualizations">5. Visualizations</h2>
 <h3 id="51-cosmic-velocities-comparison">5.1 Cosmic Velocities Comparison</h3>
 <pre><code class="language-python">import numpy as np
