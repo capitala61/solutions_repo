@@ -135,37 +135,6 @@ This relationship elegantly connects **time** (orbital period) with **space** (o
 
 ---
 
-## 🧮 Python Demonstration: Constant Ratio $T^2/r^3$
-
-Let’s confirm that this ratio is constant for Earth-centered orbits.
-
-![alt text](image-13.png)
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-G = 6.67430e-11  # m^3 kg^-1 s^-2
-M = 5.972e24     # kg (mass of Earth)
-
-# Orbital radii (meters)
-radii = np.linspace(7e6, 4.2e7, 100)
-T_squared = (4 * np.pi**2 * radii**3) / (G * M)
-ratio = T_squared / radii**3
-
-# Plot
-plt.figure(figsize=(8, 5))
-plt.plot(radii, ratio, label=r'$\frac{T^2}{r^3}$', color='purple')
-plt.title("Constant Ratio in Kepler’s Third Law")
-plt.xlabel("Orbital Radius $r$ (m)")
-plt.ylabel("Ratio $T^2 / r^3$ (s²/m³)")
-plt.grid(True)
-plt.legend()
-plt.tight_layout()
-plt.show()
-```
-
 # 🌍 Real-World Applications of Kepler's Third Law
 
 Kepler’s Third Law allows us to predict orbital periods and distances for a variety of celestial bodies. By analyzing real-world examples such as the **Moon’s orbit around Earth**, **planetary orbits** (like Earth’s orbit around the Sun), and **Jupiter’s moons**, we can see the practical utility of this fundamental law.
