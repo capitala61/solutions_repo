@@ -464,44 +464,6 @@ plt.legend()
 plt.grid(True)
 plt.savefig('kepler_third_law_plot.png')  # Save the plot as per guidelines
 </code></pre>
-<h2 id="2-code-and-simulation-results">2. 🧑‍💻 Code and Simulation Results</h2>
-<h3 id="21-python-code-for-verification">2.1. Python Code for Verification</h3>
-<p><img alt="alt text" src="../image-10.png"/></p>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
-
-# Conversion factors
-AU_to_m = 1.496e11  # Meters per AU
-year_to_s = 3.156e7  # Seconds per year
-
-celestial_bodies = {
-    "Mercury": {"r": 0.387 * AU_to_m, "T": 0.241 * year_to_s},
-    "Venus": {"r": 0.723 * AU_to_m, "T": 0.615 * year_to_s},
-    "Earth": {"r": 1.000 * AU_to_m, "T": 1.000 * year_to_s},
-    "Mars": {"r": 1.524 * AU_to_m, "T": 1.881 * year_to_s},
-}
-
-# Compute r^3 and T^2
-r_cubed = [data["r"]**3 for data in celestial_bodies.values()]
-T_squared = [data["T"]**2 for data in celestial_bodies.values()]
-planet_names = list(celestial_bodies.keys())
-
-# Plotting T^2 vs r^3
-plt.figure(figsize=(8,6))
-plt.scatter(r_cubed, T_squared, color='blue', label="Planets")
-for i, name in enumerate(planet_names):
-    plt.annotate(name, (r_cubed[i], T_squared[i]), fontsize=9, ha='right')
-plt.plot(r_cubed, np.poly1d(np.polyfit(r_cubed, T_squared, 1))(r_cubed), color='red', label="Best Fit Line")
-plt.title("Kepler's Third Law: $T^2$ vs $r^3$")
-plt.xlabel("$r^3$ (m^3)")
-plt.ylabel("$T^2$ (s^2)")
-plt.legend()
-plt.grid(True)
-plt.show()
-</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
