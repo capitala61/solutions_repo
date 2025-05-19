@@ -343,14 +343,16 @@ plt.tight_layout()
 plt.show()
 ```
 
-**Parameters**:  
+**Parameters**:
+
 | Body    | Mass (kg)          | Radius (m)       | Orbital Radius (m)     |  
 |---------|--------------------|------------------|------------------------|  
 | Moon    | \(7.342 \times 10^{22}\)  | \(1.737 \times 10^6\)  | \(1.496 \times 10^{11}\) (Earth's)|  
 | Mars    | \(6.417 \times 10^{23}\)  | \(3.390 \times 10^6\)  | \(2.279 \times 10^{11}\) |  
 | Jupiter | \(1.899 \times 10^{27}\)  | \(6.991 \times 10^7\)  | \(7.785 \times 10^{11}\) |  
 
-**Calculated Velocities (km/s)**:  
+**Calculated Velocities (km/s)**:
+ 
 | Body    | \(v_1\) | \(v_2\) | \(v_3\)  |  
 |---------|--------|--------|---------|  
 | Earth   | 7.91   | 11.19  | 16.64   |  
