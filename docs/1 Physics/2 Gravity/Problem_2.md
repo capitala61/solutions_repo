@@ -352,7 +352,7 @@ plt.show()
 | Jupiter | \(1.899 \times 10^{27}\)  | \(6.991 \times 10^7\)  | \(7.785 \times 10^{11}\) |  
 
 **Calculated Velocities (km/s)**:
- 
+
 | Body    | \(v_1\) | \(v_2\) | \(v_3\)  |  
 |---------|--------|--------|---------|  
 | Earth   | 7.91   | 11.19  | 16.64   |  
@@ -508,6 +508,7 @@ ax.set_xticklabels(labels,
 plt.tight_layout()
 plt.show()
 ```
+![alt text](image-19.png)
 
 ```python
 import matplotlib.pyplot as plt
@@ -594,92 +595,6 @@ ax.text(bars[1].get_x() + bars[1].get_width()/2.,
        fontsize=12,
        fontweight='bold',
        color='black')
-
-plt.tight_layout()
-plt.show()
-```
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Data
-v1 = np.linspace(0, 20, 500)
-v2 = np.sqrt(2) * v1
-
-# Plot setup with high visibility text
-plt.figure(figsize=(10, 6), facecolor='white')
-ax = plt.gca()
-
-# Plot lines with contrasting colors
-main_line, = plt.plot(v1, v2, 
-                     color='#0066cc',
-                     linewidth=3,
-                     label=r'$v_2 = \sqrt{2} \times v_1$')
-
-ref_line, = plt.plot(v1, v1,
-                   linestyle='--',
-                   color='#cc3300',
-                   linewidth=2,
-                   label=r'$v_2 = v_1$ (reference line)')
-
-# Enhanced text elements
-ax.set_xlabel('First Cosmic Velocity $v_1$ (km/s)',
-             fontsize=14,
-             fontweight='bold',
-             color='black')
-
-ax.set_ylabel('Second Cosmic Velocity $v_2$ (km/s)',
-             fontsize=14,
-             fontweight='bold',
-             color='black')
-
-ax.set_title('Relationship between First and Second Cosmic Velocities',
-            fontsize=16,
-            fontweight='bold',
-            pad=20,
-            color='black')
-
-# High-visibility legend
-legend = ax.legend(
-    handles=[main_line, ref_line],
-    loc='upper left',
-    frameon=True,
-    framealpha=1,
-    edgecolor='black',
-    facecolor='white',
-    fontsize=12,
-    borderpad=1
-)
-legend.get_frame().set_linewidth(2)
-
-# Make all text elements black and bold
-for text in legend.get_texts():
-    text.set_color('black')
-    text.set_fontweight('bold')
-
-# Grid and ticks
-ax.grid(True, linestyle=':', color='gray', alpha=0.4)
-ax.tick_params(axis='both', 
-              which='major',
-              labelsize=12,
-              colors='black')
-
-# Add direct labels to lines for extra clarity
-ax.text(15, 28, r'$v_2 = \sqrt{2}v_1$',
-       fontsize=14,
-       fontweight='bold',
-       color='#0066cc')
-
-ax.text(15, 15, r'$v_2 = v_1$',
-       fontsize=14,
-       fontweight='bold',
-       color='#cc3300')
-
-# Frame
-for spine in ax.spines.values():
-    spine.set_edgecolor('black')
-    spine.set_linewidth(2)
 
 plt.tight_layout()
 plt.show()
