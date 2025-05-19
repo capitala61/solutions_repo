@@ -101,9 +101,9 @@ plt.show()
 
 **Derivation**:  
 Gravitational force equals centripetal force:  
-\[
-\frac{GMm}{R^2} = \frac{mv_1^2}{R} \implies v_1 = \sqrt{\frac{GM}{R}}
-\]
+$$
+\frac{GMm}{R^2}=\frac{mv_1^2}{R} \implies v_1=\sqrt{\frac{GM}{R}}
+$$
 
 ### 2.2 Second Cosmic Velocity (\(v_2\))  
 
