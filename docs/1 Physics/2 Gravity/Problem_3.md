@@ -277,13 +277,13 @@ Let:
 ### Kinetic and Potential Energy
 
 - Kinetic energy per unit mass:  
-  $$KE=\frac{1}{2}v^2$$
+  $KE=\frac{1}{2}v^2$
 
 - Gravitational potential energy per unit mass:  
-  $$PE=-\frac{\mu}{r}$$
+  $PE=-\frac{\mu}{r}$
 
 - Total specific energy:  
-  $$\varepsilon=KE+PE=\frac{1}{2}v^2-\frac{\mu}{r}$$
+  $\varepsilon=KE+PE=\frac{1}{2}v^2-\frac{\mu}{r}$
 
 ### Trajectory Type
 
