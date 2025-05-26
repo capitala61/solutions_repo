@@ -478,55 +478,6 @@ Let:
 
 ---
 
-## 🧮 2. Governing Equations
-
-### Kinetic and Potential Energy
-
-- Kinetic Energy per unit mass:  
-  $KE=\frac{1}{2}v^2$
-
-- Gravitational Potential Energy per unit mass:  
-  $PE=-\frac{\mu}{r}$
-
-- Total Specific Mechanical Energy:  
-  $\varepsilon=\frac{1}{2}v^2-\frac{\mu}{r}$
-
-### Trajectory Classification
-
-- If $\varepsilon<0$: **Bound Orbit** (elliptical or circular)
-- If $\varepsilon=0$: **Parabolic Escape**
-- If $\varepsilon>0$: **Hyperbolic Escape**
-
----
-
-## 🧪 3. Python Code Snippet
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import solve_ivp
-
-# Constants
-G = 6.67430e-11
-M = 5.972e24
-mu = G * M
-R_earth = 6.371e6
-
-# Initial state setup
-altitude = 300e3
-r0 = R_earth + altitude
-v_orbital = np.sqrt(mu / r0)
-v_escape = np.sqrt(2 * mu / r0)
-
-# Equations of motion
-def dynamics(t, y):
-    x, y_, vx, vy = y
-    r = np.sqrt(x**2 + y_**2)
-    ax = -mu * x / r**3
-    ay = -mu * y_ / r**3
-    return [vx, vy, ax, ay]
-```
-
 ![alt text](image-20.png)
 
 ```python
