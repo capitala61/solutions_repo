@@ -668,54 +668,6 @@ plt.show()
 <li><span class="arithmatex">\(\varepsilon\)</span>: Specific mechanical energy  </li>
 </ul>
 <hr/>
-<h2 id="2-governing-equations">🧮 2. Governing Equations</h2>
-<h3 id="kinetic-and-potential-energy_1">Kinetic and Potential Energy</h3>
-<ul>
-<li>
-<p>Kinetic Energy per unit mass:<br/>
-<span class="arithmatex">\(KE=\frac{1}{2}v^2\)</span></p>
-</li>
-<li>
-<p>Gravitational Potential Energy per unit mass:<br/>
-<span class="arithmatex">\(PE=-\frac{\mu}{r}\)</span></p>
-</li>
-<li>
-<p>Total Specific Mechanical Energy:<br/>
-<span class="arithmatex">\(\varepsilon=\frac{1}{2}v^2-\frac{\mu}{r}\)</span></p>
-</li>
-</ul>
-<h3 id="trajectory-classification">Trajectory Classification</h3>
-<ul>
-<li>If <span class="arithmatex">\(\varepsilon&lt;0\)</span>: <strong>Bound Orbit</strong> (elliptical or circular)</li>
-<li>If <span class="arithmatex">\(\varepsilon=0\)</span>: <strong>Parabolic Escape</strong></li>
-<li>If <span class="arithmatex">\(\varepsilon&gt;0\)</span>: <strong>Hyperbolic Escape</strong></li>
-</ul>
-<hr/>
-<h2 id="3-python-code-snippet">🧪 3. Python Code Snippet</h2>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import solve_ivp
-
-# Constants
-G = 6.67430e-11
-M = 5.972e24
-mu = G * M
-R_earth = 6.371e6
-
-# Initial state setup
-altitude = 300e3
-r0 = R_earth + altitude
-v_orbital = np.sqrt(mu / r0)
-v_escape = np.sqrt(2 * mu / r0)
-
-# Equations of motion
-def dynamics(t, y):
-    x, y_, vx, vy = y
-    r = np.sqrt(x**2 + y_**2)
-    ax = -mu * x / r**3
-    ay = -mu * y_ / r**3
-    return [vx, vy, ax, ay]
-</code></pre>
 <p><img alt="alt text" src="../image-20.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
