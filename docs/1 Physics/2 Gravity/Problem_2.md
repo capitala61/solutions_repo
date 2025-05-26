@@ -6,23 +6,24 @@
 
 Cosmic velocities are critical thresholds in astrodynamics, defining minimum speeds for orbital and escape maneuvers:  
 
-- **First Cosmic Velocity (\(v_1\))**:  
+- **First Cosmic Velocity $v_1$**:  
   - **Definition**: The speed required for an object to maintain a circular orbit near a celestial body's surface.  
-  - **Equation**: \(v_1 = \sqrt{\frac{GM}{R}}\)  
+  - **Equation**: $v_1 = \sqrt{\frac{GM}{R}}$  
 
-- **Second Cosmic Velocity (\(v_2\))**:  
+- **Second Cosmic Velocity $v_2$**:  
   - **Definition**: The speed required to escape a celestial body's gravitational pull.  
-  - **Equation**: \(v_2 = \sqrt{\frac{2GM}{R}}\)  
+  - **Equation**: $v_2 = \sqrt{\frac{2GM}{R}}$  
 
-- **Third Cosmic Velocity (\(v_3\))**:  
+- **Third Cosmic Velocity $v_3$**:  
   - **Definition**: The speed required to escape a star system from a planet's orbit.  
-  - **Equation**: \(v_3 = \sqrt{v_2^2 + (v_{\text{esc,Sun}} - v_{\text{orbit}})^2}\)  
+  - **Equation**: $v_3 = \sqrt{v_2^2 + (v_{\text{esc,Sun}} - v_{\text{orbit}})^2}$  
 
 ## 2. Derivations  
 
 ### 2.1 First Cosmic Velocity (\(v_1\))  
 
 ![alt text](image-14.png)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
