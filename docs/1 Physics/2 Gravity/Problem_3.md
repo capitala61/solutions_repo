@@ -6,17 +6,22 @@
 The payload's trajectory is governed by **Newton's Law of Gravitation** and **Newton's Second Law**:
 
 - **Newton's Law of Gravitation**:
-$$\mathbf{F} = -\frac{GMm}{r^2}\hat{\mathbf{r}}$$
-where:
-- $G$ = Gravitational constant ($6.674 \times 10^{-11}\,\text{m}^3\text{kg}^{-1}\text{s}^{-2}$)
-- $M$ = Mass of Earth ($5.972 \times 10^{24}\,\text{kg}$)
-- $m$ = Mass of payload (neglected for trajectory analysis)
-- $r$ = Distance between payload and Earth's center
+  
+  $\mathbf{F} = -\frac{GMm}{r^2}\hat{\mathbf{r}}$
+  
+  where:
+  - $G$ = Gravitational constant ($6.674 \times 10^{-11}\,\text{m}^3\text{kg}^{-1}\text{s}^{-2}$)
+  - $M$ = Mass of Earth ($5.972 \times 10^{24}\,\text{kg}$)
+  - $m$ = Mass of payload (neglected for trajectory analysis)
+  - $r$ = Distance between payload and Earth's center
 
 - **Equation of Motion (2D Polar Coordinates)**:
-$$\frac{d^2\mathbf{r}}{dt^2} = -\frac{GM}{r^3}\mathbf{r}$$
-Decomposed into Cartesian coordinates ($x, y$):
-$$\frac{d^2x}{dt^2} = -\frac{GMx}{(x^2 + y^2)^{3/2}}, \quad \frac{d^2y}{dt^2} = -\frac{GMy}{(x^2 + y^2)^{3/2}}$$
+  
+  $\frac{d^2\mathbf{r}}{dt^2} = -\frac{GM}{r^3}\mathbf{r}$
+  
+  Decomposed into Cartesian coordinates ($x, y$):
+  
+  $\frac{d^2x}{dt^2} = -\frac{GMx}{(x^2 + y^2)^{3/2}}, \quad \frac{d^2y}{dt^2} = -\frac{GMy}{(x^2 + y^2)^{3/2}}$
 
 ## 2. Trajectory Types
 The shape of the orbit depends on the **specific orbital energy** ($E$) and **eccentricity** ($e$):
