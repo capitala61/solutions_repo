@@ -523,3 +523,176 @@ def dynamics(t, y):
     ay = -mu * y_ / r**3
     return [vx, vy, ax, ay]
 ```
+
+![alt text](image-20.png)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+M = 5.97e24  # Mass of Earth (kg)
+radius_earth = 6.371e6  # Radius of Earth (m)
+
+# Time parameters
+dt = 100  # Time step (seconds)
+T = 3600 * 24  # Total time of simulation (1 day)
+
+# Initial conditions: (initial position, initial velocity)
+initial_conditions = {
+    'x0': 1.5 * radius_earth,  # 1.5 Earth radii from Earth's center (m)
+    'y0': 0,  # Along the x-axis (horizontal direction)
+    'vx0': 0,  # Initial velocity in x-direction (m/s)
+    'vy0': 5000  # Initial velocity in y-direction (m/s)
+}
+
+# Function to compute acceleration due to gravity
+def gravity_acceleration(x, y):
+    r = np.sqrt(x**2 + y**2)  # Fixed: Correct distance from Earth's center
+    a = -G * M / r**2  # Gravitational acceleration
+    ax = a * x / r  # Acceleration in x-direction
+    ay = a * y / r  # Acceleration in y-direction
+    return ax, ay
+
+# Initialize position and velocity arrays
+x, y = [initial_conditions['x0']], [initial_conditions['y0']]
+vx, vy = [initial_conditions['vx0']], [initial_conditions['vy0']]
+
+# Numerical integration using Euler's method
+for t in np.arange(0, T, dt):
+    ax, ay = gravity_acceleration(x[-1], y[-1])  # Get acceleration at current position
+    # Update velocities
+    vx.append(vx[-1] + ax * dt)
+    vy.append(vy[-1] + ay * dt)
+    # Update positions
+    x.append(x[-1] + vx[-1] * dt)
+    y.append(y[-1] + vy[-1] * dt)
+
+# Convert the results into numpy arrays for easier plotting
+x = np.array(x)
+y = np.array(y)
+
+# Plot setup with high-visibility and cool styling
+plt.figure(figsize=(8, 6), facecolor='white')
+ax = plt.gca()
+
+# Plot the trajectory with vibrant styling
+plt.plot(x / 1e3, y / 1e3, color='#0066cc', linewidth=3, label='Payload Trajectory', linestyle='-', alpha=0.9)
+plt.scatter([0], [0], color='#cc3300', s=150, edgecolor='black', linewidth=2, label='Earth', marker='o', zorder=5)
+
+# Add a cool gradient-like effect to the trajectory
+plt.plot(x / 1e3, y / 1e3, color='#009966', linewidth=1.5, linestyle='--', alpha=0.5)
+
+# Enhanced text elements with bold, modern fonts
+ax.set_xlabel('X Position (km)', fontsize=14, fontweight='bold', color='black', labelpad=15, family='Arial')
+ax.set_ylabel('Y Position (km)', fontsize=14, fontweight='bold', color='black', labelpad=15, family='Arial')
+ax.set_title('Payload Trajectory Near Earth', fontsize=18, fontweight='bold', pad=20, color='black', family='Arial')
+
+# High-visibility legend with a sleek look
+legend = ax.legend(frameon=True, framealpha=1, edgecolor='black', facecolor='white', fontsize=12, borderpad=1, loc='upper right')
+for text in legend.get_texts():
+    text.set_color('black')
+    text.set_fontweight('bold')
+    text.set_fontfamily('Arial')
+
+# Add a subtle annotation for the starting point
+ax.annotate('Start', xy=(x[0] / 1e3, y[0] / 1e3), xytext=(x[0] / 1e3 + 500, y[0] / 1e3 + 500),
+            arrowprops=dict(facecolor='black', arrowstyle='->'), fontsize=10, fontweight='bold', color='black', family='Arial')
+
+# Cool grid and frame
+ax.yaxis.grid(True, linestyle=':', color='gray', alpha=0.4)
+ax.xaxis.grid(True, linestyle=':', color='gray', alpha=0.4)
+for spine in ax.spines.values():
+    spine.set_edgecolor('black')
+    spine.set_linewidth(2.5)
+
+# Set a sleek background and axis styling
+ax.set_facecolor('#f5f5f5')
+plt.axis('equal')
+plt.tight_layout()
+plt.show()
+```
+
+![alt text](image-21.png)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # gravitational constant
+M = 5.972e24     # mass of Earth
+R = 6.371e6      # radius of Earth in meters
+altitude = 800e3 # 800 km above the surface
+initial_distance = R + altitude
+time_step = 1    # seconds
+total_time = 7000  # simulate up to 7000 seconds
+n_steps = int(total_time / time_step)
+
+# Initial velocities in m/s
+velocities = np.arange(5000, 13500, 500)  # from 5 km/s to 13 km/s
+
+# Plot setup with high-visibility and cool styling
+plt.figure(figsize=(10, 10), facecolor='white')
+ax = plt.gca()
+
+# Create Earth plot with enhanced styling
+theta = np.linspace(0, 2*np.pi, 300)
+earth_x = R * np.cos(theta)
+earth_y = R * np.sin(theta)
+plt.fill(earth_x, earth_y, color='#0066cc', alpha=0.6, edgecolor='black', linewidth=2, label='Earth')
+
+# Function to compute gravity acceleration
+def gravity(pos):
+    r = np.linalg.norm(pos)
+    return -G * M * pos / r**3
+
+# Simulate each trajectory with distinct colors
+colors = ['#cc3300', '#009966', '#ff6600', '#660099', '#ff3399', '#006666', '#cc9900', '#990000', '#00cc99', '#ff9933', '#3333cc', '#ff0066', '#669900', '#9900cc', '#00ff66', '#cc0066']
+for i, v in enumerate(velocities):
+    pos = np.array([initial_distance, 0.0])
+    vel = np.array([0.0, v])
+    traj = []
+    for _ in range(n_steps):
+        acc = gravity(pos)
+        vel += acc * time_step
+        pos += vel * time_step
+        traj.append(pos.copy())
+        if np.linalg.norm(pos) <= R:
+            break
+    traj = np.array(traj)
+    plt.plot(traj[:, 0], traj[:, 1], color=colors[i % len(colors)], linewidth=2.5, label=f'{v/1000:.1f} km/s', alpha=0.9)
+
+# Plot center of Earth
+plt.scatter([0], [0], color='black', s=100, edgecolor='black', linewidth=2, marker='o', label='Center of Earth', zorder=5)
+
+# Add annotation for starting point
+plt.annotate('Start', xy=(initial_distance, 0), xytext=(initial_distance + 1e6, 0.5e6),
+             arrowprops=dict(facecolor='black', arrowstyle='->'), fontsize=10, fontweight='bold', color='black', family='Arial')
+
+# Enhanced text elements with bold, modern fonts
+ax.set_xlabel('X Position (m)', fontsize=14, fontweight='bold', color='black', labelpad=15, family='Arial')
+ax.set_ylabel('Y Position (m)', fontsize=14, fontweight='bold', color='black', labelpad=15, family='Arial')
+ax.set_title('Trajectories of Objects from 800 km Altitude with Varying Speeds', fontsize=18, fontweight='bold', pad=20, color='black', family='Arial')
+
+# High-visibility legend with a sleek look
+legend = ax.legend(frameon=True, framealpha=1, edgecolor='black', facecolor='white', fontsize=10, borderpad=1, loc='upper right')
+for text in legend.get_texts():
+    text.set_color('black')
+    text.set_fontweight('bold')
+    text.set_fontfamily('Arial')
+
+# Cool grid and frame
+ax.yaxis.grid(True, linestyle=':', color='gray', alpha=0.4)
+ax.xaxis.grid(True, linestyle=':', color='gray', alpha=0.4)
+for spine in ax.spines.values():
+    spine.set_edgecolor('black')
+    spine.set_linewidth(2.5)
+
+# Set a sleek background and axis styling
+ax.set_facecolor('#f5f5f5')
+plt.axis('equal')
+plt.tight_layout()
+plt.savefig('multi_trajectory_plot.png')
+```
