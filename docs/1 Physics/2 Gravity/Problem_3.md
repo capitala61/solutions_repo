@@ -96,12 +96,12 @@ where:
 ## 2. Numerical Method Selection
 We solve the coupled ODEs using the **4th-order Runge-Kutta method** (RK4) for higher accuracy:
 
-The general RK4 formulation for $\frac{dy}{dt}=f(t,y)$:
-$$k_1=f(t_n,y_n)$$
-$$k_2=f(t_n+\frac{h}{2},y_n+\frac{h}{2}k_1)$$
-$$k_3=f(t_n+\frac{h}{2},y_n+\frac{h}{2}k_2)$$
-$$k_4=f(t_n+h,y_n+hk_3)$$
-$$y_{n+1}=y_n+\frac{h}{6}(k_1+2k_2+2k_3+k_4)$$
+The general RK4 formulation for $\frac{dy}{dt}=f(t,y)$:  
+$k_1=f(t_n,y_n)$  
+$k_2=f(t_n+\frac{h}{2},y_n+\frac{h}{2}k_1)$  
+$k_3=f(t_n+\frac{h}{2},y_n+\frac{h}{2}k_2)$  
+$k_4=f(t_n+h,y_n+hk_3)$  
+$y_{n+1}=y_n+\frac{h}{6}(k_1+2k_2+2k_3+k_4)$S
 
 ## 3. Implementation Framework
 
