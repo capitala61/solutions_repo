@@ -483,13 +483,13 @@ Let:
 ### Kinetic and Potential Energy
 
 - Kinetic Energy per unit mass:  
-  $$KE=\frac{1}{2}v^2$$
+  $KE=\frac{1}{2}v^2$
 
 - Gravitational Potential Energy per unit mass:  
-  $$PE=-\frac{\mu}{r}$$
+  $PE=-\frac{\mu}{r}$
 
 - Total Specific Mechanical Energy:  
-  $$\varepsilon=\frac{1}{2}v^2-\frac{\mu}{r}$$
+  $\varepsilon=\frac{1}{2}v^2-\frac{\mu}{r}$
 
 ### Trajectory Classification
 
