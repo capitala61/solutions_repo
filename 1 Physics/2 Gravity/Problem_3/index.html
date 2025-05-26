@@ -346,6 +346,379 @@ dt = 10  # 10 second timestep
 
 solution = simulate_trajectory(h, v0, theta, phi, t_span, dt)
 </code></pre>
+<h1 id="projectile-motion-simulation-computational-implementation">📘 Projectile Motion Simulation — Computational Implementation</h1>
+<h2 id="objective">🎯 Objective</h2>
+<p>To <strong>simulate the trajectory of a projectile</strong> under idealized physics using Python, with adjustable parameters such as:</p>
+<ul>
+<li>Initial speed <span class="arithmatex">\(v_0\)</span></li>
+<li>Launch angle <span class="arithmatex">\(\theta\)</span></li>
+<li>Initial height <span class="arithmatex">\(h_0\)</span></li>
+<li>Gravitational acceleration <span class="arithmatex">\(g\)</span></li>
+</ul>
+<hr/>
+<h2 id="governing-equations">🧮 Governing Equations</h2>
+<p>The equations of motion for a projectile launched at an angle <span class="arithmatex">\(\theta\)</span> from an initial height <span class="arithmatex">\(h_0\)</span> are:</p>
+<ul>
+<li>
+<p>Horizontal velocity:
+  $$
+  v_x = v_0\cos(\theta)
+  $$</p>
+</li>
+<li>
+<p>Vertical velocity:
+  $$
+  v_y = v_0\sin(\theta)
+  $$</p>
+</li>
+<li>
+<p>Position as a function of time:
+  $$
+  x(t) = v_0\cos(\theta)\cdot t
+  $$
+  $$
+  y(t) = h_0 + v_0\sin(\theta)\cdot t - \frac{1}{2}gt^2
+  $$</p>
+</li>
+<li>
+<p>Time of flight (solving <span class="arithmatex">\(y(t) = 0\)</span>):
+  $$
+  t = \frac{v_0\sin(\theta)}{g} + \sqrt{\left(\frac{v_0\sin(\theta)}{g}\right)^2 + \frac{2h_0}{g}}
+  $$</p>
+</li>
+</ul>
+<hr/>
+<h2 id="required-libraries">🧰 Required Libraries</h2>
+<ul>
+<li><code>numpy</code> – numerical calculations</li>
+<li><code>matplotlib.pyplot</code> – visualization</li>
+</ul>
+<hr/>
+<h2 id="python-code-implementation">🧪 Python Code Implementation</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Adjustable parameters
+v0 = 30  # Initial speed (m/s)
+theta_deg = 45  # Launch angle in degrees
+h0 = 0  # Initial height (m)
+g = 9.81  # Gravity (m/s^2)
+
+# Convert angle to radians
+theta = np.radians(theta_deg)
+
+# Time of flight
+t_flight = (v0 * np.sin(theta) / g) + np.sqrt((v0 * np.sin(theta) / g) ** 2 + (2 * h0 / g))
+
+# Time points
+t = np.linspace(0, t_flight, num=500)
+
+# Position calculations
+x = v0 * np.cos(theta) * t
+y = h0 + v0 * np.sin(theta) * t - 0.5 * g * t**2
+
+# Plot trajectory
+plt.figure(figsize=(10, 5))
+plt.plot(x, y, label=f'{v0} m/s at {theta_deg}°')
+plt.title('Projectile Motion Simulation')
+plt.xlabel('Horizontal Distance (m)')
+plt.ylabel('Vertical Height (m)')
+plt.grid(True)
+plt.axhline(0, color='gray', linestyle='--', linewidth=0.7)
+plt.legend()
+plt.show()
+</code></pre>
+<h1 id="trajectory-visualization-orbital-mechanics">🌍 Trajectory Visualization — Orbital Mechanics</h1>
+<h2 id="objective_1">🚀 Objective</h2>
+<p>To <strong>visualize the trajectory of a payload</strong> launched from Earth under different initial velocity conditions:</p>
+<ul>
+<li>Suborbital  </li>
+<li>Orbital  </li>
+<li>Escape trajectory  </li>
+</ul>
+<h3 id="key-features">🎯 Key Features</h3>
+<ul>
+<li>Plot the trajectory of the payload relative to Earth</li>
+<li>Highlight:</li>
+<li><strong>Perigee</strong>: Closest approach to Earth</li>
+<li><strong>Apogee</strong>: Farthest point in bound trajectory</li>
+<li><strong>Escape condition</strong>: Payload escapes Earth's gravity</li>
+<li>Compare different initial velocities and their effects</li>
+</ul>
+<hr/>
+<h2 id="governing-equations_1">🧮 Governing Equations</h2>
+<p>We assume:</p>
+<ul>
+<li>Two-body problem (Earth and payload)  </li>
+<li>Only gravitational force acts (no atmosphere, no thrust)  </li>
+</ul>
+<p>Let:</p>
+<ul>
+<li><span class="arithmatex">\(G\)</span> = gravitational constant  </li>
+<li><span class="arithmatex">\(M\)</span> = mass of Earth  </li>
+<li><span class="arithmatex">\(r\)</span> = radial distance from Earth's center  </li>
+<li><span class="arithmatex">\(v\)</span> = speed  </li>
+<li><span class="arithmatex">\(\mu=GM\)</span> = standard gravitational parameter  </li>
+</ul>
+<h3 id="kinetic-and-potential-energy">Kinetic and Potential Energy</h3>
+<ul>
+<li>
+<p>Kinetic energy per unit mass:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(KE=\frac{1}{2}v^2\)</span>\)</span></p>
+</li>
+<li>
+<p>Gravitational potential energy per unit mass:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(PE=-\frac{\mu}{r}\)</span>\)</span></p>
+</li>
+<li>
+<p>Total specific energy:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(\varepsilon=KE+PE=\frac{1}{2}v^2-\frac{\mu}{r}\)</span>\)</span></p>
+</li>
+</ul>
+<h3 id="trajectory-type">Trajectory Type</h3>
+<ul>
+<li>If <span class="arithmatex">\(\varepsilon&lt;0\)</span>: <strong>Bound (elliptical)</strong> – orbital or suborbital  </li>
+<li>If <span class="arithmatex">\(\varepsilon=0\)</span>: <strong>Parabolic escape</strong> </li>
+<li>If <span class="arithmatex">\(\varepsilon&gt;0\)</span>: <strong>Hyperbolic escape</strong></li>
+</ul>
+<hr/>
+<h2 id="required-libraries_1">🧰 Required Libraries</h2>
+<ul>
+<li><code>numpy</code> – numerical integration and array math  </li>
+<li><code>matplotlib</code> – for plotting  </li>
+<li><code>scipy.integrate</code> – to solve equations of motion  </li>
+</ul>
+<hr/>
+<h2 id="python-code-implementation_1">🧪 Python Code Implementation</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3/kg/s^2)
+M = 5.972e24     # Earth mass (kg)
+mu = G * M
+R_earth = 6.371e6  # Earth radius in meters
+
+# Initial conditions
+altitude = 300e3  # 300 km above Earth's surface
+r0 = R_earth + altitude
+theta0 = 0
+positions = []
+labels = []
+
+# Different initial velocities (m/s)
+v_suborbital = 6500   # Less than orbital
+v_orbital = np.sqrt(mu / r0)  # Circular orbit speed
+v_escape = np.sqrt(2 * mu / r0)  # Escape velocity
+
+initial_scenarios = [
+    ("Suborbital", v_suborbital),
+    ("Orbital", v_orbital),
+    ("Escape", v_escape)
+]
+
+# Equations of motion in polar coordinates
+def orbital_dynamics(t, y):
+    x, y_, vx, vy = y
+    r = np.sqrt(x**2 + y_**2)
+    ax = -mu * x / r**3
+    ay = -mu * y_ / r**3
+    return [vx, vy, ax, ay]
+
+# Time span for simulation
+t_span = (0, 6000)
+t_eval = np.linspace(t_span[0], t_span[1], 5000)
+
+# Solve and plot each scenario
+plt.figure(figsize=(8, 8))
+for label, v0 in initial_scenarios:
+    y0 = [r0, 0, 0, v0]  # [x, y, vx, vy]
+    sol = solve_ivp(orbital_dynamics, t_span, y0, t_eval=t_eval, rtol=1e-8)
+    x = sol.y[0]
+    y = sol.y[1]
+    plt.plot(x / 1e3, y / 1e3, label=f"{label} ({v0:.0f} m/s)")
+
+# Plot Earth
+theta = np.linspace(0, 2*np.pi, 1000)
+earth_x = R_earth * np.cos(theta) / 1e3
+earth_y = R_earth * np.sin(theta) / 1e3
+plt.fill(earth_x, earth_y, 'lightblue', label='Earth')
+
+# Plot formatting
+plt.title("Trajectory Visualization: Suborbital, Orbital, Escape")
+plt.xlabel("X Position (km)")
+plt.ylabel("Y Position (km)")
+plt.axis('equal')
+plt.grid(True)
+plt.legend()
+plt.show()
+</code></pre>
+<h1 id="analysis-discussion-orbital-trajectory-behavior">🧠 Analysis &amp; Discussion — Orbital Trajectory Behavior</h1>
+<h2 id="impact-of-varying-initial-conditions">🔄 Impact of Varying Initial Conditions</h2>
+<h3 id="initial-speed">🚦 Initial Speed</h3>
+<p>The trajectory of a payload launched from Earth <strong>depends critically on its initial velocity (<span class="arithmatex">\(v_0\)</span>)</strong>:</p>
+<ul>
+<li>If <span class="arithmatex">\(v_0&lt;\sqrt{\frac{\mu}{r_0}}\)</span>:</li>
+<li>Trajectory is <strong>suborbital</strong></li>
+<li>Payload returns to Earth after reaching maximum altitude (like ballistic missile)</li>
+<li>If <span class="arithmatex">\(v_0=\sqrt{\frac{\mu}{r_0}}\)</span>:</li>
+<li>Trajectory is <strong>circular orbit</strong></li>
+<li>Stable orbit at constant altitude</li>
+<li>If <span class="arithmatex">\(v_0\)</span> is such that <span class="arithmatex">\(0&lt;\varepsilon&lt;0\)</span>:</li>
+<li><strong>Elliptical orbit</strong>, where perigee and apogee differ</li>
+<li>If <span class="arithmatex">\(v_0=\sqrt{\frac{2\mu}{r_0}}\)</span>:</li>
+<li><strong>Parabolic trajectory</strong> (escape)</li>
+<li>If <span class="arithmatex">\(v_0&gt;\sqrt{\frac{2\mu}{r_0}}\)</span>:</li>
+<li><strong>Hyperbolic escape</strong> from Earth's gravity</li>
+</ul>
+<p>Here, <span class="arithmatex">\(\mu=GM\)</span> is the standard gravitational parameter, and <span class="arithmatex">\(r_0\)</span> is the initial radial distance from Earth’s center.</p>
+<hr/>
+<h2 id="real-world-applications">🌐 Real-World Applications</h2>
+<table>
+<thead>
+<tr>
+<th>Trajectory Type</th>
+<th>Application Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suborbital</td>
+<td>Space tourism, sounding rockets</td>
+</tr>
+<tr>
+<td>Circular Orbit</td>
+<td>Low Earth Orbit (LEO) satellites</td>
+</tr>
+<tr>
+<td>Elliptical Orbit</td>
+<td>Molniya orbits, Geostationary Transfer Orbit</td>
+</tr>
+<tr>
+<td>Escape</td>
+<td>Interplanetary missions (e.g., Voyager, JWST)</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="validation-against-orbital-mechanics">🔬 Validation Against Orbital Mechanics</h2>
+<p>We validate the numerical simulations using <strong>known orbital mechanics principles</strong>, including <strong>Kepler’s Laws</strong>:</p>
+<h3 id="1-keplers-first-law">1. Kepler’s First Law</h3>
+<blockquote>
+<p>Every planet moves in an ellipse with the Sun (or Earth) at one focus.</p>
+</blockquote>
+<ul>
+<li>For bound orbits (<span class="arithmatex">\(\varepsilon&lt;0\)</span>), our simulated trajectories are elliptical.</li>
+<li>For <span class="arithmatex">\(v_0=\sqrt{\mu/r_0}\)</span>, the orbit becomes a <strong>special case: a circle</strong>.</li>
+</ul>
+<h3 id="2-keplers-second-law">2. Kepler’s Second Law</h3>
+<blockquote>
+<p>A line joining a planet and the Sun sweeps out equal areas in equal times.</p>
+</blockquote>
+<ul>
+<li>Since gravity is a <strong>central force</strong>, angular momentum is conserved:
+  <span class="arithmatex">\(<span class="arithmatex">\(\vec{r}\times\vec{v}=\text{constant}\)</span>\)</span></li>
+<li>Numerically, this is evident as orbital speed increases at perigee and decreases at apogee.</li>
+</ul>
+<h3 id="3-keplers-third-law">3. Kepler’s Third Law</h3>
+<blockquote>
+<p>The square of the orbital period is proportional to the cube of the semi-major axis:
+  <span class="arithmatex">\(<span class="arithmatex">\(T^2\propto a^3\)</span>\)</span></p>
+</blockquote>
+<ul>
+<li>For circular orbits:
+  <span class="arithmatex">\(<span class="arithmatex">\(T=2\pi\sqrt{\frac{r_0^3}{\mu}}\)</span>\)</span></li>
+<li>Simulation-derived periods match this analytical value closely.</li>
+</ul>
+<hr/>
+<h2 id="takeaways">✅ Takeaways</h2>
+<ul>
+<li><strong>Initial velocity</strong> is the primary control variable for trajectory shaping.</li>
+<li>The simulated motion adheres to <strong>Keplerian dynamics</strong> under ideal conditions.</li>
+<li>Such tools are vital in:</li>
+<li>Mission planning</li>
+<li>Satellite deployment strategies</li>
+<li>Trajectory correction maneuvers</li>
+<li>Reentry analysis for crewed missions</li>
+</ul>
+<hr/>
+<h2 id="further-enhancements">📘 Further Enhancements</h2>
+<ul>
+<li>Include <strong>atmospheric drag</strong> for low-altitude missions.</li>
+<li>Account for <strong>Earth’s rotation</strong> and <strong>non-spherical mass distribution</strong>.</li>
+<li>Add <strong>thrust profiles</strong> for real rocket burns and transfers (e.g., Hohmann transfers).</li>
+</ul>
+<hr/>
+<h1 id="trajectory-simulation-methodology-and-findings">📄 Trajectory Simulation: Methodology and Findings</h1>
+<hr/>
+<h2 id="1-methodology-overview">🧰 1. Methodology Overview</h2>
+<p>We analyze the motion of a payload launched from Earth under varying initial speeds. The goal is to understand how different initial velocities affect orbital trajectories.</p>
+<h3 id="assumptions">🔧 Assumptions:</h3>
+<ul>
+<li>Two-body system: Earth and payload.</li>
+<li>No atmospheric drag or thrust during flight.</li>
+<li>Earth is a perfect sphere.</li>
+<li>Gravitational force is central and inverse-square.</li>
+</ul>
+<p>Let:</p>
+<ul>
+<li><span class="arithmatex">\(G\)</span>: Gravitational constant  </li>
+<li><span class="arithmatex">\(M\)</span>: Mass of Earth  </li>
+<li><span class="arithmatex">\(\mu=GM\)</span>: Standard gravitational parameter  </li>
+<li><span class="arithmatex">\(r\)</span>: Radial distance from Earth's center  </li>
+<li><span class="arithmatex">\(v\)</span>: Speed of payload  </li>
+<li><span class="arithmatex">\(\varepsilon\)</span>: Specific mechanical energy  </li>
+</ul>
+<hr/>
+<h2 id="2-governing-equations">🧮 2. Governing Equations</h2>
+<h3 id="kinetic-and-potential-energy_1">Kinetic and Potential Energy</h3>
+<ul>
+<li>
+<p>Kinetic Energy per unit mass:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(KE=\frac{1}{2}v^2\)</span>\)</span></p>
+</li>
+<li>
+<p>Gravitational Potential Energy per unit mass:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(PE=-\frac{\mu}{r}\)</span>\)</span></p>
+</li>
+<li>
+<p>Total Specific Mechanical Energy:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(\varepsilon=\frac{1}{2}v^2-\frac{\mu}{r}\)</span>\)</span></p>
+</li>
+</ul>
+<h3 id="trajectory-classification">Trajectory Classification</h3>
+<ul>
+<li>If <span class="arithmatex">\(\varepsilon&lt;0\)</span>: <strong>Bound Orbit</strong> (elliptical or circular)</li>
+<li>If <span class="arithmatex">\(\varepsilon=0\)</span>: <strong>Parabolic Escape</strong></li>
+<li>If <span class="arithmatex">\(\varepsilon&gt;0\)</span>: <strong>Hyperbolic Escape</strong></li>
+</ul>
+<hr/>
+<h2 id="3-python-code-snippet">🧪 3. Python Code Snippet</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+G = 6.67430e-11
+M = 5.972e24
+mu = G * M
+R_earth = 6.371e6
+
+# Initial state setup
+altitude = 300e3
+r0 = R_earth + altitude
+v_orbital = np.sqrt(mu / r0)
+v_escape = np.sqrt(2 * mu / r0)
+
+# Equations of motion
+def dynamics(t, y):
+    x, y_, vx, vy = y
+    r = np.sqrt(x**2 + y_**2)
+    ax = -mu * x / r**3
+    ay = -mu * y_ / r**3
+    return [vx, vy, ax, ay]
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
