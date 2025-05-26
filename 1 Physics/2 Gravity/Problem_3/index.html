@@ -176,22 +176,20 @@
 <h2 id="1-equations-of-motion">1. Equations of Motion</h2>
 <p>The payload's trajectory is governed by <strong>Newton's Law of Gravitation</strong> and <strong>Newton's Second Law</strong>:</p>
 <ul>
-<li><strong>Newton's Law of Gravitation</strong>:
-<span class="arithmatex">\(<span class="arithmatex">\(\mathbf{F} = -\frac{GMm}{r^2}\hat{\mathbf{r}}\)</span>\)</span>
-where:</li>
-<li><span class="arithmatex">\(G\)</span> = Gravitational constant (<span class="arithmatex">\(6.674 \times 10^{-11}\,\text{m}^3\text{kg}^{-1}\text{s}^{-2}\)</span>)</li>
-<li><span class="arithmatex">\(M\)</span> = Mass of Earth (<span class="arithmatex">\(5.972 \times 10^{24}\,\text{kg}\)</span>)</li>
-<li><span class="arithmatex">\(m\)</span> = Mass of payload (neglected for trajectory analysis)</li>
-<li>
-<p><span class="arithmatex">\(r\)</span> = Distance between payload and Earth's center</p>
-</li>
-<li>
-<p><strong>Equation of Motion (2D Polar Coordinates)</strong>:
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{d^2\mathbf{r}}{dt^2} = -\frac{GM}{r^3}\mathbf{r}\)</span>\)</span>
-Decomposed into Cartesian coordinates (<span class="arithmatex">\(x, y\)</span>):
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{d^2x}{dt^2} = -\frac{GMx}{(x^2 + y^2)^{3/2}}, \quad \frac{d^2y}{dt^2} = -\frac{GMy}{(x^2 + y^2)^{3/2}}\)</span>\)</span></p>
-</li>
+<li><strong>Newton's Law of Gravitation</strong>:</li>
 </ul>
+<p><span class="arithmatex">\(\mathbf{F} = -\frac{GMm}{r^2}\hat{\mathbf{r}}\)</span></p>
+<p>where:
+  - <span class="arithmatex">\(G\)</span> = Gravitational constant (<span class="arithmatex">\(6.674 \times 10^{-11}\,\text{m}^3\text{kg}^{-1}\text{s}^{-2}\)</span>)
+  - <span class="arithmatex">\(M\)</span> = Mass of Earth (<span class="arithmatex">\(5.972 \times 10^{24}\,\text{kg}\)</span>)
+  - <span class="arithmatex">\(m\)</span> = Mass of payload (neglected for trajectory analysis)
+  - <span class="arithmatex">\(r\)</span> = Distance between payload and Earth's center</p>
+<ul>
+<li><strong>Equation of Motion (2D Polar Coordinates)</strong>:</li>
+</ul>
+<p><span class="arithmatex">\(\frac{d^2\mathbf{r}}{dt^2} = -\frac{GM}{r^3}\mathbf{r}\)</span></p>
+<p>Decomposed into Cartesian coordinates (<span class="arithmatex">\(x, y\)</span>):</p>
+<p><span class="arithmatex">\(\frac{d^2x}{dt^2} = -\frac{GMx}{(x^2 + y^2)^{3/2}}, \quad \frac{d^2y}{dt^2} = -\frac{GMy}{(x^2 + y^2)^{3/2}}\)</span></p>
 <h2 id="2-trajectory-types">2. Trajectory Types</h2>
 <p>The shape of the orbit depends on the <strong>specific orbital energy</strong> (<span class="arithmatex">\(E\)</span>) and <strong>eccentricity</strong> (<span class="arithmatex">\(e\)</span>):</p>
 <ul>
