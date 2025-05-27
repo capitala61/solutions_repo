@@ -490,3 +490,4 @@ where $\lambda_{min}$ is the shortest wavelength to resolve
 ```python
 x_min, x_max = 0.0, 1000.0  # meters
 y_min, y_max = 0.0, 500.0   # meters
+```
