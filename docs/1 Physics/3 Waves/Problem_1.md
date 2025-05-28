@@ -491,3 +491,49 @@ where $\lambda_{min}$ is the shortest wavelength to resolve
 x_min, x_max = 0.0, 1000.0  # meters
 y_min, y_max = 0.0, 500.0   # meters
 ```
+
+# Total Wave Displacement Computation
+
+## Mathematical Formulation
+The total displacement field $\eta_{sum}(x,y,t)$ at time $t$ is computed by summing $N$ individual wave components:
+
+$$\eta_{sum}(x,y,t) = \sum_{k=1}^{N} \eta_k(x,y,t)$$
+
+where:
+-$\eta_k(x,y,t)$ is the displacement from the $k^{th}$ wave component
+-$N$ is the total number of wave components
+
+# Wave Interference Pattern Visualization
+
+## Mathematical Background
+The interference pattern results from superposition of two or more waves:
+
+$$\eta_{total}(x,y,t)=\sum_{k=1}^N A_k \sin(\vec{k}_k \cdot \vec{r} - \omega_k t + \phi_k)$$
+
+where:
+-$\vec{r}=(x,y)$ is position vector
+-$\vec{k}_k=(k_{x,k},k_{y,k})$ is wave vector
+-$A_k$, $\omega_k$, $\phi_k$ are amplitude, frequency, and phase
+
+## Implementation Code
+
+### 1. Setup Wave Parameters
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Wave 1 parameters
+A1 = 1.0       # Amplitude (m)
+k1 = np.array([0.1, 0.05])  # Wave vector (rad/m)
+ω1 = 0.5       # Angular frequency (rad/s)
+ϕ1 = 0.0       # Phase (rad)
+
+# Wave 2 parameters
+A2 = 0.8
+k2 = np.array([-0.08, 0.1])
+ω2 = 0.6
+ϕ2 = np.pi/2
+
+# Time snapshot
+t = 10.0
+```
