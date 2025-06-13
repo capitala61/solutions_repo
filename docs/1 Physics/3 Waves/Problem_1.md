@@ -454,8 +454,8 @@ $$
 - Breaks down for:
   * Very large amplitudes (nonlinear effects)
   * Dissipative systems with significant energy loss
-
-  # Spatial Grid Setup for Wave Simulation
+  
+# Spatial Grid Setup for Wave Simulation
 
 ## Grid Definition
 To model wave propagation, we first define a discrete spatial grid over the water surface:
@@ -518,6 +518,7 @@ where:
 ## Implementation Code
 
 ### 1. Setup Wave Parameters
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
