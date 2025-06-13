@@ -131,20 +131,20 @@ The next step is to implement and analyze these interference patterns computatio
 
 # Python/Models
 
---- 2D Interference Pattern Animation ---
+--- 2D Interference Pattern Animation (Sunrise Horizon) ---
 
-![alt text](image.png)
+![alt text](image-4.png)
 
---- 3D Interference Pattern Animation ---
+--- 3D Interference Pattern Animation (Sunrise Horizon) ---
 
-![alt text](image-1.png)
+![alt text](image-3.png)
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import animation
-from IPython.display import Image, HTML # Import HTML for rich display
+from IPython.display import Image, HTML
 from google.colab import files
 
 # --- Parameters (KEEPING AS IS) ---
@@ -178,105 +178,118 @@ def get_total_wave(t):
         eta_total += wave(X, Y, x0, y0, t)
     return eta_total
 
-# --- Enhanced 2D Plot and Animation ---
-fig2d, ax2d = plt.subplots(figsize=(10, 8), facecolor='#1a1a2e') # Dark background for modern look
-ax2d.set_facecolor('#1a1a2e') # Set axes background color
-ax2d.tick_params(colors='#e0e0e0') # Light colored ticks
-ax2d.xaxis.label.set_color('#e0e0e0') # Light colored labels
-ax2d.yaxis.label.set_color('#e0e0e0')
-ax2d.title.set_color('#e0e0e0') # Light colored title
+# --- Function to Create and Save 2D Animation ---
+def create_2d_animation(filename='triangle_interference_2d_enhanced.gif'):
+    plt.close('all')
 
-# Using a perceptually uniform colormap (e.g., 'viridis', 'plasma', 'inferno', 'cividis')
-# 'plasma' often provides a vibrant, high-contrast look
-contour = ax2d.contourf(X, Y, get_total_wave(0), levels=50, cmap='plasma', extend='both')
-cbar = plt.colorbar(contour, ax=ax2d, label='Wave Displacement', pad=0.03) # Add padding
-cbar.ax.yaxis.set_tick_params(color='#e0e0e0') # Colorbar tick colors
-cbar.ax.yaxis.label.set_color('#e0e0e0') # Colorbar label color
-cbar.outline.set_edgecolor('#e0e0e0') # Colorbar outline
+    fig2d, ax2d = plt.subplots(figsize=(10, 8), facecolor='#1B263B') # Dark desaturated blue
+    ax2d.set_facecolor('#1B263B')
+    ax2d.tick_params(colors='#A0A0A0') # Medium grey ticks
+    ax2d.xaxis.label.set_color('#A0A0A0')
+    ax2d.yaxis.label.set_color('#A0A0A0')
+    ax2d.title.set_color('#F0F0F0') # Light grey title
 
-ax2d.scatter(sources[:, 0], sources[:, 1], c='#ff007f', marker='X', s=200, edgecolor='white', label='Sources') # Brighter, distinct markers
-ax2d.set_title('Dynamic Interference Pattern (2D)', fontsize=16, fontweight='bold')
-ax2d.set_xlabel('X-axis')
-ax2d.set_ylabel('Y-axis')
-ax2d.legend(facecolor='#2a2a4a', edgecolor='none', labelcolor='white') # Styled legend
-ax2d.grid(True, linestyle='--', alpha=0.6, color='#555555') # Subtle grid
+    # Using 'hot' or 'YlOrRd' for fiery effect
+    contour = ax2d.contourf(X, Y, get_total_wave(0), levels=50, cmap='YlOrRd', extend='both')
+    cbar = plt.colorbar(contour, ax=ax2d, label='Wave Displacement', pad=0.03)
+    cbar.ax.yaxis.set_tick_params(color='#A0A0A0')
+    cbar.ax.yaxis.label.set_color('#A0A0A0')
+    cbar.outline.set_edgecolor('#A0A0A0')
 
-def update_2d(frame):
-    t = frame * 0.05
-    ax2d.clear()
-    ax2d.set_facecolor('#1a1a2e')
-    ax2d.tick_params(colors='#e0e0e0')
-    ax2d.xaxis.label.set_color('#e0e0e0')
-    ax2d.yaxis.label.set_color('#e0e0e0')
-    ax2d.title.set_color('#e0e0e0')
-
-    eta_total = get_total_wave(t)
-    contour = ax2d.contourf(X, Y, eta_total, levels=50, cmap='plasma', extend='both')
-    ax2d.scatter(sources[:, 0], sources[:, 1], c='#ff007f', marker='X', s=200, edgecolor='white', label='Sources')
-    ax2d.set_title(f'Dynamic Interference Pattern (2D) | Time: {t:.2f}s', fontsize=16, fontweight='bold')
+    ax2d.scatter(sources[:, 0], sources[:, 1], c='#FFD700', marker='*', s=250, edgecolor='white', linewidth=1.5, label='Sources') # Gold star markers
+    ax2d.set_title('Dynamic Interference Pattern (2D)', fontsize=16, fontweight='bold')
     ax2d.set_xlabel('X-axis')
     ax2d.set_ylabel('Y-axis')
-    ax2d.legend(facecolor='#2a2a4a', edgecolor='none', labelcolor='white')
-    ax2d.grid(True, linestyle='--', alpha=0.6, color='#555555')
-    return [contour]
+    ax2d.legend(facecolor='#2F4F4F', edgecolor='none', labelcolor='#F0F0F0', loc='upper right') # Styled legend
+    ax2d.grid(True, linestyle='--', alpha=0.4, color='#667788') # Even softer grid
 
-ani2d = animation.FuncAnimation(fig2d, update_2d, frames=50, interval=50, blit=False)
-writer2d = animation.PillowWriter(fps=10)
-ani2d.save('triangle_interference_2d_enhanced.gif', writer=writer2d, dpi=100) # Increased DPI for better quality
-plt.close(fig2d)
+    def update_2d(frame):
+        t = frame * 0.05
+        ax2d.clear()
+        ax2d.set_facecolor('#1B263B')
+        ax2d.tick_params(colors='#A0A0A0')
+        ax2d.xaxis.label.set_color('#A0A0A0')
+        ax2d.yaxis.label.set_color('#A0A0A0')
+        ax2d.title.set_color('#F0F0F0')
 
-# --- Enhanced 3D Plot and Animation ---
-fig3d = plt.figure(figsize=(10, 8), facecolor='#1a1a2e') # Dark background
-ax3d = fig3d.add_subplot(111, projection='3d', facecolor='#1a1a2e') # Set axes background
-ax3d.tick_params(colors='#e0e0e0')
-ax3d.xaxis.label.set_color('#e0e0e0')
-ax3d.yaxis.label.set_color('#e0e0e0')
-ax3d.zaxis.label.set_color('#e0e0e0')
-ax3d.title.set_color('#e0e0e0')
+        eta_total = get_total_wave(t)
+        contour = ax2d.contourf(X, Y, eta_total, levels=50, cmap='YlOrRd', extend='both')
+        ax2d.scatter(sources[:, 0], sources[:, 1], c='#FFD700', marker='*', s=250, edgecolor='white', linewidth=1.5, label='Sources')
+        ax2d.set_title(f'Dynamic Interference Pattern (2D) | Time: {t:.2f}s', fontsize=16, fontweight='bold')
+        ax2d.set_xlabel('X-axis')
+        ax2d.set_ylabel('Y-axis')
+        ax2d.legend(facecolor='#2F4F4F', edgecolor='none', labelcolor='#F0F0F0', loc='upper right')
+        ax2d.grid(True, linestyle='--', alpha=0.4, color='#667788')
+        return []
 
-eta_total = get_total_wave(0)
-# Using 'viridis' for 3D can offer good depth perception
-surf = ax3d.plot_surface(X, Y, eta_total, cmap='viridis', rstride=1, cstride=1, antialiased=True, alpha=0.9)
-cbar3d = fig3d.colorbar(surf, ax=ax3d, shrink=0.6, aspect=20, label='Wave Displacement', pad=0.03)
-cbar3d.ax.yaxis.set_tick_params(color='#e0e0e0')
-cbar3d.ax.yaxis.label.set_color('#e0e0e0')
-cbar3d.outline.set_edgecolor('#e0e0e0')
+    ani2d = animation.FuncAnimation(fig2d, update_2d, frames=50, interval=50, blit=False)
+    writer2d = animation.PillowWriter(fps=10)
+    ani2d.save(filename, writer=writer2d, dpi=100)
+    plt.close(fig2d)
+    print(f"Saved {filename}")
 
-ax3d.set_title('Dynamic Interference Pattern (3D)', fontsize=16, fontweight='bold')
-ax3d.set_xlabel('X-axis')
-ax3d.set_ylabel('Y-axis')
-ax3d.set_zlabel('Wave Displacement')
+# --- Function to Create and Save 3D Animation ---
+def create_3d_animation(filename='triangle_interference_3d_enhanced.gif'):
+    plt.close('all')
 
-def update_3d(frame):
-    t = frame * 0.05
-    ax3d.clear()
-    ax3d.set_facecolor('#1a1a2e')
-    ax3d.tick_params(colors='#e0e0e0')
-    ax3d.xaxis.label.set_color('#e0e0e0')
-    ax3d.yaxis.label.set_color('#e0e0e0')
-    ax3d.zaxis.label.set_color('#e0e0e0')
-    ax3d.title.set_color('#e0e0e0')
+    fig3d = plt.figure(figsize=(10, 8), facecolor='#1B263B')
+    ax3d = fig3d.add_subplot(111, projection='3d', facecolor='#1B263B')
+    ax3d.tick_params(colors='#A0A0A0')
+    ax3d.xaxis.label.set_color('#A0A0A0')
+    ax3d.yaxis.label.set_color('#A0A0A0')
+    ax3d.zaxis.label.set_color('#A0A0A0')
+    ax3d.title.set_color('#F0F0F0')
 
-    eta_total = get_total_wave(t)
-    surf = ax3d.plot_surface(X, Y, eta_total, cmap='viridis', rstride=1, cstride=1, antialiased=True, alpha=0.9)
-    ax3d.set_title(f'Dynamic Interference Pattern (3D) | Time: {t:.2f}s', fontsize=16, fontweight='bold')
+    eta_total = get_total_wave(0)
+    surf = ax3d.plot_surface(X, Y, eta_total, cmap='YlOrRd', rstride=1, cstride=1, antialiased=True, alpha=0.9)
+    cbar3d = fig3d.colorbar(surf, ax=ax3d, shrink=0.6, aspect=20, label='Wave Displacement', pad=0.03)
+    cbar3d.ax.yaxis.set_tick_params(color='#A0A0A0')
+    cbar3d.ax.yaxis.label.set_color('#A0A0A0')
+    cbar3d.outline.set_edgecolor('#A0A0A0')
+
+    ax3d.set_title('Dynamic Interference Pattern (3D)', fontsize=16, fontweight='bold')
     ax3d.set_xlabel('X-axis')
     ax3d.set_ylabel('Y-axis')
     ax3d.set_zlabel('Wave Displacement')
-    return [surf]
 
-ani3d = animation.FuncAnimation(fig3d, update_3d, frames=50, interval=50, blit=False)
-writer3d = animation.PillowWriter(fps=10)
-ani3d.save('triangle_interference_3d_enhanced.gif', writer=writer3d, dpi=100) # Increased DPI
-plt.close(fig3d)
+    def update_3d(frame):
+        t = frame * 0.05
+        ax3d.clear()
+        ax3d.set_facecolor('#1B263B')
+        ax3d.tick_params(colors='#A0A0A0')
+        ax3d.xaxis.label.set_color('#A0A0A0')
+        ax3d.yaxis.label.set_color('#A0A0A0')
+        ax3d.zaxis.label.set_color('#A0A0A0')
+        ax3d.title.set_color('#F0F0F0')
 
-# --- Display Enhanced GIFs Inline ---
-print("--- 2D Interference Pattern Animation ---")
-display(Image(filename='triangle_interference_2d_enhanced.gif'))
-print("\n--- 3D Interference Pattern Animation ---")
-display(Image(filename='triangle_interference_3d_enhanced.gif'))
+        eta_total = get_total_wave(t)
+        surf = ax3d.plot_surface(X, Y, eta_total, cmap='YlOrRd', rstride=1, cstride=1, antialiased=True, alpha=0.9)
+        ax3d.set_title(f'Dynamic Interference Pattern (3D) | Time: {t:.2f}s', fontsize=16, fontweight='bold')
+        ax3d.set_xlabel('X-axis')
+        ax3d.set_ylabel('Y-axis')
+        ax3d.set_zlabel('Wave Displacement')
+        return [surf]
 
-# Optionally download GIFs (KEEPING AS IS)
-files.download('triangle_interference_2d_enhanced.gif')
-files.download('triangle_interference_3d_enhanced.gif')
+    ani3d = animation.FuncAnimation(fig3d, update_3d, frames=50, interval=50, blit=False)
+    writer3d = animation.PillowWriter(fps=10)
+    ani3d.save(filename, writer=writer3d, dpi=100)
+    plt.close(fig3d)
+    print(f"Saved {filename}")
+
+# --- Execute and Display Animations ---
+gif_2d_filename = 'triangle_interference_2d_enhanced_option2.gif'
+gif_3d_filename = 'triangle_interference_3d_enhanced_option2.gif'
+
+print("Generating 2D Animation (Option 2)...")
+create_2d_animation(gif_2d_filename)
+print("Generating 3D Animation (Option 2)...")
+create_3d_animation(gif_3d_filename)
+
+print("\n--- 2D Interference Pattern Animation (Sunrise Horizon) ---")
+display(Image(filename=gif_2d_filename))
+print("\n--- 3D Interference Pattern Animation (Sunrise Horizon) ---")
+display(Image(filename=gif_3d_filename))
+
+files.download(gif_2d_filename)
+files.download(gif_3d_filename)
 ```
