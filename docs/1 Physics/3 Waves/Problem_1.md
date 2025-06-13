@@ -1,90 +1,132 @@
-# 🌊 Interference Patterns of Circular Water Waves from Point Sources
+# Problem 1
+# **Wave Interference Patterns on a Water Surface**
 
-## 🔹 Task Description
+## **1. Selecting a Regular Polygon**
 
-A **circular wave** on the water surface, emanating from a point source located at $(x_0, y_0)$, is described by the **Single Disturbance Equation**:
+### **Introduction**
+In wave physics, interference occurs when two or more waves overlap, resulting in regions of constructive and destructive interference. To systematically analyze these patterns, we consider multiple point wave sources positioned at the vertices of a **regular polygon**. This setup allows us to explore how symmetric arrangements of sources influence the resulting wave field.
 
-$$
-\eta(x, y, t) = \frac{A}{\sqrt{r}} \cdot \cos(kr - \omega t + \phi)
-$$
+### **Mathematical Definition of a Regular Polygon**
+A **regular polygon** with $N$ sides is a closed geometric figure where all sides are of equal length and all internal angles are equal. The vertices of such a polygon, when inscribed in a circle of radius $R$, can be determined using trigonometric functions.
 
-### Where:
-- $\eta(x, y, t)$: Displacement of the water surface at point $(x, y)$ and time $t$
-- $A$: Amplitude of the wave
-- $k = \frac{2\pi}{\lambda}$: Wave number, with $\lambda$ as the wavelength
-- $\omega = 2\pi f$: Angular frequency, with $f$ as the wave frequency
-- $r = \sqrt{(x - x_0)^2 + (y - y_0)^2}$: Distance from source to the point $(x, y)$
-- $\phi$: Initial phase of the wave
+For a polygon centered at the origin, the coordinates of the $i$-th vertex are given by:
 
----
+$$x_i=R\cos\left(\frac{2\pi i}{N}\right),\quad y_i=R\sin\left(\frac{2\pi i}{N}\right),\quad i=0,1,2,\dots,N-1$$
 
-## ❓ Problem Statement
+where:
+- $R$ is the circumradius of the polygon,
 
-Your task is to **analyze the interference patterns** on the water surface caused by the **superposition of waves** emitted from point sources placed at the **vertices of a regular polygon**.
+- $N$ is the number of sides (hence, the number of sources),
 
----
+- $i$ indexes the vertices counterclockwise starting from an initial reference point.
+### **Choosing the Regular Polygon**
 
-## ✅ Steps to Follow
+The choice of $N$ influences the symmetry of the interference pattern. Common selections include:
 
-### 1. Select a Regular Polygon
-Choose a regular polygon:
-- Equilateral Triangle (3 vertices)
-- Square (4 vertices)
-- Regular Pentagon (5 vertices)
-- etc.
+- **Equilateral Triangle ($N=3$)**: Yields a threefold symmetric interference pattern.
 
-### 2. Position the Sources
-Place wave sources at the **vertices** of the polygon. For a polygon centered at the origin:
-- Let the radius be $R$
-- The $i^{th}$ vertex is at:
-  
-  $$
-  (x_i, y_i) = \left(R\cos\left(\frac{2\pi i}{N}\right), R\sin\left(\frac{2\pi i}{N}\right)\right)
-  $$
+- **Square ($N=4$)**: Produces a fourfold symmetric pattern with central and diagonal wave reinforcements.
 
-### 3. Write the Wave Equations
-Each source emits a wave described by:
+- **Pentagon ($N=5$)**: Generates more complex wave interactions with fivefold rotational symmetry.
 
-$$
-\eta_i(x, y, t) = \frac{A}{\sqrt{r_i}} \cdot \cos(k r_i - \omega t + \phi)
-$$
-
-Where:
-- $r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2}$
-
-### 4. Superposition of Waves
-The total displacement at a point $(x, y)$ and time $t$ is given by:
-
-$$
-\eta_{\text{sum}}(x, y, t) = \sum_{i=1}^{N} \eta_i(x, y, t)
-$$
-
-Where:
-- $N$ is the number of sources (polygon vertices)
+- **Hexagon ($N=6$)**: Approximates circular symmetry while retaining noticeable interference fringes.
 
 ---
 
-## 🔬 Analyze Interference Patterns
+## **2. Positioning the Sources**
 
-- Compute $\eta_{\text{sum}}(x, y, t)$ over a grid of $(x, y)$ points for a fixed time $t$
-- Identify:
-  - **Constructive interference**: Wave amplitudes add up (bright/fringe regions)
-  - **Destructive interference**: Wave amplitudes cancel (dark/null regions)
+### **Determining the Coordinates of the Polygonal Vertices**
+To systematically analyze interference, we must precisely position the wave sources at the vertices of a chosen regular polygon. Given a polygon inscribed within a circle of radius $R$, the coordinates of its vertices are:
+
+$$x_i=R\cos\left(\frac{2\pi i}{N}\right),\quad y_i=R\sin\left(\frac{2\pi i}{N}\right),\quad i=0,1,2,\dots,N-1$$
+
+### **Assigning Each Vertex as a Wave Source**
+Each vertex serves as a point source emitting circular waves with identical amplitude and frequency. The total wave field results from the superposition of these waves.
+
+Each wave propagates outward from its source with a displacement function:
+
+$$\eta_i(x,y,t)=\frac{A}{r_i}\cos\left(kr_i-\omega t+\phi_i\right)$$
+
+where:
+
+- $r_i=\sqrt{(x-x_i)^2+(y-y_i)^2}$ is the radial distance to the observation point.
+
+---
+## **3. Defining the Wave Equations**
+
+### **Mathematical Representation of Wave Motion**
+Each wave emitted from a point source follows the equation:
+
+$$\eta_i(x,y,t)=\frac{A}{r_i}\cos\left(kr_i-\omega t+\phi_i\right)$$
+
+where:
+
+- $A$ is the amplitude,
+
+- $k=\frac{2\pi}{\lambda}$ is the wave number,
+
+- $\omega=2\pi f$ is the angular frequency,
+
+- $\phi_i$ is the phase,
+
+- $r_i$ is the radial distance from the $i$-th source.
+
+### **Uniformity Assumptions**
+To maintain coherence in interference analysis, we assume:
+
+- All waves have **the same amplitude**, i.e., $A$ is constant.
+
+- All waves have **the same wavelength** $\lambda$ and frequency $f$.
+
+- Initial phase differences between sources remain fixed.
+
+---
+## **4. Applying the Superposition Principle**
+
+### **Summation of Wave Displacements**
+
+According to the principle of superposition, the resultant displacement at any point on the water surface is the sum of individual wave contributions:
+
+$$\eta_{\text{sum}}(x,y,t)=\sum_{i=1}^{N}\eta_i(x,y,t)$$
+
+This summation captures constructive and destructive interference effects.
+
+### **Constructive and Destructive Interference Conditions**
+
+- **Constructive interference:** Occurs when phase differences satisfy:
+
+$$kr_i-\omega t+\phi_i=2m\pi,\quad m\in\mathbb{Z}$$
+
+- **Destructive interference:** Occurs when phase differences satisfy:
+
+$$kr_i-\omega t+\phi_i=(2m+1)\pi,\quad m\in\mathbb{Z}$$
 
 ---
 
-## 📊 Visualization
+## **5. Analyzing the Interference Patterns**
 
-- Use 2D heatmaps or 3D surface plots
-- Plot $\eta_{\text{sum}}(x, y, t)$ over a defined region
-- Observe symmetrical patterns based on the chosen polygon
+### **Identifying Interference Zones**
+By computing $\eta_{\text{sum}}(x,y,t)$, we can classify different regions:
+- **High amplitude zones:** Result from constructive interference.
+- **Low amplitude zones:** Result from destructive interference.
+### **Temporal Evolution of the Pattern**
+As time progresses, the interference pattern evolves dynamically, influenced by wave frequency and phase differences.
 
 ---
 
-## 🧠 Optional Enhancements
+## **6. Visualization and Simulation**
 
-- Animate $\eta_{\text{sum}}(x, y, t)$ over time
-- Explore effects of:
-  - Changing phase $\phi$
-  - Different frequencies $\omega$
-  - Different polygon types
+### **Graphical Representations**
+Using numerical simulations, we generate:
+- **Static interference maps** for different polygons.
+- **Time-evolving wave fields** to observe changing interference dynamics.
+
+### **Python Implementation**
+A Python script implementing the above equations will:
+1. Define wave parameters.
+2. Compute the interference pattern on a 2D grid.
+3. Visualize results using heatmaps and contour plots.
+
+The next step is to implement and analyze these interference patterns computationally.
+
+# Python/Models
