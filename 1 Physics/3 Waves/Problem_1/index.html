@@ -430,23 +430,6 @@ def create_3d_animation(filename='triangle_interference_3d_enhanced.gif'):
     ani3d.save(filename, writer=writer3d, dpi=100)
     plt.close(fig3d)
     print(f"Saved {filename}")
-
-# --- Execute and Display Animations ---
-gif_2d_filename = 'triangle_interference_2d_enhanced_option2.gif'
-gif_3d_filename = 'triangle_interference_3d_enhanced_option2.gif'
-
-print("Generating 2D Animation (Option 2)...")
-create_2d_animation(gif_2d_filename)
-print("Generating 3D Animation (Option 2)...")
-create_3d_animation(gif_3d_filename)
-
-print("\n--- 2D Interference Pattern Animation (Sunrise Horizon) ---")
-display(Image(filename=gif_2d_filename))
-print("\n--- 3D Interference Pattern Animation (Sunrise Horizon) ---")
-display(Image(filename=gif_3d_filename))
-
-files.download(gif_2d_filename)
-files.download(gif_3d_filename)
 </code></pre>
 </div>
 </div><footer>
