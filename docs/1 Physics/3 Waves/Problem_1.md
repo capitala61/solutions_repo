@@ -454,7 +454,7 @@ $$
 - Breaks down for:
   * Very large amplitudes (nonlinear effects)
   * Dissipative systems with significant energy loss
-  
+
 # Spatial Grid Setup for Wave Simulation
 
 ## Grid Definition
@@ -487,6 +487,7 @@ where $\lambda_{min}$ is the shortest wavelength to resolve
 ## Implementation Steps
 
 1. **Choose domain size**:
+
 ```python
 x_min, x_max = 0.0, 1000.0  # meters
 y_min, y_max = 0.0, 500.0   # meters
