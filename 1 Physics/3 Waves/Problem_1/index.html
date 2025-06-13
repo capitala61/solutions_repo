@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>🌊 Interference Patterns of Circular Water Waves from Point Sources - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "\ud83c\udf0a Interference Patterns of Circular Water Waves from Point Sources";
         var mkdocs_page_input_path = "1 Physics/3 Waves/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -64,8 +64,34 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">3 Waves</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">🌊 Interference Patterns of Circular Water Waves from Point Sources</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#task-description">🔹 Task Description</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#where">Where:</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#problem-statement">❓ Problem Statement</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#steps-to-follow">✅ Steps to Follow</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1-select-a-regular-polygon">1. Select a Regular Polygon</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2-position-the-sources">2. Position the Sources</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#3-write-the-wave-equations">3. Write the Wave Equations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-superposition-of-waves">4. Superposition of Waves</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analyze-interference-patterns">🔬 Analyze Interference Patterns</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization">📊 Visualization</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-enhancements">🧠 Optional Enhancements</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +189,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">3 Waves</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">🌊 Interference Patterns of Circular Water Waves from Point Sources</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,532 +197,77 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
-<h1 id="regular-pentagon-academic-notes">📐 Regular Pentagon – Academic Notes</h1>
-<p>A <strong>regular pentagon</strong> is a five-sided polygon with:</p>
+<h1 id="interference-patterns-of-circular-water-waves-from-point-sources">🌊 Interference Patterns of Circular Water Waves from Point Sources</h1>
+<h2 id="task-description">🔹 Task Description</h2>
+<p>A <strong>circular wave</strong> on the water surface, emanating from a point source located at <span class="arithmatex">\((x_0, y_0)\)</span>, is described by the <strong>Single Disturbance Equation</strong>:</p>
+<div class="arithmatex">\[
+\eta(x, y, t) = \frac{A}{\sqrt{r}} \cdot \cos(kr - \omega t + \phi)
+\]</div>
+<h3 id="where">Where:</h3>
 <ul>
-<li>All sides of equal length.</li>
-<li>All internal angles equal.</li>
-<li>All diagonals of equal length.</li>
+<li><span class="arithmatex">\(\eta(x, y, t)\)</span>: Displacement of the water surface at point <span class="arithmatex">\((x, y)\)</span> and time <span class="arithmatex">\(t\)</span></li>
+<li><span class="arithmatex">\(A\)</span>: Amplitude of the wave</li>
+<li><span class="arithmatex">\(k = \frac{2\pi}{\lambda}\)</span>: Wave number, with <span class="arithmatex">\(\lambda\)</span> as the wavelength</li>
+<li><span class="arithmatex">\(\omega = 2\pi f\)</span>: Angular frequency, with <span class="arithmatex">\(f\)</span> as the wave frequency</li>
+<li><span class="arithmatex">\(r = \sqrt{(x - x_0)^2 + (y - y_0)^2}\)</span>: Distance from source to the point <span class="arithmatex">\((x, y)\)</span></li>
+<li><span class="arithmatex">\(\phi\)</span>: Initial phase of the wave</li>
 </ul>
 <hr/>
-<h2 id="basic-properties">🔢 Basic Properties</h2>
-<ul>
-<li><strong>Number of sides</strong>: <span class="arithmatex">\(n = 5\)</span></li>
-<li><strong>Length of each side</strong>: <span class="arithmatex">\(a\)</span></li>
-<li><strong>Internal angle</strong>:<br/>
-  $$
-  \theta = \frac{(n - 2) \cdot 180^\circ}{n} = \frac{3 \cdot 180^\circ}{5} = 108^\circ
-  $$</li>
-<li><strong>Central angle</strong> (for inscribed circle):<br/>
-  $$
-  \phi = \frac{360^\circ}{n} = \frac{360^\circ}{5} = 72^\circ
-  $$</li>
-</ul>
+<h2 id="problem-statement">❓ Problem Statement</h2>
+<p>Your task is to <strong>analyze the interference patterns</strong> on the water surface caused by the <strong>superposition of waves</strong> emitted from point sources placed at the <strong>vertices of a regular polygon</strong>.</p>
 <hr/>
-<h2 id="perimeter">📏 Perimeter</h2>
-<div class="arithmatex">\[
-P = n \cdot a = 5a
-\]</div>
-<hr/>
-<h2 id="area-formulas">📐 Area Formulas</h2>
-<h3 id="using-side-length-a">Using side length <span class="arithmatex">\(a\)</span>:</h3>
-<div class="arithmatex">\[
-A = \frac{1}{4} \cdot \sqrt{5(5 + 2\sqrt{5})} \cdot a^2
-\]</div>
-<h3 id="using-apothem-a_p">Using apothem <span class="arithmatex">\(a_p\)</span>:</h3>
-<div class="arithmatex">\[
-A = \frac{1}{2} \cdot P \cdot a_p = \frac{5a \cdot a_p}{2}
-\]</div>
-<hr/>
-<h2 id="apothem-of-regular-pentagon">🟠 Apothem of Regular Pentagon</h2>
-<div class="arithmatex">\[
-a_p = \frac{a}{2} \cdot \cot\left(\frac{\pi}{5}\right)
-\]</div>
-<p>or</p>
-<div class="arithmatex">\[
-a_p = \frac{a}{2} \cdot \tan\left(54^\circ\right)
-\]</div>
-<hr/>
-<h2 id="diagonals">📐 Diagonals</h2>
-<ul>
-<li>
-<p><strong>Number of diagonals</strong> in a polygon:
-  $$
-  d = \frac{n(n - 3)}{2} = \frac{5(5 - 3)}{2} = 5
+<h2 id="steps-to-follow">✅ Steps to Follow</h2>
+<h3 id="1-select-a-regular-polygon">1. Select a Regular Polygon</h3>
+<p>Choose a regular polygon:
+- Equilateral Triangle (3 vertices)
+- Square (4 vertices)
+- Regular Pentagon (5 vertices)
+- etc.</p>
+<h3 id="2-position-the-sources">2. Position the Sources</h3>
+<p>Place wave sources at the <strong>vertices</strong> of the polygon. For a polygon centered at the origin:
+- Let the radius be <span class="arithmatex">\(R\)</span>
+- The <span class="arithmatex">\(i^{th}\)</span> vertex is at:</p>
+<p>$$
+  (x_i, y_i) = \left(R\cos\left(\frac{2\pi i}{N}\right), R\sin\left(\frac{2\pi i}{N}\right)\right)
   $$</p>
-</li>
-<li>
-<p><strong>Length of a diagonal</strong> <span class="arithmatex">\(D\)</span>:
-  $$
-  D = a \cdot \frac{1 + \sqrt{5}}{2}
-  $$
-  <em>(Golden ratio)</em></p>
-</li>
-</ul>
-<hr/>
-<h2 id="symmetry">🔄 Symmetry</h2>
-<ul>
-<li><strong>Lines of symmetry</strong>: 5  </li>
-<li><strong>Rotational symmetry</strong>: Every <span class="arithmatex">\(72^\circ\)</span></li>
-</ul>
-<hr/>
-<h2 id="trigonometric-construction-useful-in-geometry">🔧 Trigonometric Construction (Useful in Geometry)</h2>
-<ul>
-<li>
-<p>Each vertex angle from the center:
-  $$
-  \text{Vertex angle} = \frac{2\pi}{5}
-  $$</p>
-</li>
-<li>
-<p>Coordinates for a unit pentagon centered at origin (optional):
-  $$
-  (x_k, y_k) = (\cos(\theta_k), \sin(\theta_k)) \quad \text{where} \quad \theta_k = \frac{2\pi k}{5},\ k = 0,1,2,3,4
-  $$</p>
-</li>
-</ul>
-<hr/>
-<h2 id="summary">📚 Summary</h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Formula / Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sides</td>
-<td><span class="arithmatex">\(n = 5\)</span></td>
-</tr>
-<tr>
-<td>Interior Angle</td>
-<td><span class="arithmatex">\(108^\circ\)</span></td>
-</tr>
-<tr>
-<td>Central Angle</td>
-<td><span class="arithmatex">\(72^\circ\)</span></td>
-</tr>
-<tr>
-<td>Perimeter</td>
-<td><span class="arithmatex">\(P = 5a\)</span></td>
-</tr>
-<tr>
-<td>Area (side)</td>
-<td><span class="arithmatex">\(A = \frac{1}{4}\sqrt{5(5+2\sqrt{5})} a^2\)</span></td>
-</tr>
-<tr>
-<td>Diagonals</td>
-<td><span class="arithmatex">\(d = 5\)</span>, length <span class="arithmatex">\(= a \cdot \frac{1 + \sqrt{5}}{2}\)</span></td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<p>📌 <strong>Applications</strong>:
-- Architecture<br/>
-- Geometry problems<br/>
-- Symbolic usage (stars, flags)</p>
-<h1 id="determining-vertex-coordinates-of-a-regular-polygon">📌 Determining Vertex Coordinates of a Regular Polygon</h1>
-<p>To determine the <strong>vertex coordinates</strong> of a regular polygon, we use <strong>trigonometry</strong> and place the polygon in a <strong>Cartesian coordinate system</strong>, often centered at the origin.</p>
-<hr/>
-<h2 id="assumptions">📐 Assumptions</h2>
-<ul>
-<li><strong>Regular polygon</strong>: all sides and angles are equal.</li>
-<li><strong>Center at origin</strong>: <span class="arithmatex">\((0,0)\)</span></li>
-<li><strong>Radius</strong> <span class="arithmatex">\(r\)</span>: distance from center to any vertex (circumradius).</li>
-<li><strong>Number of vertices</strong>: <span class="arithmatex">\(n\)</span></li>
-<li><strong>Angle increment</strong> between adjacent vertices: <span class="arithmatex">\(\theta=\dfrac{2\pi}{n}\)</span></li>
-</ul>
-<hr/>
-<h2 id="general-formula-for-vertex-coordinates">🧮 General Formula for Vertex Coordinates</h2>
-<p>For each vertex <span class="arithmatex">\(k\)</span> <span class="arithmatex">\((k=0,1,2,...,n-1)\)</span>:</p>
+<h3 id="3-write-the-wave-equations">3. Write the Wave Equations</h3>
+<p>Each source emits a wave described by:</p>
 <div class="arithmatex">\[
-x_k=r\cdot\cos(\theta_k) \\
-y_k=r\cdot\sin(\theta_k)
+\eta_i(x, y, t) = \frac{A}{\sqrt{r_i}} \cdot \cos(k r_i - \omega t + \phi)
 \]</div>
-<p>Where:</p>
-<ul>
-<li><span class="arithmatex">\(\theta_k=\dfrac{2\pi k}{n}+\phi_0\)</span></li>
-<li><span class="arithmatex">\(\phi_0\)</span> is the initial angular offset (optional, default <span class="arithmatex">\(0\)</span>)</li>
-</ul>
-<hr/>
-<h2 id="step-by-step-procedure">🧷 Step-by-Step Procedure</h2>
-<ol>
-<li><strong>Choose</strong>:</li>
-<li>Number of sides <span class="arithmatex">\(n\)</span></li>
-<li>Radius <span class="arithmatex">\(r\)</span></li>
-<li>
-<p>Optional: starting rotation angle <span class="arithmatex">\(\phi_0\)</span> in radians</p>
-</li>
-<li>
-<p><strong>For each vertex</strong> <span class="arithmatex">\(k\)</span> from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(n-1\)</span>:</p>
-</li>
-<li>Compute angle: <span class="arithmatex">\(\theta_k=\dfrac{2\pi k}{n}+\phi_0\)</span></li>
-<li>Get coordinates:<ul>
-<li><span class="arithmatex">\(x_k=r\cdot\cos(\theta_k)\)</span></li>
-<li><span class="arithmatex">\(y_k=r\cdot\sin(\theta_k)\)</span></li>
-</ul>
-</li>
-</ol>
-<hr/>
-<h2 id="example-regular-pentagon-n5-r1">🧪 Example: Regular Pentagon (<span class="arithmatex">\(n=5\)</span>, <span class="arithmatex">\(r=1\)</span>)</h2>
-<p>Let <span class="arithmatex">\(\phi_0=\dfrac{\pi}{2}\)</span> to make one vertex point upward.</p>
-<ul>
-<li><span class="arithmatex">\(\theta_k=\dfrac{2\pi k}{5}+\dfrac{\pi}{2}\)</span></li>
-</ul>
-<p>Then each vertex is:</p>
-<ul>
-<li>
-<p>Vertex 0:<br/>
-<span class="arithmatex">\(x_0=\cos\left(\dfrac{\pi}{2}\right)=0\)</span><br/>
-<span class="arithmatex">\(y_0=\sin\left(\dfrac{\pi}{2}\right)=1\)</span></p>
-</li>
-<li>
-<p>Vertex 1:<br/>
-<span class="arithmatex">\(\theta_1=\dfrac{2\pi}{5}+\dfrac{\pi}{2}=\dfrac{9\pi}{10}\)</span><br/>
-<span class="arithmatex">\(x_1=\cos\left(\dfrac{9\pi}{10}\right)\)</span><br/>
-<span class="arithmatex">\(y_1=\sin\left(\dfrac{9\pi}{10}\right)\)</span></p>
-</li>
-<li>
-<p>Repeat similarly for <span class="arithmatex">\(k=2,3,4\)</span></p>
-</li>
-</ul>
-<hr/>
-<h2 id="summary-of-vertex-formula">🧭 Summary of Vertex Formula</h2>
-<p>For a regular <span class="arithmatex">\(n\)</span>-gon centered at origin with radius <span class="arithmatex">\(r\)</span>:</p>
+<p>Where:
+- <span class="arithmatex">\(r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2}\)</span></p>
+<h3 id="4-superposition-of-waves">4. Superposition of Waves</h3>
+<p>The total displacement at a point <span class="arithmatex">\((x, y)\)</span> and time <span class="arithmatex">\(t\)</span> is given by:</p>
 <div class="arithmatex">\[
-(x_k,y_k)=\left(r\cos\left(\dfrac{2\pi k}{n}+\phi_0\right),r\sin\left(\dfrac{2\pi k}{n}+\phi_0\right)\right)
+\eta_{\text{sum}}(x, y, t) = \sum_{i=1}^{N} \eta_i(x, y, t)
 \]</div>
+<p>Where:
+- <span class="arithmatex">\(N\)</span> is the number of sources (polygon vertices)</p>
+<hr/>
+<h2 id="analyze-interference-patterns">🔬 Analyze Interference Patterns</h2>
 <ul>
-<li><span class="arithmatex">\(k=0,1,2,...,n-1\)</span></li>
-<li>Use <span class="arithmatex">\(\phi_0=\dfrac{\pi}{2}\)</span> to orient a vertex upward</li>
-<li>All vertices lie on the unit circle if <span class="arithmatex">\(r=1\)</span></li>
+<li>Compute <span class="arithmatex">\(\eta_{\text{sum}}(x, y, t)\)</span> over a grid of <span class="arithmatex">\((x, y)\)</span> points for a fixed time <span class="arithmatex">\(t\)</span></li>
+<li>Identify:</li>
+<li><strong>Constructive interference</strong>: Wave amplitudes add up (bright/fringe regions)</li>
+<li><strong>Destructive interference</strong>: Wave amplitudes cancel (dark/null regions)</li>
 </ul>
 <hr/>
-<h2 id="applications">🛠️ Applications</h2>
+<h2 id="visualization">📊 Visualization</h2>
 <ul>
-<li>Point source placement in physics simulations</li>
-<li>Uniform distribution on circle</li>
-<li>Graphics and game development</li>
-<li>Antenna array geometry</li>
-</ul>
-<h1 id="defining-wave-parameters-academic-notes">🌊 Defining Wave Parameters – Academic Notes</h1>
-<p>To model and analyze waves, we define key parameters that describe their behavior in space and time. These parameters are essential in <strong>physics</strong>, <strong>engineering</strong>, and <strong>signal processing</strong>.</p>
-<hr/>
-<h2 id="common-wave-parameters">📐 Common Wave Parameters</h2>
-<h3 id="1-amplitude-a">🔸 1. Amplitude (<span class="arithmatex">\(A\)</span>)</h3>
-<ul>
-<li>Maximum displacement from the equilibrium position.</li>
-<li>Represents the wave's <strong>strength</strong> or <strong>intensity</strong>.</li>
-<li>Units depend on the context (e.g., meters for mechanical waves, volts for EM waves).</li>
+<li>Use 2D heatmaps or 3D surface plots</li>
+<li>Plot <span class="arithmatex">\(\eta_{\text{sum}}(x, y, t)\)</span> over a defined region</li>
+<li>Observe symmetrical patterns based on the chosen polygon</li>
 </ul>
 <hr/>
-<h3 id="2-wavelength-lambda">🔸 2. Wavelength (<span class="arithmatex">\(\lambda\)</span>)</h3>
+<h2 id="optional-enhancements">🧠 Optional Enhancements</h2>
 <ul>
-<li>Distance between <strong>two consecutive identical points</strong> (e.g., crests or troughs).</li>
-<li>Determines <strong>spatial periodicity</strong> of the wave.</li>
-<li>Unit: meters (<span class="arithmatex">\(m\)</span>)</li>
+<li>Animate <span class="arithmatex">\(\eta_{\text{sum}}(x, y, t)\)</span> over time</li>
+<li>Explore effects of:</li>
+<li>Changing phase <span class="arithmatex">\(\phi\)</span></li>
+<li>Different frequencies <span class="arithmatex">\(\omega\)</span></li>
+<li>Different polygon types</li>
 </ul>
-<p><strong>Wave number (<span class="arithmatex">\(k\)</span>)</strong> is defined as:</p>
-<div class="arithmatex">\[
-k=\frac{2\pi}{\lambda}
-\]</div>
-<ul>
-<li>Unit: radians per meter (<span class="arithmatex">\(\text{rad/m}\)</span>)</li>
-</ul>
-<hr/>
-<h3 id="3-frequency-f">🔸 3. Frequency (<span class="arithmatex">\(f\)</span>)</h3>
-<ul>
-<li>Number of wave cycles per second.</li>
-<li>Describes <strong>temporal periodicity</strong>.</li>
-<li>Unit: Hertz (<span class="arithmatex">\(Hz\)</span>)</li>
-</ul>
-<p><strong>Angular frequency (<span class="arithmatex">\(\omega\)</span>)</strong> is given by:</p>
-<div class="arithmatex">\[
-\omega=2\pi f
-\]</div>
-<ul>
-<li>Unit: radians per second (<span class="arithmatex">\(\text{rad/s}\)</span>)</li>
-</ul>
-<hr/>
-<h3 id="4-initial-phase-phi">🔸 4. Initial Phase (<span class="arithmatex">\(\phi\)</span>)</h3>
-<ul>
-<li>The <strong>horizontal shift</strong> of the wave at <span class="arithmatex">\(t=0\)</span>, <span class="arithmatex">\(x=0\)</span>.</li>
-<li>Unit: radians</li>
-<li>Common values:</li>
-<li><span class="arithmatex">\(\phi=0\)</span> (in-phase)</li>
-<li>Same <span class="arithmatex">\(\phi\)</span> for all wave sources → synchronous emission</li>
-</ul>
-<hr/>
-<h2 id="summary-table">🧾 Summary Table</h2>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Symbol</th>
-<th>Formula</th>
-<th>Unit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amplitude</td>
-<td><span class="arithmatex">\(A\)</span></td>
-<td>—</td>
-<td>Depends on wave</td>
-</tr>
-<tr>
-<td>Wavelength</td>
-<td><span class="arithmatex">\(\lambda\)</span></td>
-<td>—</td>
-<td><span class="arithmatex">\(m\)</span></td>
-</tr>
-<tr>
-<td>Wave number</td>
-<td><span class="arithmatex">\(k\)</span></td>
-<td><span class="arithmatex">\(k=\dfrac{2\pi}{\lambda}\)</span></td>
-<td><span class="arithmatex">\(\text{rad/m}\)</span></td>
-</tr>
-<tr>
-<td>Frequency</td>
-<td><span class="arithmatex">\(f\)</span></td>
-<td>—</td>
-<td><span class="arithmatex">\(Hz\)</span></td>
-</tr>
-<tr>
-<td>Angular frequency</td>
-<td><span class="arithmatex">\(\omega\)</span></td>
-<td><span class="arithmatex">\(\omega=2\pi f\)</span></td>
-<td><span class="arithmatex">\(\text{rad/s}\)</span></td>
-</tr>
-<tr>
-<td>Initial phase</td>
-<td><span class="arithmatex">\(\phi\)</span></td>
-<td>—</td>
-<td><span class="arithmatex">\(\text{rad}\)</span></td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<h2 id="typical-wave-equation-1d-traveling-wave">📝 Typical Wave Equation (1D Traveling Wave)</h2>
-<p>A sinusoidal wave traveling in the <span class="arithmatex">\(+x\)</span> direction can be expressed as:</p>
-<div class="arithmatex">\[
-y(x,t)=A\sin(kx-\omega t+\phi)
-\]</div>
-<p>Where:</p>
-<ul>
-<li><span class="arithmatex">\(A\)</span>: amplitude  </li>
-<li><span class="arithmatex">\(k\)</span>: wave number  </li>
-<li><span class="arithmatex">\(\omega\)</span>: angular frequency  </li>
-<li><span class="arithmatex">\(\phi\)</span>: initial phase  </li>
-<li><span class="arithmatex">\(x\)</span>: position  </li>
-<li><span class="arithmatex">\(t\)</span>: time  </li>
-</ul>
-<hr/>
-<h2 id="applications_1">🛠️ Applications</h2>
-<ul>
-<li>Modeling sound, light, water, and electromagnetic waves</li>
-<li>Signal analysis and synthesis</li>
-<li>Vibrations and acoustics</li>
-</ul>
-<h1 id="writing-individual-wave-equations-academic-notes">🎯 Writing Individual Wave Equations – Academic Notes</h1>
-<p>In a system with multiple <strong>point sources</strong> located at different positions <span class="arithmatex">\((x_i,y_i)\)</span>, we can express the <strong>displacement of the wave</strong> from each source using a general wave equation.</p>
-<hr/>
-<h2 id="assumptions_1">🧱 Assumptions</h2>
-<ul>
-<li>Each source emits a <strong>monochromatic sinusoidal wave</strong>.</li>
-<li>All waves propagate in a homogeneous medium at speed <span class="arithmatex">\(v\)</span>.</li>
-<li>Wave parameters:</li>
-<li>Amplitude: <span class="arithmatex">\(A\)</span></li>
-<li>Frequency: <span class="arithmatex">\(f\)</span></li>
-<li>Wavelength: <span class="arithmatex">\(\lambda\)</span></li>
-<li>Wave number: <span class="arithmatex">\(k=\dfrac{2\pi}{\lambda}\)</span></li>
-<li>Angular frequency: <span class="arithmatex">\(\omega=2\pi f\)</span></li>
-<li>Initial phase: <span class="arithmatex">\(\phi_i\)</span></li>
-</ul>
-<hr/>
-<h2 id="displacement-from-each-source">🔸 Displacement from Each Source</h2>
-<p>Let a wave be emitted from source <span class="arithmatex">\(i\)</span> located at <span class="arithmatex">\((x_i,y_i)\)</span>. The wave propagates spherically outward from that point. The displacement <span class="arithmatex">\(y_i(P,t)\)</span> of the wave at point <span class="arithmatex">\(P=(x,y)\)</span> and time <span class="arithmatex">\(t\)</span> is given by:</p>
-<div class="arithmatex">\[
-y_i(P,t)=A_i\sin\left(k r_i - \omega t + \phi_i\right)
-\]</div>
-<p>Where:</p>
-<ul>
-<li><span class="arithmatex">\(r_i=\sqrt{(x-x_i)^2+(y-y_i)^2}\)</span> is the distance from source <span class="arithmatex">\(i\)</span> to observation point <span class="arithmatex">\(P\)</span></li>
-<li><span class="arithmatex">\(A_i\)</span> is the amplitude of source <span class="arithmatex">\(i\)</span></li>
-<li><span class="arithmatex">\(\phi_i\)</span> is the initial phase of source <span class="arithmatex">\(i\)</span></li>
-<li><span class="arithmatex">\(k\)</span> is the wave number</li>
-<li><span class="arithmatex">\(\omega\)</span> is the angular frequency</li>
-</ul>
-<hr/>
-<h2 id="general-expression-for-n-sources">🧮 General Expression for <span class="arithmatex">\(N\)</span> Sources</h2>
-<p>If you have <span class="arithmatex">\(N\)</span> sources, each at <span class="arithmatex">\((x_i,y_i)\)</span> with possibly different phases <span class="arithmatex">\(\phi_i\)</span> and amplitudes <span class="arithmatex">\(A_i\)</span>, the total displacement is:</p>
-<div class="arithmatex">\[
-y_\text{total}(x,y,t)=\sum_{i=1}^{N} A_i\sin\left(k\sqrt{(x-x_i)^2+(y-y_i)^2}-\omega t+\phi_i\right)
-\]</div>
-<hr/>
-<h2 id="example-two-in-phase-sources">📝 Example: Two In-Phase Sources</h2>
-<p>Let two identical point sources be placed at:</p>
-<ul>
-<li>Source 1 at <span class="arithmatex">\((x_1,y_1)=(0,0)\)</span> </li>
-<li>Source 2 at <span class="arithmatex">\((x_2,y_2)=(d,0)\)</span> </li>
-<li><span class="arithmatex">\(A_1=A_2=A\)</span>, <span class="arithmatex">\(\phi_1=\phi_2=0\)</span></li>
-</ul>
-<p>Then:</p>
-<ul>
-<li><span class="arithmatex">\(r_1=\sqrt{x^2+y^2}\)</span> </li>
-<li><span class="arithmatex">\(r_2=\sqrt{(x-d)^2+y^2}\)</span></li>
-</ul>
-<p>The individual displacements:</p>
-<div class="arithmatex">\[
-y_1(x,y,t)=A\sin\left(k\sqrt{x^2+y^2}-\omega t\right)
-\]</div>
-<div class="arithmatex">\[
-y_2(x,y,t)=A\sin\left(k\sqrt{(x-d)^2+y^2}-\omega t\right)
-\]</div>
-<hr/>
-<h2 id="applications_2">🛠️ Applications</h2>
-<ul>
-<li>Interference pattern modeling (e.g., Young’s double-slit)</li>
-<li>Acoustic or EM wave superposition from multiple antennas or sources</li>
-<li>Simulating sound fields and spatial audio</li>
-<li>Holography and wavefront reconstruction</li>
-</ul>
-<hr/>
-<h2 id="summary_1">🔚 Summary</h2>
-<p>Each point source contributes a <strong>radially-propagating wave</strong> whose phase depends on the <strong>distance</strong> to the point of observation. Superposing these contributions allows us to model <strong>interference</strong>, <strong>constructive/destructive patterns</strong>, and wavefront behaviors.</p>
-<h1 id="superposition-principle-in-wave-dynamics">Superposition Principle in Wave Dynamics</h1>
-<p>The superposition principle states that the net displacement caused by multiple waves is the algebraic sum of the individual wave displacements.</p>
-<h2 id="mathematical-formulation">Mathematical Formulation</h2>
-<p>For a system with <span class="arithmatex">\(N\)</span> waves, the total displacement <span class="arithmatex">\(\eta_{sum}\)</span> at any point <span class="arithmatex">\((x,y)\)</span> and time <span class="arithmatex">\(t\)</span> is given by:</p>
-<div class="arithmatex">\[
-\eta_{sum}(x,y,t) = \sum_{i=1}^{N} \eta_i(x,y,t)
-\]</div>
-<p>where:
-- <span class="arithmatex">\(\eta_i(x,y,t)\)</span> is the displacement due to the <span class="arithmatex">\(i^{th}\)</span> wave
-- <span class="arithmatex">\(N\)</span> is the total number of waves</p>
-<h2 id="key-properties">Key Properties</h2>
-<h3 id="linear-systems">Linear Systems</h3>
-<ul>
-<li>Applies to linear wave equations</li>
-<li>Valid when the wave equation satisfies:
-  $$
-  \mathcal{L}(\eta_1 + \eta_2) = \mathcal{L}(\eta_1) + \mathcal{L}(\eta_2)
-  $$
-  where <span class="arithmatex">\(\mathcal{L}\)</span> is the linear wave operator</li>
-</ul>
-<h3 id="important-consequences">Important Consequences</h3>
-<ol>
-<li><strong>Constructive Interference</strong></li>
-<li>
-<p>Occurs when waves are in phase:
-     $$
-     \eta_{sum} \approx N\eta \quad \text{(for identical waves in phase)}
-     $$</p>
-</li>
-<li>
-<p><strong>Destructive Interference</strong></p>
-</li>
-<li>Occurs when waves are out of phase:
-     $$
-     \eta_{sum} \approx 0 \quad \text{(for identical waves with phase difference } \pi)
-     $$</li>
-</ol>
-<h2 id="applications_3">Applications</h2>
-<ul>
-<li>Ocean wave modeling</li>
-<li>Quantum mechanics (wavefunction superposition)</li>
-<li>Acoustics and sound wave analysis</li>
-<li>Electromagnetic wave propagation</li>
-</ul>
-<h2 id="example-calculation">Example Calculation</h2>
-<p>For two sinusoidal waves:
-$$
-\eta_1(x,t) = A\sin(kx - \omega t)
-$$
-$$
-\eta_2(x,t) = A\sin(kx - \omega t + \phi)
-$$</p>
-<p>The superposition gives:
-$$
-\eta_{sum} = 2A\cos\left(\frac{\phi}{2}\right)\sin\left(kx - \omega t + \frac{\phi}{2}\right)
-$$</p>
-<h2 id="limitations">Limitations</h2>
-<ul>
-<li>Only valid for linear systems</li>
-<li>Breaks down for:</li>
-<li>Very large amplitudes (nonlinear effects)</li>
-<li>Dissipative systems with significant energy loss</li>
-</ul>
-<h1 id="spatial-grid-setup-for-wave-simulation">Spatial Grid Setup for Wave Simulation</h1>
-<h2 id="grid-definition">Grid Definition</h2>
-<p>To model wave propagation, we first define a discrete spatial grid over the water surface:</p>
-<div class="arithmatex">\[\Omega = \{(x_i, y_j) \mid x_i \in [x_{min}, x_{max}], y_j \in [y_{min}, y_{max}]\}\]</div>
-<p>where:
--<span class="arithmatex">\(x_i = x_{min} + i\Delta x\)</span> for <span class="arithmatex">\(i = 0,1,...,N_x-1\)</span>
--<span class="arithmatex">\(y_j = y_{min} + j\Delta y\)</span> for <span class="arithmatex">\(j = 0,1,...,N_y-1\)</span></p>
-<h2 id="parameters">Parameters</h2>
-<h3 id="domain-specifications">Domain Specifications</h3>
-<ul>
-<li><strong>Physical boundaries</strong>:
-  -<span class="arithmatex">\(x \in [x_{min}, x_{max}]\)</span> (longitudinal direction)
-  -<span class="arithmatex">\(y \in [y_{min}, y_{max}]\)</span> (transverse direction)</li>
-<li><strong>Typical marine applications</strong>:
-  -<span class="arithmatex">\(x_{max} - x_{min} = 1000\text{m}\)</span> (along-wave direction)
-  -<span class="arithmatex">\(y_{max} - y_{min} = 500\text{m}\)</span> (cross-wave direction)</li>
-</ul>
-<h3 id="resolution-parameters">Resolution Parameters</h3>
-<ul>
-<li><strong>Grid spacing</strong>:
-  -<span class="arithmatex">\(\Delta x = \frac{x_{max} - x_{min}}{N_x - 1}\)</span>
-  -<span class="arithmatex">\(\Delta y = \frac{y_{max} - y_{min}}{N_y - 1}\)</span></li>
-<li><strong>Nyquist criterion</strong>:
-<span class="arithmatex">\(<span class="arithmatex">\(\Delta x \leq \frac{\lambda_{min}}{2} \quad \text{and} \quad \Delta y \leq \frac{\lambda_{min}}{2}\)</span>\)</span>
-where <span class="arithmatex">\(\lambda_{min}\)</span> is the shortest wavelength to resolve</li>
-</ul>
-<h2 id="implementation-steps">Implementation Steps</h2>
-<ol>
-<li><strong>Choose domain size</strong>:</li>
-</ol>
-<pre><code class="language-python">x_min, x_max = 0.0, 1000.0  # meters
-y_min, y_max = 0.0, 500.0   # meters
-</code></pre>
-<h1 id="total-wave-displacement-computation">Total Wave Displacement Computation</h1>
-<h2 id="mathematical-formulation_1">Mathematical Formulation</h2>
-<p>The total displacement field <span class="arithmatex">\(\eta_{sum}(x,y,t)\)</span> at time <span class="arithmatex">\(t\)</span> is computed by summing <span class="arithmatex">\(N\)</span> individual wave components:</p>
-<div class="arithmatex">\[\eta_{sum}(x,y,t) = \sum_{k=1}^{N} \eta_k(x,y,t)\]</div>
-<p>where:
--<span class="arithmatex">\(\eta_k(x,y,t)\)</span> is the displacement from the <span class="arithmatex">\(k^{th}\)</span> wave component
--<span class="arithmatex">\(N\)</span> is the total number of wave components</p>
-<h1 id="wave-interference-pattern-visualization">Wave Interference Pattern Visualization</h1>
-<h2 id="mathematical-background">Mathematical Background</h2>
-<p>The interference pattern results from superposition of two or more waves:</p>
-<div class="arithmatex">\[\eta_{total}(x,y,t)=\sum_{k=1}^N A_k \sin(\vec{k}_k \cdot \vec{r} - \omega_k t + \phi_k)\]</div>
-<p>where:
--<span class="arithmatex">\(\vec{r}=(x,y)\)</span> is position vector
--<span class="arithmatex">\(\vec{k}_k=(k_{x,k},k_{y,k})\)</span> is wave vector
--<span class="arithmatex">\(A_k\)</span>, <span class="arithmatex">\(\omega_k\)</span>, <span class="arithmatex">\(\phi_k\)</span> are amplitude, frequency, and phase</p>
-<h2 id="implementation-code">Implementation Code</h2>
-<h3 id="1-setup-wave-parameters">1. Setup Wave Parameters</h3>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Wave 1 parameters
-A1 = 1.0       # Amplitude (m)
-k1 = np.array([0.1, 0.05])  # Wave vector (rad/m)
-ω1 = 0.5       # Angular frequency (rad/s)
-ϕ1 = 0.0       # Phase (rad)
-
-# Wave 2 parameters
-A2 = 0.8
-k2 = np.array([-0.08, 0.1])
-ω2 = 0.6
-ϕ2 = np.pi/2
-
-# Time snapshot
-t = 10.0
-</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
