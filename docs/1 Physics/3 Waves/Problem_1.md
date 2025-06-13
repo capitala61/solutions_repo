@@ -134,11 +134,11 @@ The next step is to implement and analyze these interference patterns computatio
 
 --- 2D Interference Pattern Animation (Sunrise Horizon) ---
 
+![alt text](image-6.png)
 
 --- 3D Interference Pattern Animation (Sunrise Horizon) ---
 
-
-
+![alt text](image-7.png)
 
 ```python
 import numpy as np
