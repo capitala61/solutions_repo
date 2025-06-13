@@ -172,6 +172,34 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="simulating-the-effects-of-the-lorentz-force">Simulating the Effects of the Lorentz Force</h1>
+<h2 id="1-introduction-and-motivation">1. Introduction and Motivation</h2>
+<p>The Lorentz force governs the motion of charged particles in electromagnetic fields and is essential in understanding systems like:<br/>
+- Particle accelerators – guiding and accelerating beams.<br/>
+- Mass spectrometers – separating particles based on mass-to-charge ratio.<br/>
+- Plasma confinement devices (e.g., tokamaks) – controlling plasma using magnetic fields.  </p>
+<p>Understanding the Lorentz force enables the design and analysis of such systems.</p>
+<hr/>
+<h2 id="2-lorentz-force-equation">2. Lorentz Force Equation</h2>
+<p>The Lorentz force <span class="arithmatex">\(\vec{F}\)</span> acting on a charged particle is given by:</p>
+<div class="arithmatex">\[
+\vec{F} = q (\vec{E} + \vec{v} \times \vec{B})
+\]</div>
+<p>Where:<br/>
+- <span class="arithmatex">\(q\)</span>: Charge of the particle<br/>
+- <span class="arithmatex">\(\vec{E}\)</span>: Electric field<br/>
+- <span class="arithmatex">\(\vec{B}\)</span>: Magnetic field<br/>
+- <span class="arithmatex">\(\vec{v}\)</span>: Particle velocity<br/>
+Using Newton’s Second Law:</p>
+<div class="arithmatex">\[
+\vec{F} = m \frac{d\vec{v}}{dt}
+\]</div>
+<p>We obtain the equation of motion:</p>
+<div class="arithmatex">\[
+m \frac{d\vec{v}}{dt} = q (\vec{E} + \vec{v} \times \vec{B})
+\]</div>
+<p>This equation is generally solved numerically due to the complexity of <span class="arithmatex">\(\vec{v} \times \vec{B}\)</span>.</p>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
