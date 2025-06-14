@@ -375,6 +375,83 @@ plot_wave(Z4, "Four Sources (Square)")
 plot_wave(Z5, "Five Sources (Pentagon)")
 plt.show()  # Moved plt.show() here to display all plots
 </code></pre>
+<p><img alt="alt text" src="../def77386-04a4-4bdd-92b9-20d1744532cf.gif"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import imageio
+import os
+
+# Define the grid
+x = np.linspace(-10, 10, 500)
+y = np.linspace(-10, 10, 500)
+X, Y = np.meshgrid(x, y)
+
+# Define wave parameters
+wavelength = 2  # Wavelength
+k = 2 * np.pi / wavelength  # Wave number
+omega = 2 * np.pi / 5       # Angular frequency
+
+# Function to create a wave from a single source
+def single_wave(X, Y, source, t):
+    r = np.sqrt((X - source[0])**2 + (Y - source[1])**2)
+    return np.sin(k * r - omega * t)
+
+# Function to sum multiple waves from different sources
+def multiple_waves(X, Y, sources, t):
+    Z = np.zeros_like(X)
+    for source in sources:
+        Z += single_wave(X, Y, source, t)
+    return Z
+
+# Sources definitions for 5 sources (in a pentagon)
+radius = 5
+angles = np.linspace(0, 2 * np.pi, 6)[:-1]
+sources_5 = [(radius * np.cos(a), radius * np.sin(a)) for a in angles]
+
+# Create 3_waves folder if it doesn't exist
+OUTPUT_DIR = "3_waves"
+if not os.path.exists(OUTPUT_DIR):
+    os.makedirs(OUTPUT_DIR)
+
+# Custom color map blending burgundy (#800020) and lighter blue (#4682B4)
+colors = ['#800020', '#400010', '#4682B4', '#87CEEB', '#800080']
+custom_cmap = plt.cm.colors.LinearSegmentedColormap.from_list('burgundy_lightblue', colors)
+
+# Create GIF frames
+num_frames = 100
+gif_frames = []
+
+# Create the GIF frames for time from 0 to 2*pi
+for i in range(num_frames):
+    t = i * 2 * np.pi / num_frames  # Varying time
+    Z = multiple_waves(X, Y, sources_5, t)
+
+    # Plotting the frame
+    fig, ax = plt.subplots(figsize=(8, 6))
+    im = ax.imshow(Z, extent=[-10, 10, -10, 10], origin='lower', cmap=custom_cmap, animated=True)
+    ax.set_title(f"Interference of 5 Sources - Time = {t:.2f}", fontsize=16)
+    ax.set_xlabel('X axis', fontsize=14)
+    ax.set_ylabel('Y axis', fontsize=14)
+    plt.colorbar(im, ax=ax)
+
+    # Ensure proper rendering
+    plt.tight_layout()
+
+    # Draw the figure to make sure it's rendered correctly before saving
+    fig.canvas.draw()
+
+    # Convert to image and append to GIF frames
+    gif_frames.append(np.array(fig.canvas.renderer.buffer_rgba()))
+
+    # Close the plot to avoid memory issues in the loop
+    plt.close(fig)
+
+# Create and save the GIF in the 3_waves folder
+gif_path = os.path.join(OUTPUT_DIR, "interference_5_sources.gif")
+imageio.mimsave(gif_path, gif_frames, duration=0.1)
+
+print(f"GIF saved as {gif_path}")
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
