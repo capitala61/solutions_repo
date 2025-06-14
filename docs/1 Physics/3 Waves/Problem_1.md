@@ -132,7 +132,11 @@ The next step is to implement and analyze these interference patterns computatio
 
 # Python/Models
 
-![alt text](image-8.png)
+![alt text](image-12.png)
+
+![alt text](image-13.png)
+
+![alt text](image-14.png)
 
 ```python
 import numpy as np
@@ -200,7 +204,7 @@ def plot_wave(Z, title):
     ax.set_zlabel('Amplitude', fontsize=14)
 
     plt.tight_layout()
-    plt.show()
+    # Removed plt.show() from inside the function
 
 # ------------------------
 # Calculate and plot all
@@ -212,4 +216,5 @@ Z5 = multiple_waves(X, Y, sources_5)
 plot_wave(Z1, "Single Source")
 plot_wave(Z4, "Four Sources (Square)")
 plot_wave(Z5, "Five Sources (Pentagon)")
+plt.show()  # Moved plt.show() here to display all plots
 ```
