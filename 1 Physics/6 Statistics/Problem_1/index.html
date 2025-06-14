@@ -498,6 +498,63 @@ plt.show()
 </li>
 </ul>
 <hr/>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set a custom dark theme with seaborn
+sns.set(style="darkgrid", rc={"axes.facecolor": "#1C2526", "figure.facecolor": "#1C2526", "grid.color": "#444444", "grid.alpha": 0.3})
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Population size for each distribution
+N = 100_000
+
+# Define original populations with different shapes and variances
+populations = {
+    "Uniform[0,1]": np.random.uniform(0, 1, N),                        # Variance = 1/12 ~0.083
+    "Exponential(λ=1)": np.random.exponential(1, N),                  # Variance = 1
+    "Binomial(n=10, p=0.5)": np.random.binomial(n=10, p=0.5, size=N), # Variance = np(1-p) = 2.5
+}
+
+# Scale exponential to higher variance for demonstration
+populations["Scaled Exponential (×3)"] = populations["Exponential(λ=1)"] * 3  # Variance ~9
+
+sample_sizes = [5, 10, 30, 50]
+num_samples = 1000  # Number of samples per sample size
+
+# Custom color palette inspired by burgundy (#800020) and lighter blue (#4682B4)
+colors = ['#800020', '#4682B4', '#87CEEB', '#400010']  # Burgundy, Light Blue, Light Blue Accent, Dark Burgundy
+sns.set_palette(sns.color_palette(colors))
+
+# Plotting
+fig, axes = plt.subplots(len(populations), len(sample_sizes), figsize=(22, 14), sharex='col', sharey='row', facecolor='#1C2526')
+
+for row_idx, (dist_name, population) in enumerate(populations.items()):
+    for col_idx, n in enumerate(sample_sizes):
+        sample_means = []
+        for _ in range(num_samples):
+            sample = np.random.choice(population, size=n, replace=False)
+            sample_means.append(np.mean(sample))
+        ax = axes[row_idx, col_idx]
+        sns.histplot(sample_means, bins=30, kde=True, color=colors[row_idx % len(colors)], ax=ax, edgecolor='#FFFFFF', linewidth=0.5)
+        ax.set_title(f"{dist_name}\nSample Size $n={n}$", fontsize=14, fontweight='bold', pad=10, color='#E0E0E0')
+        if col_idx == 0:
+            ax.set_ylabel('Frequency', fontsize=12, color='#E0E0E0')
+        if row_idx == len(populations) - 1:
+            ax.set_xlabel('Sample Mean', fontsize=12, color='#E0E0E0')
+        ax.tick_params(colors='#E0E0E0')  # Match tick colors to text
+        ax.grid(True)
+
+        # Add a subtle glow effect with alpha
+        ax.patch.set_alpha(0.9)
+
+plt.suptitle("Exploring Effects of Population Shape, Sample Size, and Variance on Sampling Distribution", fontsize=18, fontweight='bold', color='#87CEEB', y=1.02)
+plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+plt.show()
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
