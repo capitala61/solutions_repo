@@ -283,3 +283,78 @@ plt.suptitle("Sampling Distributions of Sample Means Across Populations and Samp
 plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 plt.show()
 ```
+
+# 🔎 Step 4: Investigating Factors Shaping the Central Limit Theorem
+
+## 🎯 Goals
+
+- Explore how the **form of the initial population distribution** impacts the speed of convergence to a normal shape.
+- Assess the effect of **sample size $n$** on the approximation to a normal distribution.
+- Study the influence of **population variance $\sigma^2$** on the dispersion of the sampling distribution of the mean.
+
+---
+
+## 1. Role of Population Distribution Form
+
+- The CLT ensures a move toward normality, but the **pace of convergence hinges on the form** of the population distribution.
+- Distributions with **significant skewness** or **heavy tails** (e.g., Exponential, Cauchy) need larger sample sizes for the sample mean to near normality.
+- For balanced and light-tailed distributions (e.g., Uniform, Binomial), the convergence tends to be quicker.
+
+---
+
+## 2. Effect of Sample Size $n$
+
+- The sampling distribution of the mean $\bar{X}$ for sample size $n$ exhibits:
+
+  $$
+  \text{Mean}(\bar{X}) = \mu
+  $$
+
+  $$
+  \text{Variance}(\bar{X}) = \frac{\sigma^2}{n}
+  $$
+
+- As $n$ grows:
+
+  - The variance of $\bar{X}$ shrinks, making the sampling distribution more **tightly clustered** around $\mu$.
+  - Per the CLT, the distribution of $\bar{X}$ nears the normal distribution:
+
+  $$
+  \bar{X} \xrightarrow{d} N\left(\mu, \frac{\sigma^2}{n}\right)
+  $$
+
+- Visualizing various $n$ values aids in **tracking this clustering and shape evolution**.
+
+---
+
+## 3. Influence of Population Variance $\sigma^2$
+
+- The **spread** of the sampling distribution is tied to the population variance $\sigma^2$.
+- A larger $\sigma^2$ results in greater **variation in sample means**.
+- This underscores the importance of knowing or estimating $\sigma^2$ in statistical inference.
+
+---
+
+## 📊 Overview of Connections
+
+- The interplay of population form, sample size, and variance dictates how swiftly and closely the sampling distribution of the mean approaches normality.
+  
+- Core equation encapsulating the CLT:
+
+  $$
+  Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} N(0,1)
+  $$
+
+---
+
+## 🐍 Next: Python Code to Test These Factors
+
+- Model sampling distributions with varying:
+
+  - Population forms (e.g., Uniform, Exponential, Binomial)
+  - Sample sizes ($n = 5, 10, 30, 50$)
+  - Variances (e.g., by adjusting distribution scales)
+
+- Illustrate the outcomes to enhance comprehension of the CLT in practice.
+
+---
