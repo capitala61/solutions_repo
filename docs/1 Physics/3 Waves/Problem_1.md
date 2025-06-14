@@ -121,15 +121,13 @@ Using numerical simulations, we generate:
 - **Static interference maps** for different polygons.
 - **Time-evolving wave fields** to observe changing interference dynamics.
 
-### **Python Implementation**
+### Python Implementation
 
 A Python script implementing the above equations will:
 
- 1. Define wave parameters.
-
- 2. Compute the interference pattern on a 2D grid.
-
- 3. Visualize results using heatmaps and contour plots.
+1. Define wave parameters.  
+2. Compute the interference pattern on a 2D grid.  
+3. Visualize results using heatmaps and contour plots.
 
 The next step is to implement and analyze these interference patterns computationally.
 
