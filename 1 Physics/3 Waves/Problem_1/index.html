@@ -291,145 +291,84 @@
 3. Visualize results using heatmaps and contour plots.</p>
 <p>The next step is to implement and analyze these interference patterns computationally.</p>
 <h1 id="pythonmodels">Python/Models</h1>
-<p>--- 2D Interference Pattern Animation (Sunrise Horizon) ---</p>
-<p><img alt="alt text" src="../image-6.png"/></p>
-<p>--- 3D Interference Pattern Animation (Sunrise Horizon) ---</p>
-<p><img alt="alt text" src="../image-7.png"/></p>
+<p><img alt="alt text" src="../image-8.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import animation
-from IPython.display import Image, HTML
-from google.colab import files
 
-# --- Parameters (KEEPING AS IS) ---
-A = 1.0  # Amplitude
-k = 2 * np.pi / 1.0  # Wave number
-omega = 1.0  # Angular frequency
-phi = 0.0  # Initial phase
-
-# Define triangle's vertices (KEEPING AS IS)
-sources = np.array([
-    [0, np.sqrt(3)],  # Top vertex
-    [-1, 0],          # Bottom-left
-    [1, 0]            # Bottom-right
-])
-
-# Create a smaller grid (KEEPING AS IS)
-x = np.linspace(-2, 2, 50)
-y = np.linspace(-2, 2, 50)
+# Define the grid
+x = np.linspace(-10, 10, 500)
+y = np.linspace(-10, 10, 500)
 X, Y = np.meshgrid(x, y)
 
-# Wave equation for a single source (KEEPING AS IS)
-def wave(X, Y, x0, y0, t):
-    r = np.sqrt((X - x0)**2 + (Y - y0)**2)
-    r = np.maximum(r, 1e-10)  # Avoid division by zero
-    return (A / np.sqrt(r)) * np.cos(k * r - omega * t + phi)
+# Define wave parameters
+wavelength = 2  # Wavelength
+k = 2 * np.pi / wavelength  # Wave number
+omega = 2 * np.pi / 5       # Angular frequency
+t = 0  # Static time for snapshot (can be animated)
 
-# Compute total wave (KEEPING AS IS)
-def get_total_wave(t):
-    eta_total = np.zeros_like(X)
-    for x0, y0 in sources:
-        eta_total += wave(X, Y, x0, y0, t)
-    return eta_total
+# Function to create a wave from a single source
+def single_wave(X, Y, source):
+    r = np.sqrt((X - source[0])**2 + (Y - source[1])**2)
+    return np.sin(k * r - omega * t)
 
-# --- Function to Create and Save 2D Animation ---
-def create_2d_animation(filename='triangle_interference_2d_enhanced.gif'):
-    plt.close('all')
+# Function to sum multiple waves from different sources
+def multiple_waves(X, Y, sources):
+    Z = np.zeros_like(X)
+    for source in sources:
+        Z += single_wave(X, Y, source)
+    return Z
 
-    fig2d, ax2d = plt.subplots(figsize=(10, 8), facecolor='#1B263B') # Dark desaturated blue
-    ax2d.set_facecolor('#1B263B')
-    ax2d.tick_params(colors='#A0A0A0') # Medium grey ticks
-    ax2d.xaxis.label.set_color('#A0A0A0')
-    ax2d.yaxis.label.set_color('#A0A0A0')
-    ax2d.title.set_color('#F0F0F0') # Light grey title
+# ------------------------
+# Sources definitions
+# ------------------------
+sources_1 = [(0, 0)]
 
-    # Using 'hot' or 'YlOrRd' for fiery effect
-    contour = ax2d.contourf(X, Y, get_total_wave(0), levels=50, cmap='YlOrRd', extend='both')
-    cbar = plt.colorbar(contour, ax=ax2d, label='Wave Displacement', pad=0.03)
-    cbar.ax.yaxis.set_tick_params(color='#A0A0A0')
-    cbar.ax.yaxis.label.set_color('#A0A0A0')
-    cbar.outline.set_edgecolor('#A0A0A0')
+distance = 5
+sources_4 = [(-distance, -distance), (-distance, distance), (distance, -distance), (distance, distance)]
 
-    ax2d.scatter(sources[:, 0], sources[:, 1], c='#FFD700', marker='*', s=250, edgecolor='white', linewidth=1.5, label='Sources') # Gold star markers
-    ax2d.set_title('Dynamic Interference Pattern (2D)', fontsize=16, fontweight='bold')
-    ax2d.set_xlabel('X-axis')
-    ax2d.set_ylabel('Y-axis')
-    ax2d.legend(facecolor='#2F4F4F', edgecolor='none', labelcolor='#F0F0F0', loc='upper right') # Styled legend
-    ax2d.grid(True, linestyle='--', alpha=0.4, color='#667788') # Even softer grid
+radius = 5
+angles = np.linspace(0, 2 * np.pi, 6)[:-1]
+sources_5 = [(radius * np.cos(a), radius * np.sin(a)) for a in angles]
 
-    def update_2d(frame):
-        t = frame * 0.05
-        ax2d.clear()
-        ax2d.set_facecolor('#1B263B')
-        ax2d.tick_params(colors='#A0A0A0')
-        ax2d.xaxis.label.set_color('#A0A0A0')
-        ax2d.yaxis.label.set_color('#A0A0A0')
-        ax2d.title.set_color('#F0F0F0')
+# Custom color map blending burgundy (#800020) and lighter blue (#4682B4)
+colors = ['#800020', '#400010', '#4682B4', '#87CEEB', '#800080']
+custom_cmap = plt.cm.colors.LinearSegmentedColormap.from_list('burgundy_lightblue', colors)
 
-        eta_total = get_total_wave(t)
-        contour = ax2d.contourf(X, Y, eta_total, levels=50, cmap='YlOrRd', extend='both')
-        ax2d.scatter(sources[:, 0], sources[:, 1], c='#FFD700', marker='*', s=250, edgecolor='white', linewidth=1.5, label='Sources')
-        ax2d.set_title(f'Dynamic Interference Pattern (2D) | Time: {t:.2f}s', fontsize=16, fontweight='bold')
-        ax2d.set_xlabel('X-axis')
-        ax2d.set_ylabel('Y-axis')
-        ax2d.legend(facecolor='#2F4F4F', edgecolor='none', labelcolor='#F0F0F0', loc='upper right')
-        ax2d.grid(True, linestyle='--', alpha=0.4, color='#667788')
-        return []
+# ------------------------
+# Plotting Function
+# ------------------------
+def plot_wave(Z, title):
+    fig, axs = plt.subplots(1, 2, figsize=(18, 8))  # BIGGER SIZE
 
-    ani2d = animation.FuncAnimation(fig2d, update_2d, frames=50, interval=50, blit=False)
-    writer2d = animation.PillowWriter(fps=10)
-    ani2d.save(filename, writer=writer2d, dpi=100)
-    plt.close(fig2d)
-    print(f"Saved {filename}")
+    # Heatmap
+    im = axs[0].imshow(Z, extent=[-10, 10, -10, 10], origin='lower', cmap=custom_cmap)
+    axs[0].set_title(f"{title} - Heatmap", fontsize=18)
+    axs[0].set_xlabel('X axis', fontsize=14)
+    axs[0].set_ylabel('Y axis', fontsize=14)
+    plt.colorbar(im, ax=axs[0])
 
-# --- Function to Create and Save 3D Animation ---
-def create_3d_animation(filename='triangle_interference_3d_enhanced.gif'):
-    plt.close('all')
+    # 3D Surface
+    ax = fig.add_subplot(1, 2, 2, projection='3d')
+    ax.plot_surface(X, Y, Z, cmap=custom_cmap, edgecolor='none')
+    ax.set_title(f"{title} - 3D Surface", fontsize=18)
+    ax.set_xlabel('X axis', fontsize=14)
+    ax.set_ylabel('Y axis', fontsize=14)
+    ax.set_zlabel('Amplitude', fontsize=14)
 
-    fig3d = plt.figure(figsize=(10, 8), facecolor='#1B263B')
-    ax3d = fig3d.add_subplot(111, projection='3d', facecolor='#1B263B')
-    ax3d.tick_params(colors='#A0A0A0')
-    ax3d.xaxis.label.set_color('#A0A0A0')
-    ax3d.yaxis.label.set_color('#A0A0A0')
-    ax3d.zaxis.label.set_color('#A0A0A0')
-    ax3d.title.set_color('#F0F0F0')
+    plt.tight_layout()
+    plt.show()
 
-    eta_total = get_total_wave(0)
-    surf = ax3d.plot_surface(X, Y, eta_total, cmap='YlOrRd', rstride=1, cstride=1, antialiased=True, alpha=0.9)
-    cbar3d = fig3d.colorbar(surf, ax=ax3d, shrink=0.6, aspect=20, label='Wave Displacement', pad=0.03)
-    cbar3d.ax.yaxis.set_tick_params(color='#A0A0A0')
-    cbar3d.ax.yaxis.label.set_color('#A0A0A0')
-    cbar3d.outline.set_edgecolor('#A0A0A0')
+# ------------------------
+# Calculate and plot all
+# ------------------------
+Z1 = multiple_waves(X, Y, sources_1)
+Z4 = multiple_waves(X, Y, sources_4)
+Z5 = multiple_waves(X, Y, sources_5)
 
-    ax3d.set_title('Dynamic Interference Pattern (3D)', fontsize=16, fontweight='bold')
-    ax3d.set_xlabel('X-axis')
-    ax3d.set_ylabel('Y-axis')
-    ax3d.set_zlabel('Wave Displacement')
-
-    def update_3d(frame):
-        t = frame * 0.05
-        ax3d.clear()
-        ax3d.set_facecolor('#1B263B')
-        ax3d.tick_params(colors='#A0A0A0')
-        ax3d.xaxis.label.set_color('#A0A0A0')
-        ax3d.yaxis.label.set_color('#A0A0A0')
-        ax3d.zaxis.label.set_color('#A0A0A0')
-        ax3d.title.set_color('#F0F0F0')
-
-        eta_total = get_total_wave(t)
-        surf = ax3d.plot_surface(X, Y, eta_total, cmap='YlOrRd', rstride=1, cstride=1, antialiased=True, alpha=0.9)
-        ax3d.set_title(f'Dynamic Interference Pattern (3D) | Time: {t:.2f}s', fontsize=16, fontweight='bold')
-        ax3d.set_xlabel('X-axis')
-        ax3d.set_ylabel('Y-axis')
-        ax3d.set_zlabel('Wave Displacement')
-        return [surf]
-
-    ani3d = animation.FuncAnimation(fig3d, update_3d, frames=50, interval=50, blit=False)
-    writer3d = animation.PillowWriter(fps=10)
-    ani3d.save(filename, writer=writer3d, dpi=100)
-    plt.close(fig3d)
-    print(f"Saved {filename}")
+plot_wave(Z1, "Single Source")
+plot_wave(Z4, "Four Sources (Square)")
+plot_wave(Z5, "Five Sources (Pentagon)")
 </code></pre>
 </div>
 </div><footer>
