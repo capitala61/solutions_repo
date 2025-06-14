@@ -420,6 +420,84 @@ plt.suptitle("Sampling Distributions of Sample Means Across Populations and Samp
 plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 plt.show()
 </code></pre>
+<h1 id="step-4-investigating-factors-shaping-the-central-limit-theorem">🔎 Step 4: Investigating Factors Shaping the Central Limit Theorem</h1>
+<h2 id="goals">🎯 Goals</h2>
+<ul>
+<li>Explore how the <strong>form of the initial population distribution</strong> impacts the speed of convergence to a normal shape.</li>
+<li>Assess the effect of <strong>sample size <span class="arithmatex">\(n\)</span></strong> on the approximation to a normal distribution.</li>
+<li>Study the influence of <strong>population variance <span class="arithmatex">\(\sigma^2\)</span></strong> on the dispersion of the sampling distribution of the mean.</li>
+</ul>
+<hr/>
+<h2 id="1-role-of-population-distribution-form">1. Role of Population Distribution Form</h2>
+<ul>
+<li>The CLT ensures a move toward normality, but the <strong>pace of convergence hinges on the form</strong> of the population distribution.</li>
+<li>Distributions with <strong>significant skewness</strong> or <strong>heavy tails</strong> (e.g., Exponential, Cauchy) need larger sample sizes for the sample mean to near normality.</li>
+<li>For balanced and light-tailed distributions (e.g., Uniform, Binomial), the convergence tends to be quicker.</li>
+</ul>
+<hr/>
+<h2 id="2-effect-of-sample-size-n">2. Effect of Sample Size <span class="arithmatex">\(n\)</span></h2>
+<ul>
+<li>The sampling distribution of the mean <span class="arithmatex">\(\bar{X}\)</span> for sample size <span class="arithmatex">\(n\)</span> exhibits:</li>
+</ul>
+<p>$$
+  \text{Mean}(\bar{X}) = \mu
+  $$</p>
+<p>$$
+  \text{Variance}(\bar{X}) = \frac{\sigma^2}{n}
+  $$</p>
+<ul>
+<li>
+<p>As <span class="arithmatex">\(n\)</span> grows:</p>
+</li>
+<li>
+<p>The variance of <span class="arithmatex">\(\bar{X}\)</span> shrinks, making the sampling distribution more <strong>tightly clustered</strong> around <span class="arithmatex">\(\mu\)</span>.</p>
+</li>
+<li>Per the CLT, the distribution of <span class="arithmatex">\(\bar{X}\)</span> nears the normal distribution:</li>
+</ul>
+<p>$$
+  \bar{X} \xrightarrow{d} N\left(\mu, \frac{\sigma^2}{n}\right)
+  $$</p>
+<ul>
+<li>Visualizing various <span class="arithmatex">\(n\)</span> values aids in <strong>tracking this clustering and shape evolution</strong>.</li>
+</ul>
+<hr/>
+<h2 id="3-influence-of-population-variance-sigma2">3. Influence of Population Variance <span class="arithmatex">\(\sigma^2\)</span></h2>
+<ul>
+<li>The <strong>spread</strong> of the sampling distribution is tied to the population variance <span class="arithmatex">\(\sigma^2\)</span>.</li>
+<li>A larger <span class="arithmatex">\(\sigma^2\)</span> results in greater <strong>variation in sample means</strong>.</li>
+<li>This underscores the importance of knowing or estimating <span class="arithmatex">\(\sigma^2\)</span> in statistical inference.</li>
+</ul>
+<hr/>
+<h2 id="overview-of-connections">📊 Overview of Connections</h2>
+<ul>
+<li>
+<p>The interplay of population form, sample size, and variance dictates how swiftly and closely the sampling distribution of the mean approaches normality.</p>
+</li>
+<li>
+<p>Core equation encapsulating the CLT:</p>
+</li>
+</ul>
+<p>$$
+  Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} N(0,1)
+  $$</p>
+<hr/>
+<h2 id="next-python-code-to-test-these-factors">🐍 Next: Python Code to Test These Factors</h2>
+<ul>
+<li>
+<p>Model sampling distributions with varying:</p>
+</li>
+<li>
+<p>Population forms (e.g., Uniform, Exponential, Binomial)</p>
+</li>
+<li>Sample sizes (<span class="arithmatex">\(n = 5, 10, 30, 50\)</span>)</li>
+<li>
+<p>Variances (e.g., by adjusting distribution scales)</p>
+</li>
+<li>
+<p>Illustrate the outcomes to enhance comprehension of the CLT in practice.</p>
+</li>
+</ul>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
