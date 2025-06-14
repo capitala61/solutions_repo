@@ -291,7 +291,9 @@
 3. Visualize results using heatmaps and contour plots.</p>
 <p>The next step is to implement and analyze these interference patterns computationally.</p>
 <h1 id="pythonmodels">Python/Models</h1>
-<p><img alt="alt text" src="../image-8.png"/></p>
+<p><img alt="alt text" src="../image-12.png"/></p>
+<p><img alt="alt text" src="../image-13.png"/></p>
+<p><img alt="alt text" src="../image-14.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -357,7 +359,7 @@ def plot_wave(Z, title):
     ax.set_zlabel('Amplitude', fontsize=14)
 
     plt.tight_layout()
-    plt.show()
+    # Removed plt.show() from inside the function
 
 # ------------------------
 # Calculate and plot all
@@ -369,6 +371,7 @@ Z5 = multiple_waves(X, Y, sources_5)
 plot_wave(Z1, "Single Source")
 plot_wave(Z4, "Four Sources (Square)")
 plot_wave(Z5, "Five Sources (Pentagon)")
+plt.show()  # Moved plt.show() here to display all plots
 </code></pre>
 </div>
 </div><footer>
