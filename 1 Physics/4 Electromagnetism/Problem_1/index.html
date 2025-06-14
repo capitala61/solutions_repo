@@ -572,6 +572,43 @@ plt.close(fig) # Close the plot to free memory
 # --- Display in Notebook (if using Jupyter/Colab) ---
 display(Image(filename=image_path))
 </code></pre>
+<h2 id="5-results-and-visualizations">5. Results and Visualizations</h2>
+<h3 id="case-1-circular-motion">Case 1: Circular Motion</h3>
+<ul>
+<li><span class="arithmatex">\(\vec{E} = 0\)</span> </li>
+<li><span class="arithmatex">\(\vec{B} = [0, 0, B]\)</span> </li>
+<li>Initial velocity perpendicular to <span class="arithmatex">\(\vec{B}\)</span> </li>
+</ul>
+<p><strong>Expected motion:</strong> circular  </p>
+<p>From theory:</p>
+<div class="arithmatex">\[
+r_L = \frac{mv}{|q||B|} \quad \text{(Larmor radius)}
+\]</div>
+<p><strong>Plot:</strong> [Circular orbit in x-y plane]</p>
+<hr/>
+<h3 id="case-2-helical-motion">Case 2: Helical Motion</h3>
+<ul>
+<li><span class="arithmatex">\(\vec{E} = [0, 0, E]\)</span> </li>
+<li><span class="arithmatex">\(\vec{B} = [0, 0, B]\)</span> </li>
+</ul>
+<p><strong>Expected motion:</strong> helix, as velocity has components both parallel and perpendicular to <span class="arithmatex">\(\vec{B}\)</span>.  </p>
+<p><strong>Plot:</strong> [3D helical path]</p>
+<hr/>
+<h3 id="case-3-crossed-fields-drift">Case 3: Crossed Fields (Drift)</h3>
+<ul>
+<li><span class="arithmatex">\(\vec{E} = [0, E, 0]\)</span> </li>
+</ul>
+<h3 id="case-3-crossed-fields-drift_1">Case 3: Crossed Fields (Drift)</h3>
+<ul>
+<li><span class="arithmatex">\(\vec{E} = [0, E, 0]\)</span> </li>
+<li><span class="arithmatex">\(\vec{B} = [0, 0, B]\)</span> </li>
+</ul>
+<p><strong>Expected motion:</strong> drift velocity in x-direction:</p>
+<div class="arithmatex">\[
+\vec{v}_d = \frac{\vec{E} \times \vec{B}}{B^2}
+\]</div>
+<p><strong>Plot:</strong> [Curved motion with net drift]</p>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
