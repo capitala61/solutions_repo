@@ -427,3 +427,48 @@ plt.close(fig) # Close the plot to free memory
 # --- Display in Notebook (if using Jupyter/Colab) ---
 display(Image(filename=image_path))
 ```
+
+## 5. Results and Visualizations
+
+### Case 1: Circular Motion
+- $\vec{E} = 0$  
+- $\vec{B} = [0, 0, B]$  
+- Initial velocity perpendicular to $\vec{B}$  
+
+**Expected motion:** circular  
+
+From theory:
+
+$$
+r_L = \frac{mv}{|q||B|} \quad \text{(Larmor radius)}
+$$
+
+**Plot:** [Circular orbit in x-y plane]
+
+---
+
+### Case 2: Helical Motion
+- $\vec{E} = [0, 0, E]$  
+- $\vec{B} = [0, 0, B]$  
+
+**Expected motion:** helix, as velocity has components both parallel and perpendicular to $\vec{B}$.  
+
+**Plot:** [3D helical path]
+
+---
+
+### Case 3: Crossed Fields (Drift)
+- $\vec{E} = [0, E, 0]$  
+### Case 3: Crossed Fields (Drift)
+- $\vec{E} = [0, E, 0]$  
+- $\vec{B} = [0, 0, B]$  
+
+**Expected motion:** drift velocity in x-direction:
+
+$$
+\vec{v}_d = \frac{\vec{E} \times \vec{B}}{B^2}
+$$
+
+**Plot:** [Curved motion with net drift]
+
+---
