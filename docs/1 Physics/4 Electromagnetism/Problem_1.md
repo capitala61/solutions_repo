@@ -42,3 +42,18 @@ This equation is generally solved numerically due to the complexity of $\vec{v} 
 
 ---
 
+## 3. Simulation Overview
+
+We simulate particle trajectories using the 4th-order Runge-Kutta method for accuracy.
+**Scenarios Simulated:**  
+1. Uniform magnetic field only: Circular motion.  
+2. Parallel $\vec{E}$ and $\vec{B}$: Helical motion.  
+3. Crossed fields: Drift motion.  
+
+**Parameters that can be varied:**  
+- Electric field strength $\vec{E}$  
+- Magnetic field strength $\vec{B}$  
+- Initial velocity $\vec{v}_0$  
+- Charge $q$ and mass $m$
+
+---
