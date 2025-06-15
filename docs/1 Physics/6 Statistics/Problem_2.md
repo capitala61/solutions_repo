@@ -58,3 +58,53 @@ To derive π using this probabilistic approach:
 - Monte Carlo estimation of π depends on simulating random events and comparing relative counts.
 - The more points you sample ($N_{total}$), the closer the estimate gets to the true value of π.
 - This strategy intuitively combines **geometry, probability, and numerical simulation**.
+
+![alt text](image-4.png)
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Set a fixed seed for reproducibility
+np.random.seed(42)
+
+# Total number of random points
+N_total = 10000
+
+# Generate random (x, y) pairs between -1 and 1
+x = np.random.uniform(-1, 1, N_total)
+y = np.random.uniform(-1, 1, N_total)
+
+# Compute whether each point falls inside the unit circle
+inside_circle = x**2 + y**2 <= 1
+
+# Estimate pi
+N_circle = np.sum(inside_circle)
+pi_estimate = 4 * N_circle / N_total
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.set_aspect("equal")
+
+# Plot inside-circle points in maroon (bordo), outside in blue (mavi)
+ax.scatter(x[inside_circle], y[inside_circle], color="#800000", s=1, label='Inside Circle')
+ax.scatter(x[~inside_circle], y[~inside_circle], color="#0077B6", s=1, label='Outside Circle')
+
+# Draw the unit circle for reference
+circle = plt.Circle((0, 0), 1, edgecolor="#800000", facecolor='none', linewidth=1.5, linestyle='--')
+ax.add_patch(circle)
+
+# Aesthetic settings
+ax.set_title(f"Monte Carlo π Estimation\nEstimated π ≈ {pi_estimate:.5f}", fontsize=12, color="#800000")
+ax.set_xlabel("x-axis", fontsize=10)
+ax.set_ylabel("y-axis", fontsize=10)
+ax.legend(loc="upper right", fontsize=9)
+ax.set_xlim([-1, 1])
+ax.set_ylim([-1, 1])
+ax.grid(True, linestyle=':', alpha=0.6)
+
+plt.tight_layout()
+plt.show()
+```
+
+
