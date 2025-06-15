@@ -223,6 +223,51 @@
 <li>The more points you sample (<span class="arithmatex">\(N_{total}\)</span>), the closer the estimate gets to the true value of π.</li>
 <li>This strategy intuitively combines <strong>geometry, probability, and numerical simulation</strong>.</li>
 </ul>
+<p><img alt="alt text" src="../image-4.png"/></p>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
+
+# Set a fixed seed for reproducibility
+np.random.seed(42)
+
+# Total number of random points
+N_total = 10000
+
+# Generate random (x, y) pairs between -1 and 1
+x = np.random.uniform(-1, 1, N_total)
+y = np.random.uniform(-1, 1, N_total)
+
+# Compute whether each point falls inside the unit circle
+inside_circle = x**2 + y**2 &lt;= 1
+
+# Estimate pi
+N_circle = np.sum(inside_circle)
+pi_estimate = 4 * N_circle / N_total
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.set_aspect("equal")
+
+# Plot inside-circle points in maroon (bordo), outside in blue (mavi)
+ax.scatter(x[inside_circle], y[inside_circle], color="#800000", s=1, label='Inside Circle')
+ax.scatter(x[~inside_circle], y[~inside_circle], color="#0077B6", s=1, label='Outside Circle')
+
+# Draw the unit circle for reference
+circle = plt.Circle((0, 0), 1, edgecolor="#800000", facecolor='none', linewidth=1.5, linestyle='--')
+ax.add_patch(circle)
+
+# Aesthetic settings
+ax.set_title(f"Monte Carlo π Estimation\nEstimated π ≈ {pi_estimate:.5f}", fontsize=12, color="#800000")
+ax.set_xlabel("x-axis", fontsize=10)
+ax.set_ylabel("y-axis", fontsize=10)
+ax.legend(loc="upper right", fontsize=9)
+ax.set_xlim([-1, 1])
+ax.set_ylim([-1, 1])
+ax.grid(True, linestyle=':', alpha=0.6)
+
+plt.tight_layout()
+plt.show()
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
